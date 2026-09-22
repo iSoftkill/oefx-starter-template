@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { LucideAngularModule, Layers, Compass, Sparkles, ArrowRight } from 'lucide-angular';
-import { ButtonComponent } from '../../shared/components/button/button.component';
-import { PageHeaderComponent } from '../../shared/components/page-header/page-header.component';
-import { BentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/bento-kpi-tile.component';
+import { LucideAngularModule } from 'lucide-angular';
+import { OefaButtonComponent } from '../../shared/components/button/button.component';
+import { OefaPageHeaderComponent } from '../../shared/components/page-header/page-header.component';
+import { OefaBentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/bento-kpi-tile.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,9 +13,9 @@ import { BentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/be
     CommonModule,
     RouterModule,
     LucideAngularModule,
-    ButtonComponent,
-    PageHeaderComponent,
-    BentoKpiTileComponent
+    OefaButtonComponent,
+    OefaPageHeaderComponent,
+    OefaBentoKpiTileComponent
   ],
   template: `
     <div class="dashboard-page">
@@ -25,7 +25,6 @@ import { BentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/be
         <div actions>
           <a routerLink="/design-system">
             <app-button variant="primary">
-              <lucide-icon name="layers" size="16"></lucide-icon>
               Ver Catálogo Design System
             </app-button>
           </a>
@@ -66,7 +65,6 @@ import { BentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/be
             <a routerLink="/design-system/botones">
               <app-button variant="secondary">
                 Explorar Componentes
-                <lucide-icon name="arrow-right" size="16"></lucide-icon>
               </app-button>
             </a>
           </div>
