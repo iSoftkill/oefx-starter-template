@@ -19,39 +19,39 @@ import { OefaBentoKpiTileComponent } from '../../shared/components/bento-kpi-til
   ],
   template: `
     <div class="dashboard-page">
-      <app-page-header
+      <oefa-page-header
         title="Plantilla Base OEFA"
         subtitle="Inicio rápido para nuevos sistemas institucionales con Design System integrado.">
         <div actions>
           <a routerLink="/design-system">
-            <app-button variant="primary">
+            <oefa-button variant="primary">
               Ver Catálogo Design System
-            </app-button>
+            </oefa-button>
           </a>
         </div>
-      </app-page-header>
+      </oefa-page-header>
 
       <div class="grid-kpis">
-        <app-bento-kpi-tile
+        <oefa-bento-kpi-tile
           label="Componentes UI"
           value="30+"
           trendText="Listos para usar"
           trend="neutral">
-        </app-bento-kpi-tile>
+        </oefa-bento-kpi-tile>
 
-        <app-bento-kpi-tile
+        <oefa-bento-kpi-tile
           label="Estándar OEFA"
           value="100%"
           trendText="Accesibilidad & Tokens"
           trend="up">
-        </app-bento-kpi-tile>
+        </oefa-bento-kpi-tile>
 
-        <app-bento-kpi-tile
+        <oefa-bento-kpi-tile
           label="Arquitectura"
           value="Angular 22"
           trendText="Standalone components"
           trend="neutral">
-        </app-bento-kpi-tile>
+        </oefa-bento-kpi-tile>
       </div>
 
       <div class="welcome-card">
@@ -63,9 +63,9 @@ import { OefaBentoKpiTileComponent } from '../../shared/components/bento-kpi-til
           </p>
           <div class="welcome-actions">
             <a routerLink="/design-system/botones">
-              <app-button variant="secondary">
+              <oefa-button variant="secondary">
                 Explorar Componentes
-              </app-button>
+              </oefa-button>
             </a>
           </div>
         </div>
