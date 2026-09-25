@@ -59,7 +59,7 @@ import { CommonModule } from '@angular/common';
       align-items: center;
       justify-content: center;
       cursor: help;
-      color: var(--oefa-text-muted, #94a3b8);
+      color: var(--oefa-info-tooltip-color, var(--oefa-text-muted, #94a3b8));
       border-radius: 50%;
       outline: none;
       transition: color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease);
@@ -67,7 +67,7 @@ import { CommonModule } from '@angular/common';
 
       &:hover,
       &:focus-visible {
-        color: var(--oefa-primary-root);
+        color: var(--oefa-info-tooltip-hover-color, var(--oefa-primary-root));
       }
 
       &:focus-visible {

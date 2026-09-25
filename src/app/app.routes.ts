@@ -25,10 +25,15 @@ import { DesignSystemToastsComponent } from './views/design-system/design-system
 import { DesignSystemSelectionCardComponent } from './views/design-system/design-system-selection-card.component';
 import { DesignSystemDatePickerComponent } from './views/design-system/design-system-date-picker.component';
 import { DesignSystemFileUploaderComponent } from './views/design-system/design-system-file-uploader.component';
+import { DesignSystemExecutivePdfComponent } from './views/design-system/design-system-executive-pdf.component';
 import { DesignSystemMotionComponent } from './views/design-system/design-system-motion.component';
 import { DesignSystemBentoKpiComponent } from './views/design-system/design-system-bento-kpi.component';
 import { DesignSystemCatalogCardComponent } from './views/design-system/design-system-catalog-card.component';
 import { DesignSystemFilterSidebarComponent } from './views/design-system/design-system-filter-sidebar.component';
+import { DesignSystemTooltipsComponent } from './views/design-system/design-system-tooltips.component';
+import { DesignSystemChipsComponent } from './views/design-system/design-system-chips.component';
+import { DesignSystemFoundationsComponent } from './views/design-system/design-system-foundations.component';
+import { DesignSystemDotBadgeComponent } from './views/design-system/design-system-dot-badge.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -36,13 +41,20 @@ export const routes: Routes = [
   { path: 'dashboard', component: DashboardComponent },
   
   // Módulo Sistema de Diseño OEFA
-  { path: 'design-system', redirectTo: 'design-system/colores', pathMatch: 'full' },
+  { path: 'design-system', redirectTo: 'design-system/fundaciones', pathMatch: 'full' },
+  { path: 'design-system/fundaciones', component: DesignSystemFoundationsComponent },
+  { path: 'design-system/principios', component: DesignSystemFoundationsComponent },
+  { path: 'design-system/ficha-ejecutiva', component: DesignSystemExecutivePdfComponent },
   { path: 'design-system/colores', component: DesignSystemColorsComponent },
   { path: 'design-system/tipografia', component: DesignSystemTypographyComponent },
   { path: 'design-system/motion', component: DesignSystemMotionComponent },
   { path: 'design-system/iconos', component: DesignSystemIconsComponent },
   { path: 'design-system/botones', component: DesignSystemButtonsComponent },
   { path: 'design-system/badges', component: DesignSystemBadgesComponent },
+  { path: 'design-system/dot-badge', component: DesignSystemDotBadgeComponent },
+  { path: 'design-system/puntos', component: DesignSystemDotBadgeComponent },
+  { path: 'design-system/chips', component: DesignSystemChipsComponent },
+  { path: 'design-system/tooltips', component: DesignSystemTooltipsComponent },
   { path: 'design-system/inputs', component: DesignSystemInputsComponent },
   { path: 'design-system/tabs', component: DesignSystemTabsComponent },
   { path: 'design-system/pasos', component: DesignSystemStepsComponent },

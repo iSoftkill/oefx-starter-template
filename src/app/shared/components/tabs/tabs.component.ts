@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaInfoTooltipComponent } from '../info-tooltip/info-tooltip.component';
+import { OefaDotBadgeComponent, OefaDotBadgeColor } from '../dot-badge/dot-badge.component';
 
 export interface OefaTabItem {
   id: string;
@@ -8,7 +9,7 @@ export interface OefaTabItem {
   icon?: string;
   badge?: string | number;
   badgeDot?: boolean;
-  badgeDotColor?: 'danger' | 'warning' | 'primary' | 'success';
+  badgeDotColor?: OefaDotBadgeColor;
   infoTooltip?: string;
   disabled?: boolean;
 }
@@ -16,7 +17,7 @@ export interface OefaTabItem {
 @Component({
   selector: 'oefa-tabs',
   standalone: true,
-  imports: [CommonModule, OefaInfoTooltipComponent],
+  imports: [CommonModule, OefaInfoTooltipComponent, OefaDotBadgeComponent],
   template: `
     <div class="oefa-tabs-wrapper">
       <div
@@ -45,11 +46,11 @@ export interface OefaTabItem {
             <span class="tab-label">{{ tab.label }}</span>
             
             @if (tab.badgeDot) {
-              <span
-                class="tab-dot"
-                [class]="'tab-dot-' + (tab.badgeDotColor || 'danger')"
-                aria-label="Alerta pendiente"
-              ></span>
+              <oefa-dot-badge
+                [color]="tab.badgeDotColor || 'danger'"
+                size="md"
+                ariaLabel="Alerta en pestaña"
+              ></oefa-dot-badge>
             }
 
             @if (tab.badge !== undefined && tab.badge !== null) {

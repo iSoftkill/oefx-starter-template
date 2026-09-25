@@ -106,6 +106,28 @@ Tanto Poppins como Inter cubren este rango completo sin problema (ambas tienen f
 
 Estilo del ícono: **lineal, trazo uniforme** (no relleno), como en tu referencia. Color: gris texto secundario si inactivo, `Primary` si activo/seleccionado. Nunca como único indicador de estado (siempre con texto o `aria-label` — WCAG 2.2).
 
+### 4.1 Componente Global de Iconografía (`<oefa-icon>`)
+
+Componente standalone desacoplado disponible en `src/app/shared/components/icon/` y exportado vía `src/app/shared/index.ts`.
+
+#### API del Componente
+| Propiedad | Tipo | Default | Descripción |
+|---|---|---|---|
+| `[name]` | `string` | `''` | Clave del ícono en el catálogo (`factory`, `droplets`, `scale`, `leaf`, `close`, `check`, `search`, `alert`, `info`, `chart`, `calendar`, `plus`, etc.). |
+| `[size]` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| number` | `'md'` | Escala semántica (`xs`: 14px, `sm`: 16px, `md`: 20px, `lg`: 24px, `xl`: 32px) o valor numérico en `px`. |
+| `[strokeWidth]` | `number` | `2` | Grosor del trazo vectorial SVG. |
+| `[color]` | `string` | `'currentColor'` | Color de trazo. Acepta variables CSS institucionales (`var(--oefa-*)`). |
+| `[ariaLabel]` | `string` | `undefined` | Texto accesible para lectores de pantalla. Si está presente aplica `role="img"`. |
+| `[ariaHidden]` | `boolean` | `true` | Oculta el ícono a tecnologías asistivas cuando es puramente decorativo. |
+
+#### Proyección de Contenido SVG Personalizado
+Permite pasar cualquier vector SVG externo preservando el dimensionamiento automático y variables CSS:
+```html
+<oefa-icon size="lg" color="var(--oefa-primary-root)">
+  <svg viewBox="0 0 24 24">...</svg>
+</oefa-icon>
+```
+
 ---
 
 ## 5. Layout — Shell general (reutilizable en cualquier sistema)
@@ -633,14 +655,34 @@ Estilo del ícono: **lineal, trazo uniforme** (no relleno), como en tu referenci
   - `excel`: Verde institucional (`#107C41`), texto `#FFFFFF` para exportaciones masivas.
   - `danger`: Rojo destructivo (`--oefa-error-root`), texto `#FFFFFF` para acciones irreversibles.
 - **Tamaños (`size`)**:
-  - `sm`: Padding `6px 14px`, tipografía `0.8125rem` (13px), radio `radius-sm` (6px).
-  - `md`: Padding `9px 18px`, tipografía `0.875rem` (14px), radio `radius-md` (10px) *(Estándar)*.
-  - `lg`: Padding `12px 24px`, tipografía `1rem` (16px), radio `radius-md` (10px).
+  - `sm`: Padding `6px 14px`, tipografía `0.8125rem` (13px), radio `radius-sm` (6px). Ícono automático: `xs` (14px).
+  - `md`: Padding `9px 18px`, tipografía `0.875rem` (14px), radio `radius-md` (10px) *(Estándar)*. Ícono automático: `sm` (16px).
+  - `lg`: Padding `12px 24px`, tipografía `1rem` (16px), radio `radius-md` (10px). Ícono automático: `md` (20px).
+- **Iconografía Integrada (`[icon]`, `[iconPosition]`)**:
+  - `icon?: string`: Clave del catálogo oficial de `<oefa-icon>` (`plus`, `download`, `check`, `search`, etc.).
+  - `iconPosition: 'left' | 'right'`: Posición respecto al texto (default: `'left'`).
+  - Sincroniza automáticamente las dimensiones del ícono según el tamaño del botón y respeta el estado `loading`.
 - **Interacción y Material Motion M3**:
   - Curva de transición: `var(--oefa-ease-standard)`.
   - Duración de hover: `var(--oefa-duration-short)` (150ms).
   - Micro-compresión en active: `scale(0.98)` durante `var(--oefa-duration-short-1)` (50ms).
   - Anillo de enfoque: `2px solid var(--oefa-focus-ring)` con `outline-offset: 2px` en `:focus-visible`.
+
+#### Botón de Icono Exclusivo (`<oefa-icon-button>`)
+- **Componente Standalone**: `src/app/shared/components/icon-button/icon-button.component.ts`.
+- **Propósito**: Botones de acción compactos con glifo SVG o ícono del sistema.
+- **Variantes (`variant`)**:
+  - `default`: Cuadrado con fondo de superficie card (`--oefa-surface-card`) y borde perimetral.
+  - `close`: Transparente para esquinas de modales y drawers (ícono `close` por defecto).
+  - `kebab`: Menú contextual con fondo card y borde perimetral (ícono `kebab` por defecto).
+  - `ghost`: Fondo y borde transparentes hasta `:hover`.
+- **Escala de Tamaños (`size`)**:
+  - `sm`: Dimensión `32×32px` con ícono `16px` (`sm`).
+  - `md`: Dimensión `36×36px` con ícono `20px` (`md`) *(Predeterminado)*.
+  - `lg`: Dimensión `40×40px` con ícono `24px` (`lg`).
+- **Integración con `<oefa-icon>`**:
+  - Gestiona automáticamente el tamaño del ícono interno según el input `size`.
+  - Soporta proyección de íconos personalizados mediante `<ng-content>`.
 
 ### 8.21 Panel Plegable / Divulgación Progresiva (`<oefa-collapsible>`)
 - **Clasificación Atomic Design**: **Molécula de Contenedor / Layout Plegable**.
@@ -710,6 +752,20 @@ Estilo del ícono: **lineal, trazo uniforme** (no relleno), como en tu referenci
 - **Accesibilidad (WCAG 2.2 SC 1.4.13)**:
   - Foco visible con contorno accesible (`outline: 2px solid var(--oefa-focus-ring)`).
   - Soporta activación por teclado (`tabindex="0"`) y lectura completa mediante lectores de pantalla (`aria-label`).
+
+### 8.23.1 Átomo de Punto Indicador y Alerta (`<oefa-dot-badge>`)
+- **Clasificación Atomic Design**: **Átomo de Indicación / Notificación**.
+- **Componente Standalone**: Ubicado en `src/app/shared/components/dot-badge/dot-badge.component.ts`.
+- **Clase Global Utilitaria**: `.oefa-dot-badge` en `src/styles.scss`.
+- **Propósito**: Microindicador visual circular independiente para estados en vivo, novedades, alertas no leídas o presencia (en pestañas, avatares, opciones de sidebar o cabeceras).
+- **Entradas (`Inputs`)**:
+  - `color: 'danger' | 'warning' | 'primary' | 'success' | 'info' | 'neutral'`: Color semántico institucional (default: `'danger'`).
+  - `size: 'sm' | 'md' | 'lg'`: Escala de dimensiones (`sm` = 6px, `md` = 8px, `lg` = 10px; default: `'md'`).
+  - `ping?: boolean`: Activa pulso expansivo animado CSS (`@keyframes oefa-dot-pulse`) para eventos críticos en tiempo real (default: `false`).
+  - `ariaLabel?: string`: Etiqueta descriptiva para accesibilidad WAI-ARIA (default: `'Indicador de alerta'`).
+- **Accesibilidad (WCAG 2.2 SC 1.4.1)**:
+  - Integra borde de alto contraste (`box-shadow: 0 0 0 2px var(--oefa-surface-card)`) para legibilidad sobre fondos oscuros o claros.
+  - Atributo `role="status"` y soporte para lectores de pantalla.
 
 ### 8.24 Asistente de Pasos y Wizard Progresivo (`<oefa-stepper>`)
 - **Clasificación Atomic Design**: **Molécula de Navegación Secuencial / Flujo Guiado**.
@@ -804,6 +860,47 @@ Estilo del ícono: **lineal, trazo uniforme** (no relleno), como en tu referenci
   - Estructura semántica única con landmark `<header role="banner">` y `<h1>` principal con tipografía display institucional.
   - Navegación breadcrumb dentro de `<nav aria-label="Ruta de navegación">` con lista ordenada `<ol>`, enlaces con `:focus-visible` y `aria-current="page"` en el último elemento.
   - Botón de retroceso accesible con `aria-label="Regresar a la página anterior"` y contraste mínimo 4.5:1.
+
+### 8.28 Tarjeta de Resumen KPI (`<oefa-kpi-card>`)
+- **Clasificación Atomic Design**: **Molécula de Visualización de Métricas**.
+- **Componente Standalone**: Ubicado en `src/app/shared/components/kpi-card/kpi-card.component.ts`.
+- **Propósito**: Tarjeta métrica estandarizada para barras de resumen (KPI Summary Bar), tableros de control y contadores de procesos.
+- **Entradas (`Inputs`)**:
+  - `title: string`: Título o indicador superior.
+  - `value: string | number`: Valor numérico o estado destacado principal.
+  - `foot?: string`: Leyenda o metadato descriptivo inferior.
+  - `footType?: 'positive' | 'urgent' | 'neutral'`: Variante cromática del pie de tarjeta (`positive` = verde éxito, `urgent` = rojo alerta, `neutral` = gris atenuado).
+  - `urgent?: boolean`: Variante especial con borde y fondo tintado institucional (`--oefa-tertiary-container`).
+  - `icon?: string`: Clave del catálogo oficial de `<oefa-icon>` (`check`, `alert`, `factory`, etc.).
+### 8.29 Conmutador Segmentado de Opciones (`<oefa-segmented-switch>`)
+- **Clasificación Atomic Design**: **Molécula de Selección / Alternancia de Vista**.
+- **Componente Standalone**: Ubicado en `src/app/shared/components/segmented-switch/segmented-switch.component.ts`.
+- **Propósito**: Alternar vistas, modos o filtros mutuamente excluyentes (ej. "Vista Órdenes" vs "Matriz Excel") con WAI-ARIA, soporte para insignias (`badge`), indicador puntual de novedades/alertas (`dotBadge`) e ícono de ayuda contextual emergente (`tooltip` reutilizando `<oefa-info-tooltip>`).
+- **Entradas (`Inputs`)**:
+  - `options: SegmentedOption<T>[]`: Lista de opciones a alternar. Cada opción implementa:
+    - `value: T`: Valor único de la opción.
+    - `label: string`: Etiqueta textual visible.
+    - `icon?: string`: SVG inline opcional renderizado a la izquierda.
+    - `badge?: string | number`: Insignia o conteo visible (ej. `24`, `'Nuevo'`). Tokenizado con fondo neutral `var(--oefa-neutral-200)` y borde sutil en reposo; fondo traslúcido y texto blanco en activo.
+    - `dotBadge?: boolean`: Punto indicador rojo de novedades o acción pendiente (tamaño `7px`, color tokenizado `var(--oefa-error-root)` y halo protector `2px`).
+    - `dotColor?: string`: Variable o código hexadecimal alternativo para el dot (default: `var(--oefa-error-root)`).
+    - `tooltip?: string`: Texto explicativo contextual que activa el componente `<oefa-info-tooltip>` integrado sin interferir con la selección del botón.
+    - `tooltipPosition?: 'top' | 'bottom' | 'left' | 'right'`: Posición de despliegue del tooltip (default: `'top'`).
+    - `disabled?: boolean`: Deshabilita la opción.
+  - `selected: T`: Valor actualmente seleccionado con soporte bidireccional `[(selected)]`.
+  - `fullWidth: boolean`: Expande el conmutador al ancho total del contenedor (default: `false`).
+  - `ariaLabel: string`: Atributo descriptivo accesible para el grupo (default: `'Conmutador de opciones'`).
+- **Salidas (`Outputs`)**:
+  - `selectedChange: EventEmitter<T>`: Emite el nuevo valor al seleccionar una opción no deshabilitada.
+- **Tokens y Contraste Institucional**:
+  - Contenedor: `var(--oefa-surface-muted)`, borde `var(--oefa-border-color)`, radio `var(--oefa-radius-md)`.
+  - Botón inactivo: color `var(--oefa-text-secondary)`, hover con `var(--oefa-surface-subtle)`.
+  - Botón activo: fondo `var(--oefa-primary-root)`, texto y badges `var(--oefa-primary-on)`, halo de foco `var(--oefa-focus-ring)`.
+  - Tooltip integrado: color tokenizado y adaptable con `--oefa-info-tooltip-color`, garantizando visibilidad y contraste tanto en reposo (`var(--oefa-text-muted)`) como en estado activo (blanco de alto contraste sobre fondo primario).
+- **Accesibilidad (WCAG 2.2)**:
+  - Estructura con `role="group"` y `aria-label`.
+  - Botones con `type="button"`, `aria-pressed="true|false"` y soporte completo de teclado.
+  - El trigger de tooltip incluye `(click)="$event.stopPropagation()"` y teclas accesibles para consultar información sin disparar la conmutación.
 
 ---
 
@@ -976,7 +1073,7 @@ Tarjeta modular para métricas clave inspirada en la estética Bento moderna:
 | `[metricLabel]` | `string` | Etiqueta de apoyo contextual con punto indicador. |
 | `[trendLabel]` | `string` | Indicador de tendencia o píldora de avance. |
 | `[periodLabel]` | `string` | Temporalidad del dato (ej: 'Periodo anual 2024'). |
-| `[icon]` | `string` | Clave del ícono SVG (`factory`, `droplets`, `scale`, `leaf`, `chart`). |
+| `[icon]` | `string` | Clave del ícono en `<oefa-icon>` (ej: `factory`, `droplets`, `scale`, `leaf`, `close`, etc.) o SVG personalizado proyectado vía `<ng-content select="[icon]">`. |
 | `[bgTint]` | `string` | Color de fondo pastel tintado. |
 | `[accentColor]` | `string` | Color de acento institucional para el gráfico y enlaces. |
 | `[chip]` | `BentoChipConfig` | Chip opcional para vincular código SIGED, proyecto o entregable. |
@@ -992,9 +1089,15 @@ Tarjeta modular para métricas clave inspirada en la estética Bento moderna:
 
 ### 15.1 Propósito y Estructura
 Tarjeta de catálogo institucional para exploración de sistemas, módulos y tableros temáticos:
-- **Radio amigable:** `border-radius: 18px` con elevación y sombras reactivas.
-- **Header con doble nivel de clasificación:** Ícono contenedor a la izquierda y badges combinados de estado (`<oefa-status-badge>`) y tipo de módulo a la derecha.
-- **Etiquetado flexible:** Admite chips institucionales (`[PRY]`, `[MNT]`, `[SIGED]`) junto a tags contextuales planos.
+- **Radio amigable:** `border-radius: 16px` con elevación y sombras reactivas M3 Expressive.
+- **Cabecera estandarizada con esquina inteligente (`.bcc-status-wrap`):**
+  - **Prioridad 1 (Con estado):** Si la tarjeta cuenta con `[status]`, `<oefa-status-badge>` se ubica de forma fija en la esquina superior derecha, y `type` se posiciona en el cuerpo sobre el título (`.bcc-top-meta`).
+  - **Prioridad 2 (Sin estado / Fallback dinámico):** Si la tarjeta no cuenta con `[status]`, el badge de `[type]` asciende automáticamente a la esquina superior derecha (`.bcc-status-wrap`) y se suprime de la fila del cuerpo, aprovechando el espacio y manteniendo la esquina poblada.
+- **Adaptabilidad Móvil (<= 576px):**
+  - Ancho 100% fluido (`width: 100%; min-width: 0; box-sizing: border-box;`).
+  - Reducción de padding interno a `16px`.
+  - Cuadrícula recomendada: `repeat(auto-fit, minmax(260px, 1fr))`.
+- **Etiquetado flexible:** Admite chips institucionales (`[PRY]`, `[MNT]`, `[SIGED]`, `[AREA]`, `[ENT]`) junto a tags contextuales planos.
 - **Micro-indicador de actividad en vivo:** Tres modalidades de feedback en footer:
   - `sparkline`: Gráfico de tendencia SVG.
   - `bar`: Barra de carga/progreso mini.

@@ -18,6 +18,7 @@
 export { OefaStatusBadgeComponent } from './components/status-badge/status-badge.component';
 export { OefaButtonComponent } from './components/button/button.component';
 export { OefaIconButtonComponent } from './components/icon-button/icon-button.component';
+export { OefaIconComponent } from './components/icon/icon.component';
 export { OefaDrawerComponent } from './components/drawer/drawer.component';
 export { OefaDropdownComponent } from './components/dropdown/dropdown.component';
 export { OefaFormFieldComponent } from './components/form-field/form-field.component';
@@ -32,12 +33,19 @@ export { OefaStepperComponent } from './components/stepper/stepper.component';
 export { OefaSkeletonComponent } from './components/skeleton/skeleton.component';
 export { OefaChipComponent } from './components/chip/chip.component';
 export { OefaTableComponent, TableComponent } from './components/table/table.component';
+export { OefaKpiCardComponent } from './components/kpi-card/kpi-card.component';
+export { OefaBentoKpiTileComponent } from './components/bento-kpi-tile/bento-kpi-tile.component';
+export { OefaCatalogCardComponent } from './components/catalog-card/catalog-card.component';
+export { OefaDotBadgeComponent } from './components/dot-badge/dot-badge.component';
 
 // Utils & Types
 export { getStatusBadgeClass, getStatusLabel } from './utils/status.utils';
 export type { StatusBadgeClass, UniversalBadgeVariant } from './utils/status.utils';
-export type { ButtonVariant, ButtonSize, ButtonType } from './components/button/button.component';
-export type { IconButtonVariant } from './components/icon-button/icon-button.component';
+export type { ButtonVariant, ButtonSize, ButtonType, ButtonIconPosition } from './components/button/button.component';
+export type { IconButtonVariant, IconButtonSize } from './components/icon-button/icon-button.component';
+export type { KpiFootType } from './components/kpi-card/kpi-card.component';
+export type { OefaIconSize } from './components/icon/icon.component';
+export { OEFA_ICON_SIZES } from './components/icon/icon.component';
 export type { DrawerPosition, DrawerSize } from './components/drawer/drawer.component';
 export type { DropdownAlign } from './components/dropdown/dropdown.component';
 export type { SegmentedOption } from './components/segmented-switch/segmented-switch.component';
@@ -47,3 +55,4 @@ export type { OefaStepItem, StepperOrientation } from './components/stepper/step
 export type { SkeletonVariant } from './components/skeleton/skeleton.component';
 export type { ChipVariant } from './components/chip/chip.component';
 export type { TableColumn, SortDirection, TableDensity } from './components/table/table.component';
+export type { OefaDotBadgeColor, OefaDotBadgeSize } from './components/dot-badge/dot-badge.component';

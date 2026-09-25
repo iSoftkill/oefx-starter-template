@@ -78,8 +78,24 @@ export class NavigationService {
       id: 'sistema_diseno',
       label: 'Sistema Diseño',
       icon: 'palette',
-      route: '/design-system/colores',
+      route: '/design-system/fundaciones',
       children: [
+        {
+          groupName: '0. FUNDACIONES Y RESUMEN',
+          items: [
+            {
+              id: 'ds_fundaciones',
+              label: '🏛️ Principios y Fundaciones',
+              route: '/design-system/fundaciones',
+              badgeDot: true
+            },
+            {
+              id: 'ds_ficha_ejecutiva',
+              label: '📄 Ficha Ejecutiva (PDF)',
+              route: '/design-system/ficha-ejecutiva'
+            }
+          ]
+        },
         {
           groupName: '1. ÁTOMOS (ATOMS)',
           items: [
@@ -110,8 +126,23 @@ export class NavigationService {
             },
             {
               id: 'ds_badges',
-              label: 'Badges y Chips (<oefa-status-badge>)',
+              label: 'Tags de Estado (<oefa-status-badge>)',
               route: '/design-system/badges'
+            },
+            {
+              id: 'ds_dot_badge',
+              label: 'Puntos Indicadores (<oefa-dot-badge>)',
+              route: '/design-system/dot-badge'
+            },
+            {
+              id: 'ds_chips',
+              label: 'Chips y Tags (<oefa-chip>)',
+              route: '/design-system/chips'
+            },
+            {
+              id: 'ds_tooltips',
+              label: 'Tooltips (<oefa-info-tooltip>)',
+              route: '/design-system/tooltips'
             },
             {
               id: 'ds_feedback',

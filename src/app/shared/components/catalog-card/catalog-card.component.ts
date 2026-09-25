@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaChipComponent, ChipVariant } from '../chip/chip.component';
 import { OefaStatusBadgeComponent } from '../status-badge/status-badge.component';
+import { OefaIconComponent } from '../icon/icon.component';
 
 export type CatalogActivityType = 'sparkline' | 'bar' | 'pulse' | 'none';
 
@@ -13,7 +14,7 @@ export interface CatalogChipConfig {
 @Component({
   selector: 'oefa-catalog-card',
   standalone: true,
-  imports: [CommonModule, OefaChipComponent, OefaStatusBadgeComponent],
+  imports: [CommonModule, OefaChipComponent, OefaStatusBadgeComponent, OefaIconComponent],
   template: `
     <div
       class="bento-catalog-card"
@@ -27,29 +28,14 @@ export interface CatalogChipConfig {
       <!-- Cabecera de la Card -->
       <div class="bcc-top">
         <div class="bcc-icon-box" [style.color]="iconColor || color">
-          @switch (icon) {
-            @case ('pickaxe') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m14 10-8.5 8.5a2.12 2.12 0 1 1-3-3L11 7"/><path d="m15 4 5 5"/><path d="m18 7 3-3"/><path d="m9 12-4-4"/><path d="m20 9-4 4"/></svg>
-            }
-            @case ('waves') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/></svg>
-            }
-            @case ('scale') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
-            }
-            @case ('clipboard-check') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="8" height="4" x="8" y="2" rx="1" ry="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg>
-            }
-            @default {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            }
-          }
+          <oefa-icon [name]="icon" [size]="22" [color]="iconColor || color">
+            <ng-content select="[icon]" />
+          </oefa-icon>
         </div>
-        <div class="bcc-top-actions">
+        <div class="bcc-status-wrap">
           @if (status) {
             <oefa-status-badge [status]="status" size="sm" [dot]="true" />
-          }
-          @if (type) {
+          } @else if (type) {
             <span class="bcc-badge" [style.background]="bgTint || 'var(--oefa-surface-muted)'" [style.color]="typeColor || color">
               {{ type }}
             </span>
@@ -57,8 +43,15 @@ export interface CatalogChipConfig {
         </div>
       </div>
 
-      <!-- Cuerpo: Título, descripción y tags -->
+      <!-- Cuerpo: Título, metadatos, descripción y tags -->
       <div class="bcc-body">
+        @if (type && status) {
+          <div class="bcc-top-meta">
+            <span class="bcc-badge" [style.background]="bgTint || 'var(--oefa-surface-muted)'" [style.color]="typeColor || color">
+              {{ type }}
+            </span>
+          </div>
+        }
         <h3 class="bcc-title">{{ title }}</h3>
         <p class="bcc-description">{{ description }}</p>
 
@@ -117,7 +110,16 @@ export interface CatalogChipConfig {
     </div>
   `,
   styles: [`
+    :host {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      width: 100%;
+      min-width: 0;
+    }
+
     .bento-catalog-card {
+      height: 100%;
       background: var(--oefa-surface-card);
       border: 1px solid var(--oefa-border-color);
       border-radius: var(--oefa-radius-lg, 16px);
@@ -127,6 +129,9 @@ export interface CatalogChipConfig {
       justify-content: space-between;
       gap: 16px;
       box-shadow: var(--oefa-shadow-sm);
+      min-width: 0;
+      width: 100%;
+      box-sizing: border-box;
       transition: transform var(--oefa-duration-medium) var(--oefa-ease-emphasized),
                   box-shadow var(--oefa-duration-medium) var(--oefa-ease-emphasized),
                   border-color var(--oefa-duration-short) var(--oefa-ease-standard);
@@ -161,12 +166,18 @@ export interface CatalogChipConfig {
       gap: 12px;
     }
 
-    .bcc-top-actions {
+    .bcc-status-wrap {
       display: flex;
       align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
       justify-content: flex-end;
+      flex-shrink: 0;
+    }
+
+    .bcc-top-meta {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
     }
 
     .bcc-icon-box {
@@ -205,6 +216,11 @@ export interface CatalogChipConfig {
       font-weight: 700;
       color: var(--oefa-text-primary);
       line-height: 1.35;
+      min-height: 2.7em;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .bcc-description {
@@ -212,6 +228,7 @@ export interface CatalogChipConfig {
       font-size: 0.8125rem;
       color: var(--oefa-text-secondary);
       line-height: 1.5;
+      min-height: 3em;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
@@ -317,6 +334,12 @@ export interface CatalogChipConfig {
       &:hover {
         transform: translateX(2px);
         filter: brightness(0.95);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .bento-catalog-card {
+        padding: 16px;
       }
     }
 

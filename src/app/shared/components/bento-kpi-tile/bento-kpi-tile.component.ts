@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaChipComponent, ChipVariant } from '../chip/chip.component';
 import { OefaStatusBadgeComponent } from '../status-badge/status-badge.component';
+import { OefaIconComponent } from '../icon/icon.component';
 
 export type BentoChartType = 'donut' | 'gauge' | 'bars' | 'sparkline' | 'none';
 
@@ -13,7 +14,7 @@ export interface BentoChipConfig {
 @Component({
   selector: 'oefa-bento-kpi-tile',
   standalone: true,
-  imports: [CommonModule, OefaChipComponent, OefaStatusBadgeComponent],
+  imports: [CommonModule, OefaChipComponent, OefaStatusBadgeComponent, OefaIconComponent],
   template: `
     <div
       class="bento-kpi-card"
@@ -28,22 +29,10 @@ export interface BentoChipConfig {
       <!-- Fila 1: Top bar con icono y status badge / trend -->
       <div class="bkc-top">
         <div class="bkc-icon-box" [style.color]="iconColor || accentColor">
-          @switch (icon) {
-            @case ('factory') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8l-7 5V8l-7 5V4a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M17 18h1"/><path d="M12 18h1"/><path d="M7 18h1"/></svg>
-            }
-            @case ('droplets') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
-            }
-            @case ('scale') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1Z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg>
-            }
-            @case ('leaf') {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
-            }
-            @default {
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>
-            }
+          @if (icon) {
+            <oefa-icon [name]="icon" [size]="22" [color]="iconColor || accentColor"/>
+          } @else {
+            <ng-content select="[icon]" />
           }
         </div>
 

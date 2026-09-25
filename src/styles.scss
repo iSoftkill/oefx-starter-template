@@ -140,7 +140,7 @@ $oefa-header-height: 64px;
   --oefa-surface-card: #FFFFFF;
   --oefa-surface-header: #FFFFFF;
   --oefa-surface-rail: #FFFFFF;
-  --oefa-surface-submenu: #F8FAFC;
+  --oefa-surface-submenu: #ffffff;
   --oefa-surface-workspace: #FFFFFF;
   --oefa-surface-modal: #FFFFFF;
   --oefa-surface-subtle: #F8FAFC;
@@ -500,6 +500,89 @@ h4 {
     border-radius: 50%;
     background-color: currentColor;
     flex-shrink: 0;
+  }
+}
+
+/* Átomo Global de Punto Indicador / Alerta (<oefa-dot-badge>) */
+.oefa-dot-badge {
+  display: inline-block;
+  border-radius: 50%;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 1;
+  box-shadow: 0 0 0 2px var(--oefa-surface-card, #ffffff);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+
+  /* Variantes de Color */
+  &.oefa-dot-danger {
+    background-color: var(--oefa-danger-500, #ef4444);
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+  }
+  &.oefa-dot-warning {
+    background-color: var(--oefa-warning-500, #f59e0b);
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+  }
+  &.oefa-dot-primary {
+    background-color: var(--oefa-primary-root, #144aa7);
+    box-shadow: 0 0 6px rgba(20, 74, 167, 0.4);
+  }
+  &.oefa-dot-success {
+    background-color: var(--oefa-success-500, #10b981);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+  }
+  &.oefa-dot-info {
+    background-color: var(--oefa-info-500, #0ea5e9);
+    box-shadow: 0 0 6px rgba(14, 165, 233, 0.4);
+  }
+  &.oefa-dot-neutral {
+    background-color: var(--oefa-text-muted, #94a3b8);
+    box-shadow: 0 0 6px rgba(148, 163, 184, 0.3);
+  }
+
+  /* Variantes de Tamaño */
+  &.oefa-dot-sm {
+    width: 6px;
+    height: 6px;
+  }
+  &.oefa-dot-md {
+    width: 8px;
+    height: 8px;
+  }
+  &.oefa-dot-lg {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Animación Ping / Pulso para alertas en tiempo real */
+  &.oefa-dot-ping {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      opacity: 0.75;
+      animation: oefa-dot-pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+  }
+}
+
+@keyframes oefa-dot-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
   }
 }
 
@@ -2267,12 +2350,15 @@ select.table-input,
   &.tab-dot-danger {
     background-color: var(--oefa-danger-500, #EF4444);
   }
+
   &.tab-dot-warning {
     background-color: var(--oefa-warning-500, #F59E0B);
   }
+
   &.tab-dot-primary {
     background-color: var(--oefa-primary-root, #144AA7);
   }
+
   &.tab-dot-success {
     background-color: var(--oefa-success-500, #10B981);
   }
@@ -3342,5 +3428,44 @@ select.table-input,
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* ==========================================================================
+   OEFA PRINT STYLES (LIMPIEZA DE SHELL PARA EXPORTACIÓN A PDF)
+   ========================================================================== */
+@media print {
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+
+  app-header,
+  app-sidebar-rail,
+  app-submenu-panel,
+  app-mobile-nav-drawer,
+  .mobile-sidebar-backdrop,
+  .no-print {
+    display: none !important;
+  }
+
+  body, html {
+    background: #ffffff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .oefa-app-layout,
+  .app-body,
+  .workspace-main,
+  .workspace-card {
+    padding: 0 !important;
+    margin: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #ffffff !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 }
