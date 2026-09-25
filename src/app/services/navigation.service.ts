@@ -50,30 +50,7 @@ export class NavigationService {
       icon: 'grid',
       route: '/dashboard'
     },
-    {
-      id: 'ordenes_servicio',
-      label: 'Órdenes de Servicio',
-      icon: 'file-text',
-      route: '/ordenes-servicio'
-    },
-    {
-      id: 'ordenes_compra',
-      label: 'Órdenes de Compra',
-      icon: 'shopping-cart',
-      route: '/ordenes-compra'
-    },
-    {
-      id: 'saip_solicitud',
-      label: 'Solicitud SAIP',
-      icon: 'inbox',
-      route: '/saip/solicitud'
-    },
-    {
-      id: 'configuracion',
-      label: 'Configuración',
-      icon: 'settings',
-      route: '/configuracion'
-    },
+
     {
       id: 'sistema_diseno',
       label: 'Sistema Diseño',

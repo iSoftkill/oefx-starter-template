@@ -12,33 +12,27 @@
 
   <!-- KPI Summary Bar (Cards nativas OEFA) -->
   <div class="kpi-grid">
-    <oefa-kpi-card
-      title="Componentes UI"
-      value="30+"
-      foot="Listos para usar"
-      footType="positive"
-      icon="check" />
+    <oefa-kpi-card title="Componentes UI" value="30+" foot="Listos para usar" footType="positive" icon="check" />
 
-    <oefa-kpi-card
-      title="Estándar Institucional"
-      value="100%"
-      foot="Accesibilidad & Tokens"
-      footType="positive"
+    <oefa-kpi-card title="Estándar Institucional" value="100%" foot="Accesibilidad & Tokens" footType="positive"
       icon="leaf" />
 
-    <oefa-kpi-card
-      title="Arquitectura"
-      value="Angular 22"
-      foot="Standalone components"
-      footType="neutral"
+    <oefa-kpi-card title="Arquitectura" value="Angular 22" foot="Standalone components" footType="neutral"
       icon="chart" />
 
-    <oefa-kpi-card
-      title="Modo Plantilla"
-      value="Activo"
-      foot="Sin dependencias de BD"
-      [urgent]="true"
-      icon="alert" />
+    <oefa-kpi-card title="Modo Plantilla" value="Activo" foot="Sin dependencias de BD" [urgent]="true" icon="alert" />
+  </div>
+
+  <div class="kpi-grid">
+    <div class="card-body">
+      <div class="bento-grid">
+        <oefa-bento-kpi-tile sector="Sector Supervisión" title="Fiscalización Directa" value="1,248"
+          metricLabel="Actas en campo" trendLabel="+8.4% este mes" periodLabel="Periodo anual 2024" icon="close"
+          iconColor="var(--oefa-primary-on-container)" bgTint="var(--oefa-primary-container)"
+          accentColor="var(--oefa-primary-root)" status="EN_PROCESO" chartType="donut" [percentage]="20"
+          (tileClick)="onSelectTile('Fiscalización Directa')" />
+      </div>
+    </div>
     <div class="card-body">
       <div class="bento-grid">
         <oefa-bento-kpi-tile sector="Sector Supervisión" title="Fiscalización Directa" value="1,248"
@@ -49,22 +43,6 @@
       </div>
     </div>
   </div>
-
-  <div class="kpi-grid">
-    <div class="mini-kpi.alert">
-      <div class="mini-kpi-label">
-        Proyectos Urgentes
-      </div>
-      <div class="mini-kpi-val text-alert">3</div>
-    </div>
-  </div>
-
-  <div style="display: flex; gap: 12px; padding:12px">
-    <oefa-icon-button variant="close" title="Cerrar" />
-    <oefa-icon-button variant="kebab" title="Opciones" />
-  </div>
-
-
 
   <!-- Card estándar con fill de superficie y borde OEFA -->
   <div class="card p-6">
