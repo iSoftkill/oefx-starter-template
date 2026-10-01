@@ -196,6 +196,11 @@ export class DesignSystemExecutivePdfComponent {
   ];
 
   async exportToPdf(): Promise<void> {
+    // Modo nativo de impresión/guardar PDF (0 KB en bundle, calidad vectorial 100%)
+    window.print();
+
+    /*
+    // --- Lógica anterior basada en html2canvas y jsPDF (pesaba ~612 KB) ---
     if (!this.pdfContent) return;
     this.isGenerating.set(true);
 
@@ -208,20 +213,18 @@ export class DesignSystemExecutivePdfComponent {
         return;
       }
 
-      // Importación dinámica limpia
       const html2canvasModule = await import('html2canvas');
       const html2canvas = html2canvasModule.default || html2canvasModule;
       const { jsPDF } = await import('jspdf');
 
-      // A4 horizontal: 297mm x 210mm
       const pdf = new jsPDF({
         orientation: 'landscape',
         unit: 'mm',
         format: 'a4'
       });
 
-      const pdfWidth = 297;  // A4 horizontal ancho en mm
-      const pdfHeight = 210; // A4 horizontal alto en mm
+      const pdfWidth = 297;
+      const pdfHeight = 210;
 
       for (let i = 0; i < pages.length; i++) {
         const pageEl = pages[i];
@@ -236,7 +239,6 @@ export class DesignSystemExecutivePdfComponent {
         });
 
         const imgData = canvas.toDataURL('image/jpeg', 0.98);
-        // Ocupa el 100% exacto del lienzo de la hoja A4 (borde a borde)
         pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
       }
 
@@ -246,5 +248,6 @@ export class DesignSystemExecutivePdfComponent {
     } finally {
       this.isGenerating.set(false);
     }
+    */
   }
 }
