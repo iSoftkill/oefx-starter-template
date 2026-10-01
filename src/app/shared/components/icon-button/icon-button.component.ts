@@ -24,21 +24,7 @@ export type IconButtonSize = 'sm' | 'md' | 'lg';
   selector: 'oefa-icon-button',
   standalone: true,
   imports: [CommonModule, OefaIconComponent],
-  template: `
-    <button
-      type="button"
-      [ngClass]="[variantClass, sizeClass]"
-      [disabled]="disabled"
-      [title]="title"
-      [attr.aria-label]="ariaLabel || title || null"
-      (click)="handleClick($event)">
-      <ng-content>
-        <!-- Contenido por defecto para variant=close y kebab -->
-        @if (variant === 'close') { <oefa-icon name="close" [size]="iconSize"/> }
-        @if (variant === 'kebab') { <oefa-icon name="kebab" [size]="iconSize"/> }
-      </ng-content>
-    </button>
-  `,
+  templateUrl: './icon-button.component.html',
   styleUrls: ['./icon-button.component.scss']
 })
 export class OefaIconButtonComponent {

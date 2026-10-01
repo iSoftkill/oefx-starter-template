@@ -30,51 +30,7 @@ export interface SegmentedOption<T = any> {
   selector: 'oefa-segmented-switch',
   standalone: true,
   imports: [CommonModule, OefaInfoTooltipComponent],
-  template: `
-    <div 
-      class="segmented-switch" 
-      [class.full-width]="fullWidth"
-      role="group" 
-      [attr.aria-label]="ariaLabel">
-      
-      @for (opt of options; track opt.value) {
-        <button
-          type="button"
-          class="switch-btn"
-          [class.active]="opt.value === selected"
-          [disabled]="opt.disabled"
-          (click)="selectOption(opt)"
-          [attr.aria-pressed]="opt.value === selected">
-          
-          @if (opt.icon) {
-            <span class="switch-icon" [innerHTML]="opt.icon"></span>
-          }
-
-          <span class="switch-mode-text">{{ opt.label }}</span>
-
-          @if (opt.dotBadge) {
-            <span 
-              class="switch-dot-badge" 
-              [style.background-color]="opt.dotColor || 'var(--oefa-danger, #ef4444)'"
-              aria-label="Notificación pendiente"></span>
-          }
-
-          @if (opt.badge !== undefined) {
-            <span class="switch-badge">{{ opt.badge }}</span>
-          }
-
-          @if (opt.tooltip) {
-            <span class="switch-tooltip-wrapper" (click)="$event.stopPropagation()">
-              <oefa-info-tooltip
-                [text]="opt.tooltip"
-                [position]="opt.tooltipPosition || 'top'"
-                size="sm" />
-            </span>
-          }
-        </button>
-      }
-    </div>
-  `,
+  templateUrl: './segmented-switch.component.html',
   styleUrls: ['./segmented-switch.component.scss']
 })
 export class OefaSegmentedSwitchComponent<T = any> {

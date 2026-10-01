@@ -17,27 +17,8 @@ export type OefaDotBadgeSize = 'sm' | 'md' | 'lg';
   selector: 'oefa-dot-badge',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <span
-      class="oefa-dot-badge"
-      [ngClass]="[
-        'oefa-dot-' + color,
-        'oefa-dot-' + size,
-        ping ? 'oefa-dot-ping' : ''
-      ]"
-      [attr.aria-label]="ariaLabel"
-      role="status"
-    ></span>
-  `,
-  styles: [`
-    :host {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      line-height: 1;
-      vertical-align: middle;
-    }
-  `]
+  templateUrl: './dot-badge.component.html',
+  styleUrls: ['./dot-badge.component.scss']
 })
 export class OefaDotBadgeComponent {
   /** Color semántico institucional */

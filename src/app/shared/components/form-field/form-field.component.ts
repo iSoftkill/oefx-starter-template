@@ -19,33 +19,7 @@ import { CommonModule } from '@angular/common';
   selector: 'oefa-form-field',
   standalone: true,
   imports: [CommonModule],
-  template: `
-    <div class="form-group" [class.has-error]="!!error">
-      @if (label) {
-        <label class="form-label">
-          {{ label }}
-          @if (required) {
-            @if (requiredMode === 'text') {
-              <span class="required-text">(Obligatorio)</span>
-            } @else {
-              <span class="required-indicator" aria-hidden="true">*</span>
-              <span class="sr-only"> (obligatorio)</span>
-            }
-          }
-        </label>
-      }
-
-      <div class="input-wrapper">
-        <ng-content />
-      </div>
-
-      @if (error) {
-        <span class="form-error" role="alert">{{ error }}</span>
-      } @else if (help) {
-        <span class="form-help">{{ help }}</span>
-      }
-    </div>
-  `,
+  templateUrl: './form-field.component.html',
   styleUrls: ['./form-field.component.scss']
 })
 export class OefaFormFieldComponent {

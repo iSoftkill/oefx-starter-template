@@ -20,32 +20,8 @@ export type ButtonIconPosition = 'left' | 'right';
   selector: 'oefa-button',
   standalone: true,
   imports: [CommonModule, OefaIconComponent],
-  template: `
-    <button
-      [type]="type"
-      class="btn"
-      [ngClass]="[variantClass, sizeClass]"
-      [disabled]="disabled || loading"
-      [title]="title"
-      (click)="handleClick($event)">
-      @if (loading) {
-        <span class="spinner-small"></span>
-      } @else if (icon && iconPosition === 'left') {
-        <oefa-icon [name]="icon" [size]="iconSize" />
-      }
-      <ng-content />
-      @if (!loading && icon && iconPosition === 'right') {
-        <oefa-icon [name]="icon" [size]="iconSize" />
-      }
-    </button>
-  `,
-  styles: [`
-    :host {
-      display: inline-flex;
-    }
-    /* Los estilos de .btn, .btn-primary, etc. están en styles.scss */
-    button { width: 100%; }
-  `]
+  templateUrl: './button.component.html',
+  styleUrls: ['./button.component.scss']
 })
 export class OefaButtonComponent {
   @Input() variant: ButtonVariant = 'primary';

@@ -198,6 +198,37 @@ Permite pasar cualquier vector SVG externo preservando el dimensionamiento autom
 
 ---
 
+## 8. Convenciones de Implementación para `shared/components/`
+
+### 8.0 Estructura Tripartita Obligatoria
+
+Todo componente en `src/app/shared/components/` **debe** seguir la estructura de tres archivos separados:
+
+```
+src/app/shared/components/<nombre>/
+├── <nombre>.component.ts          # Lógica: @Input, @Output, Signals, inyecciones, getters
+├── <nombre>.component.html        # Template HTML semántico con ARIA y ngContent
+├── <nombre>.component.scss        # Estilos encapsulados con var(--oefa-*), NUNCA .css
+└── <nombre>.models.ts             # (Opcional) Tipos, interfaces y enums si superan ~30 líneas
+```
+
+#### Reglas
+
+| Archivo | Responsabilidad | Prohibición |
+|---|---|---|
+| `*.component.ts` | Lógica pura: `@Input`, `@Output`, Signals, inyecciones, computed getters. Usa `templateUrl` y `styleUrls`. | No embeber `template: \`...\`` ni `styles: [\`...\`]` (excepto micro-componentes, ver excepción). |
+| `*.component.html` | Estructura semántica. ARIA. `ngContent`. Usar `@if`, `@for`, `@switch` de Angular 17+. | No poner lógica de negocio o cálculos inline. |
+| `*.component.scss` | Estilos encapsulados del selector del componente. Siempre `var(--oefa-*)`. Nunca `#hex` directo. | No usar extensión `.css`. No duplicar clases de `styles.scss`. |
+| `*.models.ts` | Tipos, interfaces y enums cuando superan ~30 líneas de definición. | No poner lógica de comportamiento. |
+
+#### Excepción: Micro-componentes atómicos
+
+Componentes primitivos con **menos de 20 líneas de template y sin lógica de negocio** pueden mantener el template inline, pero sus **estilos siempre deben ir en un archivo `.component.scss` externo**. Aplica a: `dot-badge`, `skeleton`, `spinner`, `chip`, `status-badge`.
+
+> ⚠️ **Prohibición estricta:** No embeber CSS/SCSS en `styles: [\`...\`]` dentro del decorador de componentes en `shared/components/`. Los estilos inline son invisibles para `stylelint`, no soportan precompilación Sass real y bloquean la auditoría de tokens de diseño.
+
+---
+
 ## 8. Componentes globales
 
 ### 8.1 Tabs (Pestañas de navegación) (`<oefa-tabs>`)

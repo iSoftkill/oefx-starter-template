@@ -28,35 +28,7 @@ export type KpiFootType = 'positive' | 'urgent' | 'neutral';
   selector: 'oefa-kpi-card',
   standalone: true,
   imports: [CommonModule, OefaIconComponent],
-  template: `
-    <div
-      class="kpi-card"
-      [class.urgent]="urgent"
-      [class.interactive]="hasClickListener"
-      (click)="handleClick()"
-      role="article"
-      [attr.tabindex]="hasClickListener ? 0 : null"
-      (keydown.enter)="handleClick()"
-      (keydown.space)="handleClick()"
-    >
-      <div class="kpi-header">
-        <span class="kpi-title">{{ title }}</span>
-        @if (icon) {
-          <span class="kpi-icon-box" [style.color]="iconColor">
-            <oefa-icon [name]="icon" size="sm" />
-          </span>
-        }
-      </div>
-
-      <div class="kpi-value">{{ value }}</div>
-
-      @if (foot) {
-        <span class="kpi-foot" [ngClass]="footType">
-          {{ foot }}
-        </span>
-      }
-    </div>
-  `,
+  templateUrl: './kpi-card.component.html',
   styleUrls: ['./kpi-card.component.scss']
 })
 export class OefaKpiCardComponent {
