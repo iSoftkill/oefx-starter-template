@@ -3490,6 +3490,9 @@ select.table-input,
     background: #ffffff !important;
     margin: 0 !important;
     padding: 0 !important;
+    height: auto !important;
+    min-height: 100% !important;
+    overflow: visible !important;
   }
 
   .oefa-app-layout,
@@ -3503,5 +3506,11 @@ select.table-input,
     background: #ffffff !important;
     width: 100% !important;
     max-width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    display: block !important;
+    position: static !important;
   }
 }
