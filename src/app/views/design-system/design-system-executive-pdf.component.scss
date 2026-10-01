@@ -3146,6 +3146,12 @@
     margin: 0;
   }
 
+  * {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    filter: none !important;
+  }
+
   :host {
     display: block;
     width: 100%;
