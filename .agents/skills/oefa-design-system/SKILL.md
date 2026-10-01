@@ -25,7 +25,29 @@ description: >
 
 ---
 
-## 2. Flujo de trabajo
+## 2. Arquitectura de Estilos — Qué va dónde
+
+### `src/styles.scss` → Solo estas responsabilidades
+
+1. **Design tokens globales** (`:root { ... }`)
+   - Colores, tipografía, radios, motion, sombras, z-index.
+   - **NUNCA valores hardcoded**; solo `var(--oefa-*)`.
+2. **Reset / base** (`body`, `*`, `html`).
+3. **Clases utilitarias de layout puro** (`.oefa-container`, `.oefa-grid`, `.sr-only`).
+4. **Estilos de Shell** (header, rail, footer) que **no** son Angular Components encapsulados.
+5. **Patrones imperativos** creados dinámicamente por JS fuera del árbol de componentes Angular (ej: toasts, overlays globales).
+
+### `component.scss` → Siempre que sea un Angular Component
+
+- Todo lo que pertenece al selector del componente y sus variantes internas.
+- Consume tokens via `var(--oefa-*)`. **NUNCA `#hex` directo**.
+- Si un patrón está en `styles.scss` como clase global **y** en un componente Angular, el componente debe ser la fuente de verdad; documentar o migrar la clase global.
+
+> **Señal de alerta:** Si ves un bloque de estilos en `styles.scss` que describe variantes de un componente Angular (ej: `.alert-info`, `.alert-warning` dentro de `.oefa-alert`), ese bloque pertenece al `component.scss`, no al global.
+
+---
+
+## 3. Flujo de trabajo
 
 ### PASO 0 — Auditar y consumir antes de crear
 

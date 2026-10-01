@@ -34,11 +34,14 @@ import { DesignSystemTooltipsComponent } from './views/design-system/design-syst
 import { DesignSystemChipsComponent } from './views/design-system/design-system-chips.component';
 import { DesignSystemFoundationsComponent } from './views/design-system/design-system-foundations.component';
 import { DesignSystemDotBadgeComponent } from './views/design-system/design-system-dot-badge.component';
+import { DesignSystemLayoutsComponent } from './views/design-system/design-system-layouts.component';
+import { PinDemoComponent } from './views/pin-demo/pin-demo.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
+  { path: 'pin-demo', component: PinDemoComponent },
   
   // Módulo Sistema de Diseño OEFA
   { path: 'design-system', redirectTo: 'design-system/fundaciones', pathMatch: 'full' },
@@ -62,6 +65,8 @@ export const routes: Routes = [
   { path: 'design-system/tablas', component: DesignSystemTablesComponent },
   { path: 'design-system/responsive', component: DesignSystemResponsiveComponent },
   { path: 'design-system/responsividad', component: DesignSystemResponsiveComponent },
+  { path: 'design-system/layouts', component: DesignSystemLayoutsComponent },
+  { path: 'design-system/estructuras', component: DesignSystemLayoutsComponent },
   { path: 'design-system/navegacion', component: DesignSystemNavigationComponent },
   { path: 'design-system/feedback', component: DesignSystemFeedbackComponent },
   { path: 'design-system/switch', component: DesignSystemSegmentedSwitchComponent },

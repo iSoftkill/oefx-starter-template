@@ -1,0 +1,686 @@
+<div class="pin-portal-wrapper" [class.dark-theme]="isDarkMode()">
+
+  <!-- Banner superior de entorno QA -->
+  <!--   <aside class="qa-env-banner" role="complementary" aria-label="Aviso de ambiente de pruebas">
+    <div class="banner-content">
+      <span class="qa-badge">AMBIENTE DE PRUEBAS — QA</span>
+      <span class="qa-text">Prototipo interactivo de portal ciudadano y directivo de Inteligencia de Negocios</span>
+    </div>
+    <div class="qa-actions">
+      <a routerLink="/design-system/layouts" class="qa-return-link" title="Regresar a la especificación de layouts">
+        <oefa-icon name="arrow-left" [size]="'sm'"></oefa-icon>
+        <span>Volver al Catálogo DS</span>
+      </a>
+      <button type="button" class="qa-theme-toggle" (click)="toggleTheme()" [attr.aria-pressed]="isDarkMode()"
+        [attr.aria-label]="isDarkMode() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
+        <oefa-icon [name]="isDarkMode() ? 'sun' : 'moon'" [size]="'sm'"></oefa-icon>
+        <span>{{ isDarkMode() ? 'Modo Claro' : 'Modo Oscuro' }}</span>
+      </button>
+    </div>
+  </aside> -->
+
+  <!-- Portal Header Institucional -->
+  <header class="portal-header">
+    <div class="header-container">
+
+      <!-- Bloque de Marcas Institucionales -->
+      <div class="header-brand">
+        <!-- Logo Oficial MINAM / Perú -->
+        <div class="minam-logo-wrapper" title="Gobierno del Perú - Ministerio del Ambiente">
+          <img src="/images/minam_logo_full.svg" alt="Gobierno del Perú - Ministerio del Ambiente"
+            class="minam-logo-img" />
+        </div>
+
+        <div class="brand-divider" aria-hidden="true"></div>
+
+        <!-- Logo Oficial OEFA -->
+        <a href="javascript:void(0)" (click)="setTab('inicio')" class="oefa-logo-link"
+          aria-label="OEFA - Organismo de Evaluación y Fiscalización Ambiental">
+          <img src="/images/logo_oefa_primary.svg" alt="OEFA" class="oefa-logo-img" />
+        </a>
+
+        <!--         <div class="brand-divider" aria-hidden="true"></div> -->
+
+        <!-- Logo Plataforma PIN -->
+        <!--         <div class="pin-brand">
+          <div class="pin-icon-combo">
+            <span class="pin-bars-icon" aria-hidden="true">📊</span>
+            <span class="pin-tag">PIN</span>
+          </div>
+          <div class="pin-text">
+            <strong>Plataforma</strong>
+            <span>de Inteligencia de Negocios</span>
+          </div>
+        </div> -->
+      </div>
+
+      <!-- Navegación Principal del Portal (COMENTADA SEGÚN SOLICITUD) -->
+      <!--
+      <nav class="portal-nav" aria-label="Navegación principal del portal">
+        <button type="button" class="nav-tab-btn" [class.active]="currentTab() === 'inicio'" (click)="setTab('inicio')"
+          [attr.aria-current]="currentTab() === 'inicio' ? 'page' : null">
+          <oefa-icon name="home" [size]="'sm'"></oefa-icon>
+          <span>Inicio</span>
+        </button>
+
+        <button type="button" class="nav-tab-btn" [class.active]="currentTab() === 'tableros'"
+          (click)="setTab('tableros')" [attr.aria-current]="currentTab() === 'tableros' ? 'page' : null">
+          <oefa-icon name="grid" [size]="'sm'"></oefa-icon>
+          <span>Tableros</span>
+        </button>
+
+        <button type="button" class="nav-tab-btn" [class.active]="currentTab() === 'acerca-de'"
+          (click)="setTab('acerca-de')" [attr.aria-current]="currentTab() === 'acerca-de' ? 'page' : null">
+          <oefa-icon name="info" [size]="'sm'"></oefa-icon>
+          <span>Acerca de</span>
+        </button>
+      </nav>
+      -->
+
+      <!-- Utilidades de Header (Tema y Perfil) -->
+      <div class="header-utils">
+        <!-- Toggle Modo Claro / Oscuro -->
+        <button type="button" class="header-theme-toggle" (click)="toggleTheme()" [attr.aria-pressed]="isDarkMode()"
+          [attr.aria-label]="isDarkMode() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+          [title]="isDarkMode() ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'">
+          <oefa-icon [name]="isDarkMode() ? 'sun' : 'moon'" [size]="20" />
+        </button>
+
+        <!-- Usuario / Avatar -->
+        <div class="user-chip" title="Usuario OEFA">
+          <span class="user-avatar" aria-label="Usuario José Álvarez">JA</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Barra de Pestañas Sticky debajo del Header -->
+  <nav class="portal-sticky-nav" aria-label="Navegación principal por pestañas">
+    <div class="sticky-nav-container">
+      <div class="nav-tabs-group">
+        <button type="button" class="sticky-tab-btn" [class.active]="currentTab() === 'inicio'"
+          (click)="setTab('inicio')" [attr.aria-current]="currentTab() === 'inicio' ? 'page' : null">
+          <oefa-icon name="home" [size]="'sm'"></oefa-icon>
+          <span>Inicio</span>
+        </button>
+
+        <button type="button" class="sticky-tab-btn" [class.active]="currentTab() === 'tableros'"
+          (click)="setTab('tableros')" [attr.aria-current]="currentTab() === 'tableros' ? 'page' : null">
+          <oefa-icon name="grid" [size]="'sm'"></oefa-icon>
+          <span>Tableros</span>
+        </button>
+
+        <button type="button" class="sticky-tab-btn" [class.active]="currentTab() === 'acerca-de'"
+          (click)="setTab('acerca-de')" [attr.aria-current]="currentTab() === 'acerca-de' ? 'page' : null">
+          <oefa-icon name="info" [size]="'sm'"></oefa-icon>
+          <span>Acerca de</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===================================================================== -->
+  <!-- VISTA 1: INICIO (HOME PORTAL)                                         -->
+  <!-- ===================================================================== -->
+  @if (currentTab() === 'inicio') {
+  <main class="portal-view home-view">
+
+    <!-- HERO BANNER CON OVERLAY WCAG -->
+    <section class="portal-hero" aria-labelledby="hero-main-title">
+      <div class="hero-backdrop-img"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="hero-text-col">
+          <span class="hero-eyebrow">PLATAFORMA DE INTELIGENCIA DE NEGOCIOS</span>
+          <h1 id="hero-main-title" class="hero-title">
+            Datos de hoy <br />
+            para un mejor <span class="highlight-green">ambiente mañana</span>
+          </h1>
+          <p class="hero-subtitle">
+            Información integrada para una gestión ambiental eficiente, transparente y basada en evidencia.
+          </p>
+        </div>
+
+        <!-- 4 Stat-pills accesibles -->
+
+      </div>
+    </section>
+
+    <!-- BANNER DE ESLOGAN INSTITUCIONAL -->
+    <div class="portal-slogan-strip" role="region" aria-label="Lema institucional">
+      <div class="slogan-container">
+        <p class="slogan-text">Hoy más cerca en tu territorio</p>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: 3 CARDS DE PROCESOS INSTITUCIONALES (NUEVAS PROCESS CARDS) -->
+    <!--     <section class="portal-container process-cards-section" aria-label="Categorías de procesos institucionales">
+      <div class="process-cards-grid">
+
+        <oefa-process-card title="Procesos&#10;Estratégicos"
+          description="Tableros e indicadores de la gestión estratégica institucional." variant="estrategico"
+          bgImage="/images/card_fondo_01.webp" actionText="Explorar"
+          (cardClick)="filterByProcess('Estratégico'); setTab('tableros')" />
+
+        <oefa-process-card title="Procesos&#10;Misionales"
+          description="Supervisión, fiscalización y evaluación ambiental a nivel nacional." variant="misional"
+          bgImage="/images/card_fondo_01.webp" actionText="Explorar"
+          (cardClick)="filterByProcess('Misional'); setTab('tableros')" />
+
+        <oefa-process-card title="Procesos&#10;de Apoyo"
+          description="Soporte administrativo, recursos, sistemas y gestión interna." variant="apoyo"
+          bgImage="/images/card_fondo_01.webp" actionText="Explorar"
+          (cardClick)="filterByProcess('Apoyo'); setTab('tableros')" />
+
+      </div>
+    </section> -->
+
+    <!-- SECCIÓN: 3 CARDS DE PROCESOS INSTITUCIONALES (TONOS SUAVES / INVERSA) -->
+    <section class="portal-container process-cards-section" aria-label="Categorías de procesos institucionales">
+      <div class="process-cards-grid">
+
+        <oefa-process-card title="Procesos&#10;Estratégicos"
+          description="Tableros e indicadores de la gestión estratégica institucional." variant="estrategico"
+          theme="light" bgImage="/images/card_fondo_01.webp" actionText="Explorar"
+          (cardClick)="filterByProcess('Estratégico'); setTab('tableros')" />
+
+        <oefa-process-card title="Procesos&#10;Misionales"
+          description="Supervisión, fiscalización y evaluación ambiental a nivel nacional." variant="misional"
+          theme="light" bgImage="/images/card_fondo_01.webp" actionText="Explorar"
+          (cardClick)="filterByProcess('Misional'); setTab('tableros')" />
+
+        <oefa-process-card title="Procesos&#10;de Apoyo"
+          description="Soporte administrativo, recursos, sistemas y gestión interna." variant="apoyo" theme="light"
+          bgImage="/images/card_fondo_01.webp" actionText="Explorar"
+          (cardClick)="filterByProcess('Apoyo'); setTab('tableros')" />
+
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN 1: TABLEROS DESTACADOS (PRESENTACIÓN AL PÚBLICO) -->
+    <!--     <section class="portal-container home-featured-section" aria-labelledby="title-destacados-home">
+      <div class="section-row-header">
+        <div class="title-group">
+          <span class="star-icon" aria-hidden="true">★</span>
+          <h2 id="title-destacados-home" class="section-title">Tableros destacados</h2>
+        </div>
+        <button type="button" class="btn-all-tableros" (click)="setTab('tableros')">
+          Ver todos los tableros ({{ tableros.length }}) →
+        </button>
+      </div>
+
+      <div class="home-cards-grid">
+        @for (item of featuredTableros; track item.id) {
+        <oefa-catalog-card [icon]="item.icon" [title]="item.title" [description]="item.description"
+          [chips]="[{ variant: 'area', label: item.category }]" [tags]="item.tags"
+          [color]="item.process === 'Estratégico' ? 'var(--oefa-primary-root)' : (item.process === 'Misional' ? 'var(--oefa-secondary-ui-safe)' : 'var(--oefa-tertiary-ui-safe)')"
+          [bgTint]="item.process === 'Estratégico' ? 'var(--oefa-primary-container)' : (item.process === 'Misional' ? 'var(--oefa-secondary-container)' : 'color-mix(in srgb, var(--oefa-tertiary-container) 45%, var(--oefa-surface-card))')"
+          actionText="Explorar tablero →" (actionClick)="filterByCategory(item.category); setTab('tableros')" />
+        }
+      </div>
+    </section> -->
+
+    <!-- SECCIÓN 2: EXPLORA POR CATEGORÍA (ACCESOS RÁPIDOS EN INICIO) -->
+    <!--     <section class="portal-container home-categories-section" aria-labelledby="title-categories-home">
+      <div class="section-row-header">
+        <div>
+          <h2 id="title-categories-home" class="section-title">Explora por categoría</h2>
+          <span class="section-counter">Encuentra dashboards especializados según tu ámbito de interés</span>
+        </div>
+        <button type="button" class="btn-all-tableros" (click)="setTab('tableros')">
+          Catálogo completo →
+        </button>
+      </div>
+
+      <div class="categories-capsules-grid">
+        @for (cat of categories; track cat.id) {
+        @if (cat.id !== 'todas') {
+        <button type="button" class="cat-capsule-card" (click)="filterByCategory(cat.id); setTab('tableros')">
+          <span class="cat-icon">📁</span>
+          <div class="cat-info">
+            <span class="cat-name">{{ cat.label }}</span>
+            <span class="cat-count">{{ cat.count }} tableros</span>
+          </div>
+          <span class="cat-arrow">→</span>
+        </button>
+        }
+        }
+      </div>
+    </section> -->
+
+    <!-- SECCIÓN: NUESTRA MISIÓN + CIFRAS + DESTACADOS -->
+    <!--     <section class="portal-container highlights-section">
+      <div class="highlights-grid"> -->
+
+    <!-- Columna 1: Misión -->
+    <!--         <div class="col-mision">
+          <div class="section-title-line">
+            <span class="indicator-bar cyan"></span>
+            <h2>Nuestra misión</h2>
+          </div>
+          <p class="mision-text">
+            Contribuir a una gestión ambiental efectiva en beneficio de las personas, a través de información confiable,
+            oportuna y accesible.
+          </p>
+          <div class="mision-cta">
+            <oefa-button variant="secondary" size="md" (btnClick)="setTab('acerca-de')"
+              ariaLabel="Conocer más sobre la misión del OEFA y PIN">
+              Conocer más →
+            </oefa-button>
+          </div>
+        </div> -->
+
+    <!-- Columna 2: OEFA en Cifras (Reutilizando OefaKpiCard) -->
+    <!--         <div class="col-cifras">
+          <div class="section-title-line">
+            <span class="indicator-bar green"></span>
+            <h2>OEFA en cifras</h2>
+          </div>
+          <div class="kpi-mini-grid" role="region" aria-label="Métricas destacadas de tableros">
+            <div class="kpi-box">
+              <span class="kpi-num">36</span>
+              <span class="kpi-desc">Tableros y reportes</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">2</span>
+              <span class="kpi-desc">Procesos integrados</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">10</span>
+              <span class="kpi-desc">Secciones temáticas</span>
+            </div>
+            <div class="kpi-box">
+              <span class="kpi-num">7</span>
+              <span class="kpi-desc">Categorías analíticas</span>
+            </div>
+          </div>
+        </div> -->
+
+    <!-- Columna 3: Destacados -->
+    <!--         <div class="col-destacados">
+          <div class="section-title-line with-action">
+            <h2>Destacados</h2>
+            <button type="button" class="btn-link" (click)="setTab('tableros')">Ver todas →</button>
+          </div>
+          <ul class="destacados-list" role="list">
+            <li class="destacado-item" (click)="setTab('tableros')">
+              <div class="item-date">18-SET</div>
+              <div class="item-info">
+                <span class="item-category">TRANSVERSAL</span>
+                <strong class="item-title">Reporte: Ejecución de metas Planefa</strong>
+              </div>
+              <span class="item-arrow" aria-hidden="true">→</span>
+            </li>
+
+            <li class="destacado-item" (click)="setTab('tableros')">
+              <div class="item-date">18-SET</div>
+              <div class="item-info">
+                <span class="item-category">SMER</span>
+                <strong class="item-title">SMER Seguimiento metas Planefa</strong>
+              </div>
+              <span class="item-arrow" aria-hidden="true">→</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section> -->
+
+    <!-- MAQUETA ALTERNATIVA: 50% OEFA EN CIFRAS (RECREADA SEGÚN DISEÑO) + 50% DESTACADOS -->
+    <section class="portal-container cifras-destacados-split-section" aria-label="OEFA en cifras y tableros destacados">
+      <div class="split-grid-50-50">
+
+        <!-- Mitad 1: OEFA en Cifras (Card recreada fiel al diseño) -->
+        <div class="cifras-recreated-card">
+          <h2 class="cifras-card-title">Oefa en cifras</h2>
+
+          <div class="cifras-stats-row" role="region" aria-label="Métricas destacadas de OEFA">
+            <!-- 1. Tableros y reportes -->
+            <div class="stat-col">
+              <div class="stat-icon" aria-hidden="true">
+                <oefa-icon name="chart" [size]="24" />
+              </div>
+              <span class="stat-number">36</span>
+              <span class="stat-label">Tableros y<br>reportes</span>
+            </div>
+
+            <!-- 2. Procesos -->
+            <div class="stat-col">
+              <div class="stat-icon" aria-hidden="true">
+                <oefa-icon name="layers" [size]="24" />
+              </div>
+              <span class="stat-number">2</span>
+              <span class="stat-label">Procesos</span>
+            </div>
+
+            <!-- 3. Secciones -->
+            <div class="stat-col">
+              <div class="stat-icon" aria-hidden="true">
+                <oefa-icon name="layout" [size]="24" />
+              </div>
+              <span class="stat-number">10</span>
+              <span class="stat-label">Secciones</span>
+            </div>
+
+            <!-- 4. Categorías -->
+            <div class="stat-col">
+              <div class="stat-icon" aria-hidden="true">
+                <oefa-icon name="tag" [size]="24" />
+              </div>
+              <span class="stat-number">7</span>
+              <span class="stat-label">Categorías</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mitad 2: Destacados -->
+        <div class="destacados-split-card">
+          <div class="destacados-card-header">
+            <div class="title-with-bar">
+              <span class="indicator-bar orange"></span>
+              <h2>Destacados</h2>
+            </div>
+            <button type="button" class="btn-link" (click)="setTab('tableros')">Ver todas →</button>
+          </div>
+          <ul class="destacados-list" role="list">
+            <li class="destacado-item" (click)="setTab('tableros')">
+              <div class="item-date">18-SET</div>
+              <div class="item-info">
+                <span class="item-category">TRANSVERSAL</span>
+                <strong class="item-title">Reporte: Ejecución de metas Planefa</strong>
+              </div>
+              <span class="item-arrow" aria-hidden="true">→</span>
+            </li>
+
+            <li class="destacado-item" (click)="setTab('tableros')">
+              <div class="item-date">18-SET</div>
+              <div class="item-info">
+                <span class="item-category">SMER</span>
+                <strong class="item-title">SMER Seguimiento metas Planefa</strong>
+              </div>
+              <span class="item-arrow" aria-hidden="true">→</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+  }
+
+  <!-- ===================================================================== -->
+  <!-- VISTA 2: TABLEROS (CATÁLOGO Y FILTROS)                                 -->
+  <!-- ===================================================================== -->
+  @if (currentTab() === 'tableros') {
+  <main class="portal-view tableros-view">
+
+    <!-- HERO COMPACTO DE CABECERA DE TABLEROS -->
+    <section class="tableros-header-hero">
+      <div class="tableros-header-backdrop"></div>
+      <div class="tableros-header-overlay"></div>
+
+      <div class="tableros-header-content portal-container">
+        <div class="header-titles">
+          <span class="header-tag">EXPLORADOR INSTITUCIONAL</span>
+          <h1>Tableros</h1>
+          <p>Información para decisiones oportunas que generan valor en la fiscalización ambiental.</p>
+        </div>
+
+        <!-- Buscador prominente de tableros -->
+        <div class="prominent-search-card">
+          <div class="search-input-group">
+            <span class="search-input-icon">🔍</span>
+            <input type="search" placeholder="Buscar tablero, tema, proceso, sección o palabra clave..."
+              [(ngModel)]="searchQuery" aria-label="Buscar tablero por tema o palabra clave" />
+            <oefa-button variant="primary" size="md">Buscar</oefa-button>
+          </div>
+
+          <!-- Sugerencias de búsqueda -->
+          <div class="search-suggestions">
+            <span class="sugg-label">Sugerencias frecuentes:</span>
+            <button type="button" class="sugg-chip" (click)="searchQuery.set('Planefa')">Planefa</button>
+            <button type="button" class="sugg-chip" (click)="searchQuery.set('Fiscalización')">Fiscalización</button>
+            <button type="button" class="sugg-chip" (click)="searchQuery.set('Supervisión')">Supervisión</button>
+            <button type="button" class="sugg-chip" (click)="searchQuery.set('Evaluación')">Evaluación</button>
+            <button type="button" class="sugg-chip" (click)="searchQuery.set('Residuos')">Residuos sólidos</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO DEL CATÁLOGO (FILTROS + CARDS) -->
+    <div class="portal-container tableros-body">
+
+      <div class="tableros-main-layout">
+
+        <!-- Barra de botón para móvil -->
+        <div class="tableros-mobile-filter-bar">
+          <button type="button" class="tableros-mobile-filter-btn" (click)="isMobileFilterOpen.set(true)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+            </svg>
+            <span>Filtros y Criterios ({{ activeFilterCount() }})</span>
+          </button>
+        </div>
+
+        <!-- COLUMNA IZQUIERDA: SIDE FILTER -->
+        <aside class="tableros-sidebar-column">
+          <oefa-filter-sidebar title="Refinar Tableros" [activeCount]="activeFilterCount()"
+            [statusOptions]="processOptions" [selectedStatus]="selectedProcessFilter()" [showDateRange]="false"
+            [showAmountRange]="false" [filterGroups]="filterGroups()" [showFacetSearch]="true"
+            searchPlaceholder="Buscar categoría..." [showSpecialConditions]="true"
+            specialConditionsTitle="Condiciones Especiales" flagMedidasLabel="Solo destacados (★)"
+            flagAlertasLabel="Solo metas Planefa" [flagMedidas]="onlyFeatured()" [flagAlertas]="onlyPlanefa()"
+            [isOpenMobile]="isMobileFilterOpen()" (statusChange)="filterByProcess($event)"
+            (groupToggle)="toggleFilterGroup($event)" (optionToggle)="toggleFilterOption($event)"
+            (flagMedidasChange)="onlyFeatured.set($event)" (flagAlertasChange)="onlyPlanefa.set($event)"
+            (clear)="clearAllFilters()" (apply)="isMobileFilterOpen.set(false)"
+            (closeMobile)="isMobileFilterOpen.set(false)" />
+        </aside>
+
+        <!-- COLUMNA DERECHA: CONTENIDO DE TABLEROS -->
+        <div class="tableros-content-column">
+
+          <!-- BARRA DE FILTROS RÁPIDOS POR CATEGORÍA Y PROCESO -->
+          <div class="filters-toolbar">
+            <div class="filter-group">
+              <span class="filter-title">Filtrar por Proceso:</span>
+              <div class="filter-pills">
+                <button type="button" class="pill-filter" [class.active]="selectedProcessFilter() === 'todos'"
+                  (click)="filterByProcess('todos')">
+                  Todos ({{ tableros.length }})
+                </button>
+                <button type="button" class="pill-filter" [class.active]="selectedProcessFilter() === 'Estratégico'"
+                  (click)="filterByProcess('Estratégico')">
+                  Estratégicos
+                </button>
+                <button type="button" class="pill-filter" [class.active]="selectedProcessFilter() === 'Misional'"
+                  (click)="filterByProcess('Misional')">
+                  Misionales
+                </button>
+                <button type="button" class="pill-filter" [class.active]="selectedProcessFilter() === 'Apoyo'"
+                  (click)="filterByProcess('Apoyo')">
+                  De Apoyo
+                </button>
+              </div>
+            </div>
+
+            <!-- Limpiar filtros si hay activos -->
+            @if (activeFilterCount() > 0 || searchQuery()) {
+            <button type="button" class="btn-reset-filters" (click)="clearAllFilters()">
+              ✕ Limpiar filtros ({{ activeFilterCount() }})
+            </button>
+            }
+          </div>
+
+
+          <!-- SECCIÓN: TODOS LOS RESULTADOS / CATÁLOGO -->
+          <section class="all-results-section" aria-labelledby="title-catalogo">
+            <div class="section-row-header">
+              <h2 id="title-catalogo" class="section-title">
+                {{ searchQuery() ? 'Resultados de búsqueda' : 'Catálogo de tableros' }}
+              </h2>
+              <span class="section-counter">Mostrando {{ filteredTableros.length }} tableros disponibles</span>
+            </div>
+
+            @if (filteredTableros.length === 0) {
+            <div class="empty-state-card">
+              <oefa-empty-state title="No se encontraron tableros"
+                description="Intenta modificar los términos de búsqueda o limpiar los filtros seleccionados."
+                icon="search">
+                <oefa-button variant="secondary" size="md" (btnClick)="clearAllFilters()">
+                  Ver todos los tableros
+                </oefa-button>
+              </oefa-empty-state>
+            </div>
+            } @else {
+            <div class="cards-grid">
+              @for (item of filteredTableros; track item.id) {
+              <article class="tablero-card">
+                <div class="card-top">
+                  <span class="card-icon-box" aria-hidden="true">📊</span>
+                  <oefa-status-badge [status]="item.process === 'Estratégico' ? 'active' : 'info'"
+                    [label]="item.process"></oefa-status-badge>
+                </div>
+
+                <h3 class="card-title">{{ item.title }}</h3>
+                <p class="card-desc">{{ item.description }}</p>
+
+                <div class="card-chips">
+                  <oefa-chip [label]="item.category" variant="area"></oefa-chip>
+                  @for (tag of item.tags; track tag) {
+                  <oefa-chip [label]="tag" variant="default"></oefa-chip>
+                  }
+                </div>
+
+                <div class="card-footer">
+                  <span class="card-unit">OEFA Digital</span>
+                  <oefa-button variant="primary" size="sm" [ariaLabel]="'Abrir tablero interactivo ' + item.title">
+                    Abrir →
+                  </oefa-button>
+                </div>
+              </article>
+              }
+            </div>
+            }
+          </section>
+
+
+          <!-- BANNER DE ASISTENCIA / SOLICITAR ACCESO -->
+          <div class="help-request-card">
+            <div class="help-text">
+              <span class="help-bulb">💡</span>
+              <div>
+                <strong>¿No encuentras el tablero que necesitas?</strong>
+                <p>Puedes escribirnos o solicitar la creación de un nuevo dashboard para tu unidad.</p>
+              </div>
+            </div>
+            <oefa-button variant="secondary" size="md">Solicitar acceso o soporte</oefa-button>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+  }
+
+  <!-- ===================================================================== -->
+  <!-- VISTA 3: ACERCA DE                                                    -->
+  <!-- ===================================================================== -->
+  @if (currentTab() === 'acerca-de') {
+  <main class="portal-view about-view portal-container">
+    <div class="about-card">
+      <h1>Acerca de la Plataforma PIN</h1>
+      <p class="lead-text">
+        La <strong>Plataforma de Inteligencia de Negocios (PIN)</strong> del Organismo de Evaluación y Fiscalización
+        Ambiental (OEFA) es el centro unificado de visualización analítica de datos e indicadores ambientales del Perú.
+      </p>
+
+      <hr class="about-divider" />
+
+      <div class="about-sections-grid">
+        <div class="about-block">
+          <h3>🎯 Objetivo</h3>
+          <p>Facilitar el acceso a tableros ejecutivos y operativos para la toma de decisiones basada en evidencia
+            técnica, promoviendo la rendición de cuentas y la fiscalización oportuna.</p>
+        </div>
+
+        <div class="about-block">
+          <h3>📊 Fuentes de Información</h3>
+          <p>Se integran datos consolidados desde los sistemas misionales institucionales (SIGED, SISEFA, SEFA), bases
+            de datos espaciales y modelos analíticos de Power BI y Looker Studio.</p>
+        </div>
+
+        <div class="about-block">
+          <h3>👥 Responsables</h3>
+          <p>Administrado por la Oficina de Tecnologías de la Información (OTI) en coordinación técnica con las
+            direcciones de línea del OEFA.</p>
+        </div>
+
+        <div class="about-block">
+          <h3>♿ Accesibilidad Web</h3>
+          <p>Diseñado con apego estricto a las pautas de accesibilidad para el contenido web <strong>WCAG 2.2 Nivel
+              AA</strong>, garantizando navegación asistida, contraste de alto rendimiento y uso por teclado.</p>
+        </div>
+      </div>
+
+      <div class="about-cta-row">
+        <oefa-button variant="primary" size="md" (btnClick)="setTab('tableros')">Explorar los tableros →</oefa-button>
+      </div>
+    </div>
+  </main>
+  }
+
+  <!-- ===================================================================== -->
+  <!-- PORTAL FOOTER ESTÁNDAR INSTITUCIONAL                                  -->
+  <!-- ===================================================================== -->
+  <!--   <footer class="portal-footer" role="contentinfo">
+    <div class="footer-container portal-container">
+ -->
+  <!-- Bloque de Identidad y Marca en Footer -->
+  <!--       <div class="footer-brand-col">
+        <div class="footer-logos">
+          <img src="/images/logo_oefa_primary.svg" alt="OEFA" class="footer-oefa-logo" />
+  --> <!--           <div class="footer-pin-title">
+            <strong>PIN</strong>
+            <span>Plataforma de Inteligencia de Negocios</span>
+          </div> -->
+  <!--         </div>
+        <p class="footer-desc">
+          Organismo de Evaluación y Fiscalización Ambiental - OEFA. Promoviendo la sostenibilidad y el cuidado del
+          ambiente a través del conocimiento y la tecnología.
+        </p>
+      </div> -->
+
+  <!-- Enlaces Legales y de Accesibilidad -->
+  <!--       <div class="footer-links-col">
+        <nav class="footer-nav" aria-label="Enlaces institucionales y legales">
+          <a href="javascript:void(0)" class="footer-link">Términos de uso</a>
+          <a href="javascript:void(0)" class="footer-link">Política de privacidad</a>
+          --> <!--           <a href="javascript:void(0)" class="footer-link highlighted-wcag">
+            <span class="wcag-icon">♿</span> Declaración de Accesibilidad (WCAG 2.2 AA)
+          </a> -->
+  <!--           <a href="javascript:void(0)" class="footer-link">Mapa del sitio</a>
+        </nav>
+      </div> -->
+
+  <!-- Copyright y Redes -->
+  <!--       <div class="footer-meta-col">
+        <div class="social-links" aria-label="Redes sociales OEFA">
+          <a href="javascript:void(0)" aria-label="LinkedIn institucional" class="social-icon">in</a>
+          <a href="javascript:void(0)" aria-label="Twitter institucional" class="social-icon">𝕏</a>
+        </div>
+        <div class="copyright-text">
+          <span>&copy; 2026 OEFA. Todos los derechos reservados.</span>
+        </div>
+      </div>
+
+    </div>
+  </footer> -->
+
+</div>

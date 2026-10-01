@@ -75,71 +75,7 @@ export interface SegmentedOption<T = any> {
       }
     </div>
   `,
-  styles: [`
-    :host {
-      display: inline-block;
-    }
-    :host(.block) {
-      display: block;
-      width: 100%;
-    }
-    .switch-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .switch-icon {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .switch-badge {
-      font-size: 0.6875rem;
-      padding: 1px 7px;
-      border-radius: var(--oefa-radius-full, 9999px);
-      background: var(--oefa-neutral-200, #E2E8F0);
-      color: var(--oefa-text-secondary, #334155);
-      border: 1px solid var(--oefa-border-color, #E2E8F0);
-      font-weight: 700;
-      line-height: 1.4;
-      display: inline-flex;
-      align-items: center;
-      transition: all var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease);
-    }
-    .switch-dot-badge {
-      width: 7px;
-      height: 7px;
-      border-radius: var(--oefa-radius-full, 9999px);
-      background-color: var(--oefa-error-root, #E51A2F);
-      flex-shrink: 0;
-      box-shadow: 0 0 0 2px var(--oefa-surface-card, #ffffff);
-      transition: transform var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease);
-    }
-    .switch-tooltip-wrapper {
-      display: inline-flex;
-      align-items: center;
-      margin-left: 2px;
-      line-height: 1;
-      --oefa-info-tooltip-color: var(--oefa-text-muted, #475569);
-      --oefa-info-tooltip-hover-color: var(--oefa-primary-root, #144AA7);
-    }
-    .switch-btn:hover:not(.active) .switch-badge {
-      background: var(--oefa-neutral-300, #CBD5E1);
-      color: var(--oefa-text-primary, #1D1D1B);
-    }
-    .switch-btn.active .switch-dot-badge {
-      box-shadow: 0 0 0 2px var(--oefa-primary-root, #144AA7);
-    }
-    .switch-btn.active .switch-badge {
-      background: rgba(255, 255, 255, 0.22);
-      border-color: rgba(255, 255, 255, 0.35);
-      color: var(--oefa-primary-on, #FFFFFF);
-    }
-    .switch-btn.active .switch-tooltip-wrapper {
-      --oefa-info-tooltip-color: rgba(255, 255, 255, 0.85);
-      --oefa-info-tooltip-hover-color: #FFFFFF;
-    }
-  `]
+  styleUrls: ['./segmented-switch.component.scss']
 })
 export class OefaSegmentedSwitchComponent<T = any> {
   @Input() options: SegmentedOption<T>[] = [];

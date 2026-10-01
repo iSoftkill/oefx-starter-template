@@ -87,12 +87,7 @@ export type AlertType = 'info' | 'success' | 'warning' | 'error' | 'neutral';
       </div>
     }
   `,
-  styles: [`
-    :host {
-      display: block;
-      width: 100%;
-    }
-  `]
+  styleUrls: ['./alert.component.scss']
 })
 export class OefaAlertComponent {
   @Input() type: AlertType = 'info';

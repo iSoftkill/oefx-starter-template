@@ -17,15 +17,205 @@
   <div #pdfContent class="pdf-document-landscape">
 
     <!-- ==============================================================
-         HOJA 1: PORTADA & ÁTOMO 1 - COLORES Y TOKENS INSTITUCIONALES
+         HOJA 0: CARÁTULA — SISTEMA DE DISEÑO INSTITUCIONAL OEFA
          ============================================================== -->
+    <div class="pdf-page-container cover-page">
+      <!-- Fondo con imagen institucional Amazonas Grayscale -->
+      <div class="cover-bg-image-wrap">
+        <img src="images/fondo_amazonas_gray.webp" alt="Fondo Amazonas" class="cover-bg-img" />
+        <div class="cover-bg-overlay"></div>
+      </div>
+
+      <!-- Contenedor central con borde según tokens OEFA -->
+      <div class="cover-card">
+        <!-- Logo centrado -->
+        <div class="cover-logo-wrap">
+          <img src="images/logo_oefa_primary.svg" alt="Organismo de Evaluación y Fiscalización Ambiental — OEFA"
+            class="cover-logo" />
+        </div>
+
+        <!-- Divisor decorativo -->
+        <div class="cover-divider">
+          <div class="cover-divider-line"></div>
+          <div class="cover-divider-dot"></div>
+          <div class="cover-divider-line"></div>
+        </div>
+
+        <!-- Títulos principales -->
+        <div class="cover-titles">
+          <span class="cover-eyebrow">Oficina de Tecnologías de la Información</span>
+          <h1 class="cover-title">Sistema de Diseño Institucional</h1>
+
+          <p class="cover-subtitle">
+            Componentes, Tokens y Directrices de Diseño para el Ecosistema Digital Institucional.
+          </p>
+        </div>
+
+        <!-- Badges de stack y estándares -->
+        <div class="cover-badges">
+          <span class="cover-badge cover-badge-primary">Angular 22</span>
+          <span class="cover-badge cover-badge-primary">WCAG 2.2 AA</span>
+          <span class="cover-badge cover-badge-primary">Atomic Design</span>
+          <span class="cover-badge cover-badge-primary">31 Componentes</span>
+        </div>
+
+        <!-- Fecha y versión -->
+        <div class="cover-meta">
+          <span class="cover-meta-item">v1.0.0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==============================================================
+         HOJA 0.5: ÍNDICE DE CONTENIDOS
+         ============================================================== -->
+    <div class="pdf-page-container index-page">
+      <header class="doc-header">
+        <div class="header-brand">
+          <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
+        </div>
+        <div class="doc-meta">
+          <span class="meta-date">Índice</span>
+          <span class="meta-tag">SISTEMA DE DISEÑO OEFA v1.0.0</span>
+        </div>
+      </header>
+
+      <section class="doc-section">
+        <div class="index-header">
+          <h2 class="index-title">Índice General de Componentes</h2>
+        </div>
+
+        <div class="index-grid">
+          <!-- Columna 1 -->
+          <div class="index-col">
+            <div class="index-group-label">Fundamentos & Tokens</div>
+            <div class="index-item"><span class="index-num">01</span><span class="index-label">Paleta Cromática & Tokens
+                de Identidad</span><span class="index-badge badge-atom">Átomo</span><span
+                class="index-page-ref">3</span></div>
+            <div class="index-item"><span class="index-num">02</span><span class="index-label">Tipografía & Escala
+                Modular</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">4</span>
+            </div>
+            <div class="index-item"><span class="index-num">03</span><span class="index-label">Espaciado & Tokens de
+                Escala</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">5</span>
+            </div>
+
+            <div class="index-group-label" style="margin-top: 10px;">Componentes Atómicos</div>
+            <div class="index-item"><span class="index-num">04</span><span class="index-label">Botones & Variantes de
+                Interacción</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">6</span>
+            </div>
+            <div class="index-item"><span class="index-num">05</span><span class="index-label">Badges, Chips & Etiquetas
+                de Estado</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">7</span>
+            </div>
+            <div class="index-item"><span class="index-num">06</span><span class="index-label">Iconografía & Sistema de
+                Iconos SVG</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">8</span>
+            </div>
+            <div class="index-item"><span class="index-num">07</span><span class="index-label">Campos de Formulario &
+                Validación</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">9</span>
+            </div>
+            <div class="index-item"><span class="index-num">08</span><span class="index-label">Selectores &
+                Dropdowns</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">10</span>
+            </div>
+            <div class="index-item"><span class="index-num">09</span><span class="index-label">Interruptores & Segmented
+                Switches</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">11</span>
+            </div>
+            <div class="index-item"><span class="index-num">10</span><span class="index-label">Alertas & Mensajes de
+                Retroalimentación</span><span class="index-badge badge-atom">Átomo</span><span
+                class="index-page-ref">12</span></div>
+            <div class="index-item"><span class="index-num">11</span><span class="index-label">Esqueletos & Estados de
+                Carga</span><span class="index-badge badge-atom">Átomo</span><span class="index-page-ref">13</span>
+            </div>
+          </div>
+
+          <!-- Columna 2 -->
+          <div class="index-col">
+            <div class="index-group-label">Moléculas</div>
+            <div class="index-item"><span class="index-num">12</span><span class="index-label">Date Pickers & Selectores
+                de Rango</span><span class="index-badge badge-mol">Molécula</span><span class="index-page-ref">14</span>
+            </div>
+            <div class="index-item"><span class="index-num">13</span><span class="index-label">Subidas de Archivos &
+                Drag & Drop</span><span class="index-badge badge-mol">Molécula</span><span
+                class="index-page-ref">15</span></div>
+            <div class="index-item"><span class="index-num">14</span><span class="index-label">Tarjetas de Catálogo &
+                KPI Bento</span><span class="index-badge badge-mol">Molécula</span><span
+                class="index-page-ref">16</span></div>
+            <div class="index-item"><span class="index-num">15</span><span class="index-label">Cards de Selección &
+                Estado</span><span class="index-badge badge-mol">Molécula</span><span class="index-page-ref">17</span>
+            </div>
+            <div class="index-item"><span class="index-num">16</span><span class="index-label">Pestañas & Navegación
+                Interna (Tabs)</span><span class="index-badge badge-mol">Molécula</span><span
+                class="index-page-ref">18</span></div>
+            <div class="index-item"><span class="index-num">17</span><span class="index-label">Paso a Paso & Wizard
+                (Stepper)</span><span class="index-badge badge-mol">Molécula</span><span
+                class="index-page-ref">19</span></div>
+            <div class="index-item"><span class="index-num">18</span><span class="index-label">Paginación & Navegación
+                de Datos</span><span class="index-badge badge-mol">Molécula</span><span class="index-page-ref">20</span>
+            </div>
+            <div class="index-item"><span class="index-num">19</span><span class="index-label">Empty States & Pantallas
+                Vacías</span><span class="index-badge badge-mol">Molécula</span><span class="index-page-ref">21</span>
+            </div>
+
+            <div class="index-group-label" style="margin-top: 10px;">Organismos</div>
+            <div class="index-item"><span class="index-num">20</span><span class="index-label">Header & App Launcher
+                Institucional</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">22</span></div>
+            <div class="index-item"><span class="index-num">21</span><span class="index-label">Tooltip & Info
+                Contextual</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">23</span></div>
+          </div>
+
+          <!-- Columna 3 -->
+          <div class="index-col">
+            <div class="index-group-label">Organismos (cont.)</div>
+            <div class="index-item"><span class="index-num">22</span><span class="index-label">Panel de Filtros
+                Facetados (Sidebar)</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">24</span></div>
+            <div class="index-item"><span class="index-num">23</span><span class="index-label">Process Card & Tarjeta de
+                Proceso</span><span class="index-badge badge-org">Organismo</span><span class="index-page-ref">25</span>
+            </div>
+            <div class="index-item"><span class="index-num">24</span><span class="index-label">Diálogos Modales &
+                Escalas de Tamaño</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">26</span></div>
+            <div class="index-item"><span class="index-num">25</span><span class="index-label">Modal Visor Completo
+                (Full Screen)</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">27</span></div>
+            <div class="index-item"><span class="index-num">26</span><span class="index-label">Paneles Deslizantes
+                Laterales (Drawer)</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">28</span></div>
+            <div class="index-item"><span class="index-num">27</span><span class="index-label">Encabezado de Página
+                (Page Header)</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">29</span></div>
+            <div class="index-item"><span class="index-num">28</span><span class="index-label">Tablas de Datos &
+                Matrices</span><span class="index-badge badge-org">Organismo</span><span
+                class="index-page-ref">30</span></div>
+            <div class="index-item"><span class="index-num">29</span><span class="index-label">Motion & Animación del
+                Sistema</span><span class="index-badge badge-org">Organismo</span><span class="index-page-ref">31</span>
+            </div>
+            <div class="index-item"><span class="index-num">30</span><span class="index-label">Accesibilidad & WCAG
+                2.2</span><span class="index-badge badge-org">Organismo</span><span class="index-page-ref">32</span>
+            </div>
+            <div class="index-item"><span class="index-num">31</span><span class="index-label">Responsive Breakpoints &
+                Rejilla</span><span class="index-badge badge-org">Organismo</span><span class="index-page-ref">33</span>
+            </div>
+            <!--             <div class="index-item index-item-credits"><span class="index-num">32</span><span
+                class="index-label">Créditos & Equipo Responsable</span><span
+                class="index-badge badge-meta"></span><span class="index-page-ref">34</span></div> -->
+          </div>
+        </div>
+      </section>
+
+      <footer class="doc-footer">
+        <div>Sistema de Diseño Institucional OEFA</div>
+        <div>Índice</div>
+      </footer>
+    </div>
+
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
         <div class="header-brand">
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 1 de 30</span>
+          <span class="meta-date">Hoja 3 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
@@ -53,7 +243,7 @@
               <span class="sample-label">Azul Institucional</span>
             </div>
             <div class="color-details">
-              <span class="color-role">Azul Marca (Primary Root)</span>
+              <span class="color-role">Azul (Primary Root)</span>
               <span class="color-val">var(--oefa-primary-root) · #144AA7</span>
               <p>Identidad central del OEFA. Empleado en barras principales, botones prioritarios y sellos oficiales.
               </p>
@@ -63,10 +253,10 @@
           <!-- 2. Verde Turquesa Marca -->
           <div class="color-exec-card avoid-break">
             <div class="color-sample sample-secondary-brand">
-              <span class="sample-label">Verde Turquesa</span>
+              <span class="sample-label">Turquesa</span>
             </div>
             <div class="color-details">
-              <span class="color-role">Turquesa Marca (Secondary Root)</span>
+              <span class="color-role">Turquesa (Secondary Root)</span>
               <span class="color-val">var(--oefa-secondary-root) · #44BFB5</span>
               <p>Identidad ambiental y recursos hídricos. Uso en marcas gráficas, banners e ilustraciones
                 institucionales.</p>
@@ -76,10 +266,10 @@
           <!-- 3. Ámbar Institucional Marca -->
           <div class="color-exec-card avoid-break">
             <div class="color-sample sample-tertiary-brand">
-              <span class="sample-label">Ámbar Marca</span>
+              <span class="sample-label">Ámbar</span>
             </div>
             <div class="color-details">
-              <span class="color-role">Ámbar / Oro (Tertiary Root)</span>
+              <span class="color-role">Ámbar (Tertiary Root)</span>
               <span class="color-val">var(--oefa-tertiary-root) · #FFB500</span>
               <p>Identidad de alerta y dinamismo. Reservado para fondos decorativos y elementos de gran superficie.</p>
             </div>
@@ -88,10 +278,10 @@
           <!-- 4. Verde Hoja Marca -->
           <div class="color-exec-card avoid-break">
             <div class="color-sample sample-success-brand">
-              <span class="sample-label">Verde Naturaleza</span>
+              <span class="sample-label">Verde</span>
             </div>
             <div class="color-details">
-              <span class="color-role">Verde Sostenible (Success Root)</span>
+              <span class="color-role">Verde (Success Root)</span>
               <span class="color-val">var(--oefa-success-root) · #8CCD3A</span>
               <p>Símbolo de fiscalización ambiental y biodiversidad. Destinado a infografías y composiciones visuales.
               </p>
@@ -110,10 +300,10 @@
           <!-- 5. Verde Teal UI-Safe -->
           <div class="color-exec-card avoid-break">
             <div class="color-sample sample-secondary-safe">
-              <span class="sample-label">Teal Seguro</span>
+              <span class="sample-label">Turquesa</span>
             </div>
             <div class="color-details">
-              <span class="color-role">Acento Ambiental Seguro (UI-Safe)</span>
+              <span class="color-role">Acento (UI-Safe)</span>
               <span class="color-val">var(--oefa-secondary-ui-safe) · #2C817A</span>
               <p>Variante oscurecida del turquesa con ratio 4.64:1 apto para textos e iconos interactivos sobre blanco.
               </p>
@@ -123,7 +313,7 @@
           <!-- 6. Ámbar Seguro -->
           <div class="color-exec-card avoid-break">
             <div class="color-sample sample-warning-safe">
-              <span class="sample-label">Ámbar Seguro</span>
+              <span class="sample-label">Ámbar</span>
             </div>
             <div class="color-details">
               <span class="color-role">Alerta en Interfaz (Tertiary Safe)</span>
@@ -136,7 +326,7 @@
           <!-- 7. Verde Éxito Seguro -->
           <div class="color-exec-card avoid-break">
             <div class="color-sample sample-success-safe">
-              <span class="sample-label">Verde Seguro</span>
+              <span class="sample-label">Verde</span>
             </div>
             <div class="color-details">
               <span class="color-role">Éxito / Finalizado (Success Safe)</span>
@@ -174,7 +364,7 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 2 de 30</span>
+          <span class="meta-date">Hoja 4 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
@@ -191,7 +381,7 @@
         <div class="typography-exec-grid">
           <div class="typo-exec-card avoid-break">
             <div class="typo-header">
-              <span class="typo-badge display-badge">TÍTULOS & DISPLAY</span>
+              <oefa-status-badge status="INFO" label="TÍTULOS &amp; DISPLAY" size="sm" />
               <h5>Poppins (Geométrica / Display)</h5>
             </div>
             <div class="typo-preview display-preview">
@@ -205,7 +395,7 @@
 
           <div class="typo-exec-card avoid-break">
             <div class="typo-header">
-              <span class="typo-badge body-badge">CUERPO & FORMULARIOS</span>
+              <oefa-status-badge status="ALTERNO" label="CUERPO &amp; FORMULARIOS" size="sm" />
               <h5>Inter (Funcional / Lectura)</h5>
             </div>
             <div class="typo-preview body-preview">
@@ -218,7 +408,7 @@
 
           <div class="typo-exec-card avoid-break">
             <div class="typo-header">
-              <span class="typo-badge mono-badge">DATOS & EXPEDIENTES</span>
+              <oefa-status-badge status="WARNING" label="DATOS &amp; EXPEDIENTES" size="sm" />
               <h5>JetBrains Mono (Monospace)</h5>
             </div>
             <div class="typo-preview mono-preview">
@@ -282,7 +472,7 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 3 de 30</span>
+          <span class="meta-date">Hoja 5 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
@@ -291,7 +481,7 @@
         <div class="section-title">
           <div class="section-num">03</div>
           <div class="section-info">
-            <h4>Iconografía Institucional (Componente &lt;oefa-icon&gt;)</h4>
+            <h4>Iconografía Institucional</h4>
             <span>Catálogo vectorial estandarizado con escalado semántico (sm:16, md:20, lg:24, xl:32)</span>
           </div>
         </div>
@@ -368,7 +558,7 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 4 de 30</span>
+          <span class="meta-date">Hoja 6 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
@@ -412,26 +602,42 @@
           </div>
         </div>
 
-        <div class="radii-summary-wrapper avoid-break">
-          <div class="radii-title">Tokens de Radios y Redondez Oficiales:</div>
-          <div class="radii-chips">
-            <span class="radius-chip"><strong>sm (6px):</strong> Badges & Tooltips</span>
-            <span class="radius-chip"><strong>md (10px):</strong> Botones & Inputs</span>
-            <span class="radius-chip"><strong>lg (16px):</strong> Tarjetas & Modales</span>
-            <span class="radius-chip"><strong>xl (24px):</strong> Bento KPI Tiles</span>
-            <span class="radius-chip"><strong>full (9999px):</strong> Pills & Avatares</span>
+        <div class="motion-details-card avoid-break">
+          <div class="motion-details-title">Escala de Duraciones y Físicas Normadas (Material 3):</div>
+          <div class="motion-matrix-grid">
+            <div class="matrix-col">
+              <div class="col-header">1. Corta (Short)</div>
+              <div class="col-time">50ms — 200ms</div>
+              <p>Feedback táctil, estado active (<code>scale(0.98)</code>), switches, checks y micro-indicadores.</p>
+            </div>
+            <div class="matrix-col">
+              <div class="col-header">2. Media (Medium)</div>
+              <div class="col-time">250ms — 300ms</div>
+              <p>Transiciones de hover, expansión de cards, elevación táctil y morphing de pestañas activas.</p>
+            </div>
+            <div class="matrix-col">
+              <div class="col-header">3. Larga (Long)</div>
+              <div class="col-time">350ms — 450ms</div>
+              <p>Entrada y salida de modales completos (<code>&lt;oefa-modal&gt;</code>) y drawers laterales
+                deslizantes.</p>
+            </div>
           </div>
+          <p class="motion-footer-note">
+            <strong>Micro-interacción de Énfasis:</strong> Efecto <em>Icon Tilt</em> normado a
+            <code>rotate(8deg) scale(1.12)</code> con curva <code>var(--oefa-ease-emphasized)</code> exclusivo en
+            contenedores interactivos de destino.
+          </p>
         </div>
       </section>
 
       <footer class="doc-footer">
         <div>Sistema de Diseño Institucional OEFA</div>
-        <div>Átomo 04: Motion & Radii</div>
+        <div>Átomo 04: Motion & Animación M3</div>
       </footer>
     </div>
 
     <!-- ==============================================================
-         HOJA 5: ÁTOMO 5 - BOTONES & CONTROLES DE ACCIÓN
+         HOJA 5: ÁTOMO 5 - TOKENS DE RADIOS Y REDONDEZ (SHAPE & RADII)
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -439,7 +645,7 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 5 de 30</span>
+          <span class="meta-date">Hoja 7 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
@@ -447,6 +653,109 @@
       <section class="doc-section">
         <div class="section-title">
           <div class="section-num">05</div>
+          <div class="section-info">
+            <h4>Tokens de Radios y Redondez Oficiales</h4>
+            <span>Escala geométrica estandarizada, variables CSS institucionales y radio perimetral normado</span>
+          </div>
+        </div>
+
+        <div class="radii-exec-grid avoid-break">
+          <div class="radius-exec-card">
+            <div class="radius-box-preview r-sm">
+              <span class="box-val">6px</span>
+            </div>
+            <h5>sm (Pequeño)</h5>
+            <span class="radius-token-code">--oefa-radius-sm</span>
+            <p class="radius-targets">Badges de estado, tooltips informativos, checkboxes, tags de código y
+              micro-inputs.</p>
+          </div>
+
+          <div class="radius-exec-card">
+            <div class="radius-box-preview r-md">
+              <span class="box-val">10px</span>
+            </div>
+            <h5>md (Estándar)</h5>
+            <span class="radius-token-code">--oefa-radius-md</span>
+            <p class="radius-targets">Botones institucionales (<code>&lt;oefa-button&gt;</code>), campos de formulario,
+              selects y switch segmentado.</p>
+          </div>
+
+          <div class="radius-exec-card">
+            <div class="radius-box-preview r-lg">
+              <span class="box-val">16px</span>
+            </div>
+            <h5>lg (Grande)</h5>
+            <span class="radius-token-code">--oefa-radius-lg</span>
+            <p class="radius-targets">Modales (<code>&lt;oefa-modal&gt;</code>), cabeceras de drawer, contenedores
+              agrupadores y tarjetas estándar.</p>
+          </div>
+
+          <div class="radius-exec-card">
+            <div class="radius-box-preview r-xl">
+              <span class="box-val">24px</span>
+            </div>
+            <h5>xl (Extra Grande)</h5>
+            <span class="radius-token-code">--oefa-radius-xl</span>
+            <p class="radius-targets">Bento KPI Tiles (<code>&lt;oefa-bento-kpi-tile&gt;</code>), tarjetas hero y
+              paneles panorámicos.</p>
+          </div>
+
+          <div class="radius-exec-card">
+            <div class="radius-box-preview r-full">
+              <span class="box-val">9999px</span>
+            </div>
+            <h5>full (Píldora)</h5>
+            <span class="radius-token-code">--oefa-radius-full</span>
+            <p class="radius-targets">Pills de estado, chips de filtro, pastillas de selección, avatares y botones
+              circulares.</p>
+          </div>
+        </div>
+
+        <div class="radii-rules-card avoid-break">
+          <h5>Directrices de Aplicación y Armonía Geométrica</h5>
+          <div class="rules-grid">
+            <div class="rule-item">
+              <strong>1. Regla Concéntrica Armónica</strong>
+              Los elementos internos nunca deben superar el radio del contenedor padre
+              (<code>radio_hijo &le; radio_padre</code>) para evitar tensión visual en esquinas.
+            </div>
+            <div class="rule-item">
+              <strong>2. Estandarización Estricta</strong>
+              Queda normado el uso exclusivo de los 5 tokens globales. Se prohíbe el uso de valores arbitrarios
+              hardcodeados (como 4px, 8px, 12px, 20px).
+            </div>
+            <div class="rule-item">
+              <strong>3. Foco Accesible Coherente</strong>
+              El anillo de foco interactivo (<code>focus-visible</code>) replica exactamente el
+              <code>border-radius</code> del elemento con un offset de 2px.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="doc-footer">
+        <div>Sistema de Diseño Institucional OEFA</div>
+        <div>Átomo 05: Border Radius & Geometría</div>
+      </footer>
+    </div>
+
+    <!-- ==============================================================
+         HOJA 6: ÁTOMO 6 - BOTONES & CONTROLES DE ACCIÓN
+         ============================================================== -->
+    <div class="pdf-page-container atom-page pdf-page-break-before">
+      <header class="doc-header">
+        <div class="header-brand">
+          <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
+        </div>
+        <div class="doc-meta">
+          <span class="meta-date">Hoja 8 de 34</span>
+          <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
+        </div>
+      </header>
+
+      <section class="doc-section">
+        <div class="section-title">
+          <div class="section-num">06</div>
           <div class="section-info">
             <h4>Botones Institucionales (&lt;oefa-button&gt; & &lt;oefa-icon-button&gt;)</h4>
             <span>Variantes normadas, jerarquía de acciones, estados hover/active/disabled y soporte de
@@ -555,12 +864,12 @@
 
       <footer class="doc-footer">
         <div>Sistema de Diseño Institucional OEFA</div>
-        <div>Átomo 05: Botones & Acciones</div>
+        <div>Átomo 06: Botones & Acciones</div>
       </footer>
     </div>
 
     <!-- ==============================================================
-         HOJA 6: ÁTOMO 6 - BADGES, CHIPS & ENTRADAS DE FORMULARIO
+         HOJA 7: ÁTOMO 7 - BADGES, CHIPS & ENTRADAS DE FORMULARIO
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -568,14 +877,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 6 de 30</span>
+          <span class="meta-date">Hoja 9 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">06</div>
+          <div class="section-num">07</div>
           <div class="section-info">
             <h4>Badges, Chips & Entradas de Formulario</h4>
             <span>Indicadores de estado semánticos, etiquetas de contexto y campos de captura de datos</span>
@@ -664,7 +973,7 @@
               </oefa-form-field>
 
               <oefa-form-field label="Sector / Dirección Fiscalizadora" [required]="true">
-                <select class="demo-form-select" disabled>
+                <select class="demo-form-select form-select" disabled>
                   <option selected>DFAI — Dirección de Fiscalización y Aplicación de Incentivos</option>
                 </select>
               </oefa-form-field>
@@ -684,6 +993,17 @@
                   <span>Confidencialidad reservada</span>
                 </label>
               </div>
+
+              <!-- Directriz Accesible de Obligatoriedad -->
+              <div class="a11y-norm-note">
+                <span class="a11y-note-tag">NORMA WCAG 2.2 · SC 3.3.2 (CAMPOS REQUERIDOS)</span>
+                <p>
+                  <strong>Ciudadanía (Portales/Trámites):</strong> Usar <code>requiredMode="text"</code> &rarr;
+                  <em>(Obligatorio)</em> visible.<br>
+                  <strong>Sistemas Internos (Operativos):</strong> Usar <code>*</code> estándar con
+                  <code>.sr-only</code> oculto para lectores de pantalla.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -691,12 +1011,12 @@
 
       <footer class="doc-footer">
         <div>Sistema de Diseño Institucional OEFA</div>
-        <div>Átomo 06: Badges, Chips & Form Fields</div>
+        <div>Átomo 07: Badges, Chips & Form Fields</div>
       </footer>
     </div>
 
     <!-- ==============================================================
-         HOJA 7: TOOLTIPS DE INFORMACIÓN & ESTADOS DE CARGA (SKELETON & SPINNER)
+         HOJA 8: TOOLTIPS DE INFORMACIÓN & ESTADOS DE CARGA (SKELETON & SPINNER)
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -704,14 +1024,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 7 de 30</span>
+          <span class="meta-date">Hoja 10 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">07</div>
+          <div class="section-num">08</div>
           <div class="section-info">
             <h4>Tooltips de Información & Estados de Carga</h4>
             <span>Microcomponentes atómicos para asistencia contextual no intrusiva y feedback de espera
@@ -907,12 +1227,12 @@
 
       <footer class="doc-footer">
         <div>Sistema de Diseño Institucional OEFA</div>
-        <div>Átomo 07: Tooltips de Información & Feedback de Carga</div>
+        <div>Átomo 08: Tooltips de Información & Feedback de Carga</div>
       </footer>
     </div>
 
     <!-- ==============================================================
-         HOJA 8: BENTO KPI TILES & TARJETAS MÉTRICAS
+         HOJA 9: BENTO KPI TILES & TARJETAS MÉTRICAS
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -920,17 +1240,17 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 8 de 30</span>
+          <span class="meta-date">Hoja 11 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">08</div>
+          <div class="section-num">09</div>
           <div class="section-info">
             <h4>Bento KPI Tiles (&lt;oefa-bento-kpi-tile&gt;)</h4>
-            <span>Tarjetas modulares para tableros de control con rellenos tonales, bordes de 20px y micro-gráficos
+            <span>Tarjetas modulares para tableros de control con rellenos tonales, bordes de 24px y micro-gráficos
               contextuales</span>
           </div>
         </div>
@@ -964,12 +1284,12 @@
 
       <footer class="doc-footer">
         <div>Sistema de Diseño Institucional OEFA</div>
-        <div>Átomo 08: Bento KPI Tiles</div>
+        <div>Átomo 09: Bento KPI Tiles</div>
       </footer>
     </div>
 
     <!-- ==============================================================
-         HOJA 9: TARJETAS DE CATÁLOGO
+         HOJA 10: TARJETAS DE CATÁLOGO
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -977,14 +1297,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 9 de 30</span>
+          <span class="meta-date">Hoja 12 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">09</div>
+          <div class="section-num">10</div>
           <div class="section-info">
             <h4>Tarjetas de Catálogo</h4>
             <span>Presentación ejecutiva de sistemas, servicios y módulos con indicadores de actividad en tiempo
@@ -1089,7 +1409,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 10: ALERTAS & NOTIFICACIONES TOAST
+         HOJA 11: ALERTAS & NOTIFICACIONES TOAST
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -1097,14 +1417,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 10 de 30</span>
+          <span class="meta-date">Hoja 13 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">10</div>
+          <div class="section-num">11</div>
           <div class="section-info">
             <h4>Alertas y Notificaciones Toast</h4>
             <span>Mensajes de retroalimentación en bloque y avisos transitorios reactivos con conformidad WCAG
@@ -1122,7 +1442,7 @@
                 message="Las solicitudes registradas de 00:00 a 23:59 hrs se computan el mismo día hábil según Ley N° 27806." />
 
               <oefa-alert type="success" title="Operación Completada:"
-                message="El expediente técnico fue registrado y derivado a la subdirección correspondiente con código EXP-2026-004." />
+                message="El expediente técnico fue registrado y derivado a la subdirección correspondiente con código 2026-E01-80812." />
 
               <oefa-alert type="warning" title="Advertencia de Plazo Contractual:"
                 message="Atención: Quedan 2 días hábiles para el descargo de observaciones antes de archivar el trámite." />
@@ -1217,7 +1537,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 11: TARJETAS DE SELECCIÓN INTERACTIVAS
+         HOJA 12: TARJETAS DE SELECCIÓN INTERACTIVAS
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -1225,14 +1545,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 11 de 30</span>
+          <span class="meta-date">Hoja 14 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">11</div>
+          <div class="section-num">12</div>
           <div class="section-info">
             <h4>Tarjetas de Selección Interactivas</h4>
             <span>Decisiones guiadas, tarifas y modalidades operativas con área táctil optimizada y badges de
@@ -1337,7 +1657,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 12: SELECTOR DE FECHAS & RANGOS TEMPORALES
+         HOJA 13: SELECTOR DE FECHAS & RANGOS TEMPORALES
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -1345,14 +1665,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 12 de 30</span>
+          <span class="meta-date">Hoja 15 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">12</div>
+          <div class="section-num">13</div>
           <div class="section-info">
             <h4>Selector de Fechas y Rangos Temporales</h4>
             <span>Captura temporal normada para plazos de supervisión, vigencia de medidas y cronogramas de
@@ -1392,8 +1712,8 @@
 
             <div class="control-notes-box" style="margin-top: 6px;">
               <strong>Interoperabilidad y Formato:</strong>
-              <p>Muestra visual en formato legible (DD/MM/AAAA) con almacenamiento estandarizado ISO 8601 (YYYY-MM-DD)
-                para integración con SIGED y PIDE.</p>
+              <p>Muestra visual en formato legible (DD/MM/AAAA) con almacenamiento estandarizado ISO 8601 (YYYY-MM-DD).
+              </p>
             </div>
           </div>
         </div>
@@ -1438,7 +1758,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 13: CARGADOR DE ARCHIVOS & ZONA DROPZONE
+         HOJA 14: CARGADOR DE ARCHIVOS & ZONA DROPZONE
          ============================================================== -->
     <div class="pdf-page-container atom-page pdf-page-break-before">
       <header class="doc-header">
@@ -1446,16 +1766,16 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 13 de 30</span>
+          <span class="meta-date">Hoja 16 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">13</div>
+          <div class="section-num">14</div>
           <div class="section-info">
-            <h4>Cargador de Archivos y Zona Dropzone</h4>
+            <h4>Cargador de Archivos</h4>
             <span>Gestión documental institucional con arrastrar y soltar, validación previa de tamaño y formatos</span>
           </div>
         </div>
@@ -1558,7 +1878,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 14: CONMUTADOR SEGMENTADO (SEGMENTED SWITCH)
+         HOJA 15: CONMUTADOR SEGMENTADO (SEGMENTED SWITCH)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -1566,14 +1886,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 14 de 30</span>
+          <span class="meta-date">Hoja 17 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">14</div>
+          <div class="section-num">15</div>
           <div class="section-info">
             <h4>Conmutador Segmentado & Alternador de Vistas</h4>
             <span>Control de selección discreta mutuamente excluyente con soporte de badges, dot indicator y tooltips
@@ -1660,7 +1980,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 15: PAGINADOR DE TABLAS Y REGISTROS (PAGINATION)
+         HOJA 16: PAGINADOR DE TABLAS Y REGISTROS (PAGINATION)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -1668,14 +1988,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 15 de 30</span>
+          <span class="meta-date">Hoja 18 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">15</div>
+          <div class="section-num">16</div>
           <div class="section-info">
             <h4>Paginación & Controles de Navegación de Datos</h4>
             <span>Barra de control de paginación institucional con selector de registros por página y rango numérico
@@ -1751,7 +2071,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 16: MENÚS DESPLEGABLES & DROPDOWNS
+         HOJA 17: MENÚS DESPLEGABLES & DROPDOWNS
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -1759,14 +2079,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 16 de 30</span>
+          <span class="meta-date">Hoja 19 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">16</div>
+          <div class="section-num">17</div>
           <div class="section-info">
             <h4>Menús Desplegables & Menú flotante</h4>
             <span>Paneles emergentes contextuales para acciones agrupadas, menús de fila y exportaciones con soporte
@@ -1912,7 +2232,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 17: MENÚS DESPLEGABLES CON BUSCADOR Y CHECKBOXES
+         HOJA 18: MENÚS DESPLEGABLES CON BUSCADOR Y CHECKBOXES
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -1920,14 +2240,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 17 de 30</span>
+          <span class="meta-date">Hoja 20 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">17</div>
+          <div class="section-num">18</div>
           <div class="section-info">
             <h4>Menús con Buscador & Selección Múltiple (Checkboxes)</h4>
             <span>Filtros complejos y listados extensos con campo de búsqueda predictiva y checkboxes accesibles
@@ -2079,7 +2399,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 18: ESTADOS VACÍOS Y SIN RESULTADOS (EMPTY STATE)
+         HOJA 19: ESTADOS VACÍOS Y SIN RESULTADOS (EMPTY STATE)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2087,14 +2407,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 18 de 30</span>
+          <span class="meta-date">Hoja 21 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">18</div>
+          <div class="section-num">19</div>
           <div class="section-info">
             <h4>Estados Vacíos & Retroalimentación de Búsqueda</h4>
             <span>Mensajes de acompañamiento orientados a la acción para bandejas vacías, filtros sin coincidencias o
@@ -2110,7 +2430,7 @@
               <oefa-status-badge status="OBSERVADO" size="sm" label="Búsqueda" />
             </div>
             <p style="font-size: 0.75rem; color: var(--oefa-text-secondary); margin: 0;">
-              Aparece cuando los criterios de filtrado aplicados no encuentran expedientes en el período.
+              Aparece cuando los criterios de filtrado aplicados no encuentran registros en el período.
             </p>
             <div class="empty-state-exec-wrapper">
               <oefa-empty-state icon="search" title="No se encontraron órdenes"
@@ -2130,7 +2450,7 @@
               <oefa-status-badge status="PENDIENTE" size="sm" label="Bandeja Vacía" />
             </div>
             <p style="font-size: 0.75rem; color: var(--oefa-text-secondary); margin: 0;">
-              Diseñado para estados iniciales donde aún no se han adjuntado entregables o creado solicitudes.
+              Diseñado para estados iniciales donde aún no se han registrado o creado documentación.
             </p>
             <div class="empty-state-exec-wrapper">
               <oefa-empty-state icon="folder" title="Bandeja de entregables vacía"
@@ -2185,7 +2505,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 19: PESTAÑAS DE NAVEGACIÓN & VISTAS (TABS)
+         HOJA 20: PESTAÑAS DE NAVEGACIÓN & VISTAS (TABS)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2193,14 +2513,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 19 de 30</span>
+          <span class="meta-date">Hoja 22 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">19</div>
+          <div class="section-num">20</div>
           <div class="section-info">
             <h4>Pestañas de Navegación & Vistas por Capas</h4>
             <span>Organización modular de contenidos y expedientes con soporte WAI-ARIA, badges numéricos y dot
@@ -2286,7 +2606,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 20: ASISTENTE SECUENCIAL DE PASOS (STEPPER)
+         HOJA 21: ASISTENTE SECUENCIAL DE PASOS (STEPPER)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2294,14 +2614,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 20 de 30</span>
+          <span class="meta-date">Hoja 23 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">20</div>
+          <div class="section-num">21</div>
           <div class="section-info">
             <h4>Asistente Secuencial de Pasos & Flujos (Stepper)</h4>
             <span>Guía paso a paso para formularios extensos, tramitación progresiva y trazabilidad de
@@ -2404,7 +2724,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 21: PANEL LATERAL DE FILTROS (FILTER SIDEBAR)
+         HOJA 22: PANEL LATERAL DE FILTROS (FILTER SIDEBAR)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2412,14 +2732,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 21 de 30</span>
+          <span class="meta-date">Hoja 24 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">21</div>
+          <div class="section-num">22</div>
           <div class="section-info">
             <h4>Panel Lateral de Filtros Facetados (Filter Sidebar)</h4>
             <span>Organismo de refinamiento multicriterio: layout sticky en escritorio y bottom sheet táctil con gestos
@@ -2428,79 +2748,227 @@
         </div>
 
         <div class="cards-grid">
-          <!-- Bloque 1: Vista Previa del Panel de Filtros -->
+          <!-- Bloque 1: Vista Previa Desktop (Sidebar Sticky Lateral) -->
           <div class="exec-interactive-card avoid-break">
             <div class="card-top">
-              <strong>Estructura del Panel Facetado</strong>
-              <oefa-status-badge status="info" size="sm" label="Layout Desktop Sticky" />
+              <strong>1. Vista Desktop: Sidebar Sticky Lateral</strong>
+              <oefa-status-badge status="info" size="sm" label="Desktop (&gt;768px)" />
             </div>
             <p class="card-desc">
-              Filtrado por dimensiones combinadas con contadores reactivos de coincidencia y reseteo global rápido.
+              Panel vertical persistente con anclaje sticky, chips de estado, rango temporal, acordeón facetado con
+              búsqueda y acciones fijas.
             </p>
-            <div class="filter-sidebar-exec-preview">
-              <div class="fs-mockup-header">
-                <span class="fs-mockup-title">Refinar Búsqueda (2 activos)</span>
-                <span
-                  style="font-size: 0.7rem; color: var(--oefa-primary-root); font-weight: 600; cursor: pointer;">Limpiar
-                  todo</span>
+            <div class="fs-desktop-mockup">
+              <!-- Header -->
+              <div class="fs-mock-header">
+                <div class="fs-mock-title-col">
+                  <span class="fs-mock-title">Refinar Búsqueda</span>
+                  <span class="fs-mock-subtitle">2 criterios activos</span>
+                </div>
+                <span class="fs-mock-clear-btn">Limpiar todo</span>
               </div>
-              <div class="fs-mockup-group">
-                <span class="fs-mockup-group-title">Estado de Trámite</span>
-                <div class="fs-mockup-item">
-                  <span class="fs-checkbox-label">
-                    <input type="checkbox" checked disabled />
-                    <span>Conforme / Pagado</span>
-                  </span>
-                  <oefa-status-badge status="CONFORME" size="sm" [dot]="true" />
+
+              <!-- Body -->
+              <div class="fs-mock-body">
+                <!-- 1. Estado del Expediente (Chips) -->
+                <div class="fs-mock-group">
+                  <span class="fs-mock-group-label">Estado del Expediente</span>
+                  <div class="fs-mock-chips-row">
+                    <span class="fs-mock-chip">Todos</span>
+                    <span class="fs-mock-chip active"><span class="chip-dot dot-tramite"></span>En Trámite</span>
+                    <span class="fs-mock-chip"><span class="chip-dot dot-conforme"></span>Conforme</span>
+                    <span class="fs-mock-chip active"><span class="chip-dot dot-observado"></span>Observado</span>
+                  </div>
                 </div>
-                <div class="fs-mockup-item">
-                  <span class="fs-checkbox-label">
-                    <input type="checkbox" checked disabled />
-                    <span>En Proceso de Firma</span>
-                  </span>
-                  <oefa-status-badge status="EN_PROCESO" size="sm" [dot]="true" />
+
+                <!-- 2. Rango Temporal -->
+                <div class="fs-mock-group">
+                  <span class="fs-mock-group-label">Periodo de Notificación</span>
+                  <div class="fs-mock-dates-row">
+                    <div class="fs-mock-date-field">
+                      <label>Desde</label>
+                      <div class="fs-date-input-box">
+                        <span>01/01/2024</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                          <line x1="16" y1="2" x2="16" y2="6" />
+                          <line x1="8" y1="2" x2="8" y2="6" />
+                          <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                      </div>
+                    </div>
+                    <div class="fs-mock-date-field">
+                      <label>Hasta</label>
+                      <div class="fs-date-input-box">
+                        <span>30/09/2024</span>
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                          stroke-width="2">
+                          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+                          <line x1="16" y1="2" x2="16" y2="6" />
+                          <line x1="8" y1="2" x2="8" y2="6" />
+                          <line x1="3" y1="10" x2="21" y2="10" />
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="fs-mockup-item">
-                  <span class="fs-checkbox-label">
-                    <input type="checkbox" disabled />
-                    <span>Observado LPAG</span>
-                  </span>
-                  <oefa-status-badge status="OBSERVADO" size="sm" [dot]="true" />
+
+                <!-- 3. Sector Fiscalizable (Acordeón expandido con búsqueda) -->
+                <div class="fs-mock-group">
+                  <div class="fs-mock-accordion-header">
+                    <span class="fs-mock-group-label">Sector Fiscalizable</span>
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="2.5">
+                      <polyline points="18 15 12 9 6 15" />
+                    </svg>
+                  </div>
+                  <div class="fs-mock-search-box">
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <circle cx="11" cy="11" r="8" />
+                      <path d="m21 21-4.3-4.3" />
+                    </svg>
+                    <span>Filtrar sector...</span>
+                  </div>
+                  <div class="fs-mock-options-list">
+                    <div class="fs-mock-option selected">
+                      <input type="checkbox" checked disabled />
+                      <span class="opt-label">Minería Metálica</span>
+                      <span class="opt-count">42</span>
+                    </div>
+                    <div class="fs-mock-option selected">
+                      <input type="checkbox" checked disabled />
+                      <span class="opt-label">Hidrocarburos y Gas</span>
+                      <span class="opt-count">28</span>
+                    </div>
+                    <div class="fs-mock-option">
+                      <input type="checkbox" disabled />
+                      <span class="opt-label">Pesquería Industrial</span>
+                      <span class="opt-count">19</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4. Condiciones Especiales (Toggle) -->
+                <div class="fs-mock-group">
+                  <div class="fs-mock-toggle-row">
+                    <span class="toggle-label">Solo con Medidas Cautelares</span>
+                    <div class="mock-switch active"><span class="mock-switch-thumb"></span></div>
+                  </div>
                 </div>
               </div>
-              <div class="fs-mockup-group" style="padding-top: 4px; border-top: 1px dashed var(--oefa-border-color);">
-                <span class="fs-mockup-group-title">Dirección de Línea</span>
-                <div class="fs-mockup-item">
-                  <span>DFAI - Fiscalización</span>
-                  <span class="badge-pill" style="margin: 0;">34 órdenes</span>
-                </div>
-                <div class="fs-mockup-item">
-                  <span>DSIS - Supervisión</span>
-                  <span class="badge-pill" style="margin: 0;">28 órdenes</span>
-                </div>
+
+              <!-- Footer Sticky -->
+              <div class="fs-mock-footer">
+                <button type="button" class="fs-btn-apply">Aplicar Filtros (2)</button>
+                <button type="button" class="fs-btn-clear">Limpiar</button>
               </div>
             </div>
           </div>
 
-          <!-- Bloque 2: Comportamiento Móvil & API -->
+          <!-- Bloque 2: Vista Previa Móvil (Bottom Sheet Táctil) -->
           <div class="exec-interactive-card avoid-break">
             <div class="card-top">
-              <strong>Adaptabilidad Móvil & Integración</strong>
-              <oefa-status-badge status="exito" size="sm" label="Touch Bottom-Sheet" />
+              <strong>2. Vista Móvil: Bottom Sheet Táctil</strong>
+              <oefa-status-badge status="exito" size="sm" label="Mobile (&lt;768px)" />
             </div>
             <p class="card-desc">
-              En dispositivos móviles (&lt; 768px) el sidebar transmuta automáticamente en una hoja táctil deslizante
-              inferior.
+              Transmutación responsiva hacia una hoja táctil emergente con manija swipe, fondo atenuado y botón
+              full-width de 42px touch.
             </p>
-            <div class="control-notes-box" style="margin-top: 6px; font-size: 0.75rem;">
-              <strong>Gesto Táctil Swipe-to-Dismiss:</strong> Manija superior para arrastrar y descartar con cierre por
-              backdrop.
-            </div>
-            <div
-              style="background: var(--oefa-surface-subtle); border: 1px solid var(--oefa-border-color); border-radius: var(--oefa-radius-sm); padding: 10px 14px; margin-top: 8px; font-size: 0.72rem; color: var(--oefa-text-secondary); line-height: 1.5;">
-              <div style="font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 4px;">Propiedades e
-                Invocación:</div>
-              <code>&lt;oefa-filter-sidebar [title]="'Filtros'" [activeCount]="2" [statusOptions]="statusList" (filterChange)="onFilter($event)" (clearAll)="onClear()" /&gt;</code>
+            <div class="fs-mobile-device-frame">
+              <!-- Barra superior de estado del teléfono -->
+              <div class="phone-status-bar">
+                <span>09:41</span>
+                <div class="phone-status-icons">
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M5 12.55a11 11 0 0 1 14.08 0" />
+                    <path d="M1.42 9a16 16 0 0 1 21.16 0" />
+                    <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
+                    <line x1="12" y1="20" x2="12.01" y2="20" />
+                  </svg>
+                  <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <rect x="2" y="7" width="16" height="10" rx="2" ry="2" />
+                    <line x1="22" y1="11" x2="22" y2="13" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Fondo de pantalla con aplicación OEFA detrás del sheet -->
+              <div class="phone-screen-bg">
+                <div class="phone-app-header">
+                  <span class="app-title">Bandeja de Supervisión</span>
+                  <span class="filter-trigger-pill">
+                    <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3" />
+                    </svg>
+                    Filtros (2)
+                  </span>
+                </div>
+                <div class="phone-card-preview">
+                  <div class="fake-line line-short"></div>
+                  <div class="fake-line line-long"></div>
+                </div>
+              </div>
+
+              <!-- Backdrop oscuro con blur -->
+              <div class="mobile-sheet-backdrop"></div>
+
+              <!-- Hoja táctil emergente (Bottom Sheet) -->
+              <div class="mobile-bottom-sheet">
+                <div class="sheet-handle-pill"></div>
+                <div class="sheet-header">
+                  <div class="sheet-title-group">
+                    <span class="sheet-title">Filtros y Criterios</span>
+                    <span class="sheet-sub">2 criterios activos</span>
+                  </div>
+                  <div class="sheet-actions">
+                    <span class="sheet-clear">Limpiar</span>
+                    <span class="sheet-close">✕</span>
+                  </div>
+                </div>
+
+                <div class="sheet-body">
+                  <!-- Chips de estado horizontales -->
+                  <div class="sheet-group">
+                    <span class="sheet-group-label">Estado</span>
+                    <div class="sheet-chips-row">
+                      <span class="sheet-chip active"><span class="chip-dot dot-tramite"></span>En Trámite</span>
+                      <span class="sheet-chip active"><span class="chip-dot dot-observado"></span>Observado</span>
+                      <span class="sheet-chip"><span class="chip-dot dot-conforme"></span>Conforme</span>
+                    </div>
+                  </div>
+
+                  <!-- Sectores seleccionados táctiles -->
+                  <div class="sheet-group">
+                    <span class="sheet-group-label">Sectores Priorizados</span>
+                    <div class="sheet-option-item selected">
+                      <div class="opt-touch-check">✓</div>
+                      <span class="opt-label">Minería Metálica</span>
+                      <span class="opt-badge">42</span>
+                    </div>
+                    <div class="sheet-option-item selected">
+                      <div class="opt-touch-check">✓</div>
+                      <span class="opt-label">Hidrocarburos y Gas</span>
+                      <span class="opt-badge">28</span>
+                    </div>
+                  </div>
+
+                  <!-- Toggle táctil -->
+                  <div class="sheet-toggle-row">
+                    <span>Con Medidas Cautelares</span>
+                    <div class="mock-switch active"><span class="mock-switch-thumb"></span></div>
+                  </div>
+                </div>
+
+                <!-- Botón de acción touch full-width -->
+                <div class="sheet-footer">
+                  <button type="button" class="sheet-apply-btn">Aplicar Filtros (2)</button>
+                </div>
+
+                <!-- Barra de gestos inferior -->
+                <div class="phone-home-indicator"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -2532,7 +3000,7 @@
             </div>
             <div class="summary-text">
               <strong>Reactividad Angular</strong>
-              <span>Construido con Signals para actualización inmediata de listas y conteos sin lag.</span>
+              <span>Construido con Signals para actualización inmediata de listas y conteos sin lentitud.</span>
             </div>
           </div>
         </div>
@@ -2545,7 +3013,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 22: DIÁLOGOS MODALES — VARIANTES SEMÁNTICAS (MODALS)
+         HOJA 23: DIÁLOGOS MODALES — VARIANTES SEMÁNTICAS (MODALS)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2553,14 +3021,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 22 de 30</span>
+          <span class="meta-date">Hoja 25 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">22</div>
+          <div class="section-num">23</div>
           <div class="section-info">
             <h4>Diálogos Modales — Variantes Semánticas (Modals)</h4>
             <span>Feedback cromático instantáneo para acciones de usuario: Informativo, Éxito, Advertencia y Peligro
@@ -2613,8 +3081,7 @@
                 </div>
               </div>
               <div class="modal-mockup-body">
-                Se registró exitosamente la orden <strong>OS-2026-00142</strong> con 3 entregables para monitoreo en
-                cuenca.
+                Se registró exitosamente la orden <strong>OS-2026-00142</strong> con 3 entregables para monitoreo.
               </div>
               <div class="modal-mockup-footer">
                 <oefa-button variant="secondary" size="sm">Volver al Listado</oefa-button>
@@ -2668,7 +3135,7 @@
                 </div>
               </div>
               <div class="modal-mockup-body">
-                La orden <strong>OS-2026-00144</strong> será archivada y se liberará el saldo presupuestal en el SIAF.
+                La orden <strong>OS-2026-00144</strong> será archivada y se liberará el saldo presupuestal.
               </div>
               <div class="modal-mockup-footer">
                 <oefa-button variant="secondary" size="sm">Cancelar</oefa-button>
@@ -2687,7 +3154,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 23: DIÁLOGOS MODALES — TAMAÑOS & PROCESO (MODALS)
+         HOJA 24: DIÁLOGOS MODALES — TAMAÑOS & PROCESO (MODALS)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2695,18 +3162,18 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 23 de 30</span>
+          <span class="meta-date">Hoja 26 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">23</div>
+          <div class="section-num">24</div>
           <div class="section-info">
-            <h4>Diálogos Modales — Escalas de Tamaño & Modal de Proceso</h4>
-            <span>Modelos de gran capacidad: ficha técnica extensa, estado de carga bloqueante y escala
-              normalizada</span>
+            <h4>Diálogos Modales — Ficha de Detalle & Modal de Proceso</h4>
+            <span>Modelos de gran capacidad: visualización estructurada de expedientes y estado de carga bloqueante
+              asíncrono</span>
           </div>
         </div>
 
@@ -2759,8 +3226,8 @@
           <!-- Bloque 2: Modal de Proceso Bloqueante / Sincronización -->
           <div class="exec-interactive-card avoid-break">
             <div class="card-top">
-              <strong>Modal de Proceso (Loading / Batch)</strong>
-              <oefa-status-badge status="info" size="sm" label="[loading]='true'" />
+              <strong>Modal de Proceso (Sincronización / Lotes)</strong>
+              <oefa-status-badge status="info" size="sm" label='variant="info"' />
             </div>
             <p class="card-desc">
               Impide interacción del usuario mientras se ejecutan sincronizaciones pesadas o firmas digitales por lote.
@@ -2768,7 +3235,7 @@
             <div class="modal-exec-mockup">
               <div class="modal-mockup-header">
                 <div class="modal-icon-badge info">
-                  <oefa-icon name="refresh-cw" size="sm" />
+                  <oefa-icon name="info" size="sm" />
                 </div>
                 <div class="modal-mockup-titles">
                   <h5>Sincronizando con SIGED...</h5>
@@ -2784,9 +3251,9 @@
                 <div class="modal-progress-track">
                   <div class="modal-progress-fill"></div>
                 </div>
-                <div
-                  style="background: var(--oefa-surface-subtle); padding: 8px 12px; border-radius: var(--oefa-radius-sm); font-size: 0.7rem; color: var(--oefa-text-muted); margin-top: 8px;">
-                  ⚠️ <em>Por favor no cierre esta ventana mientras la operación está en curso.</em>
+                <div class="modal-notice-box">
+                  <oefa-icon name="alert" size="xs" />
+                  <span>Por favor, no cierre esta ventana mientras la operación esté en curso.</span>
                 </div>
               </div>
               <div class="modal-mockup-footer">
@@ -2809,7 +3276,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 24: DIÁLOGOS MODALES — VISOR COMPLETO & TAMAÑOS (MODALS)
+         HOJA 25: DIÁLOGOS MODALES — VISOR COMPLETO & TAMAÑOS (MODALS)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2817,14 +3284,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 24 de 30</span>
+          <span class="meta-date">Hoja 27 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">24</div>
+          <div class="section-num">25</div>
           <div class="section-info">
             <h4>Diálogos Modales — Visor Completo & Escala de Tamaños</h4>
             <span>Modos envolventes a pantalla completa, especificación de escala modular normalizada y resumen de
@@ -2846,18 +3313,21 @@
             <div class="modal-exec-mockup">
               <div class="modal-mockup-header" style="background: var(--oefa-surface-subtle);">
                 <div class="modal-icon-badge success" style="width: 32px; height: 32px;">
-                  <oefa-icon name="maximize-2" size="sm" />
+                  <oefa-icon name="document" size="sm" />
                 </div>
                 <div class="modal-mockup-titles">
                   <h5>Visor Institucional de Expedientes Digitales</h5>
-                  <span>EXP-2026-004812 · Fiscalización Ambiental Sector Minería y Energía</span>
+                  <span>2026-E01-004812 · Fiscalización Ambiental Sector Minería y Energía</span>
                 </div>
                 <span style="font-size: 0.85rem; color: var(--oefa-text-muted); cursor: pointer;">✕</span>
               </div>
               <div class="modal-mockup-body" style="padding: 16px 20px;">
                 <div
                   style="background: var(--oefa-surface-subtle); border: 2px dashed var(--oefa-border-color); border-radius: var(--oefa-radius-md); height: 95px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; font-size: 0.75rem; color: var(--oefa-text-secondary); text-align: center; padding: 8px;">
-                  <span>📄 <strong>Previsualización Integrada de Documentos PDF y Planos Ambientales</strong></span>
+                  <span style="display: inline-flex; align-items: center; gap: 6px;">
+                    <oefa-icon name="document" size="xs" color="var(--oefa-primary-root)" />
+                    <strong>Previsualización Integrada de Documentos PDF y Planos Ambientales</strong>
+                  </span>
                   <span style="font-size: 0.6875rem; color: var(--oefa-text-muted);">Área de renderizado de alta
                     densidad sin desbordamiento de pantalla (100vw / 100vh)</span>
                 </div>
@@ -2940,7 +3410,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 25: PANELES DESLIZANTES LATERALES (DRAWERS)
+         HOJA 26: PANELES DESLIZANTES LATERALES (DRAWERS)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -2948,14 +3418,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 25 de 30</span>
+          <span class="meta-date">Hoja 28 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">25</div>
+          <div class="section-num">26</div>
           <div class="section-info">
             <h4>Paneles Deslizantes Laterales (Drawers / Offcanvas)</h4>
             <span>Superficie lateral deslizante para inspección rápida de expedientes, historial de cambios y edición
@@ -2974,50 +3444,52 @@
               Permite revisar información en profundidad de un registro sin abandonar el listado ni perder el scroll
               actual.
             </p>
-            <div class="drawer-exec-mockup">
-              <div class="drawer-mockup-header">
-                <div class="drawer-header-left">
-                  <span class="drawer-mockup-badge">CONFORME</span>
-                  <div style="display: flex; flex-direction: column; gap: 2px;">
-                    <strong>OS-2026-00142 — Detalle de Expediente</strong>
-                    <span style="font-size: 0.72rem; color: var(--oefa-text-secondary);">Informe Técnico de Diagnóstico
-                      Situacional</span>
+            <div class="drawer-preview-stage">
+              <div class="drawer-overlay-backdrop"></div>
+              <div class="drawer-panel position-right size-md">
+                <div class="drawer-header">
+                  <div class="drawer-title-group">
+                    <span class="drawer-badge-num">OS-2026-00142</span>
+                    <div class="title-with-actions">
+                      <h3 class="drawer-title">Detalle de Expediente</h3>
+                    </div>
+                    <p class="drawer-subtitle">Informe Técnico de Diagnóstico Situacional</p>
                   </div>
+                  <oefa-icon-button variant="close" title="Cerrar panel (Esc)" ariaLabel="Cerrar panel lateral" />
                 </div>
-                <oefa-icon-button variant="close" size="sm" title="Cerrar panel (Esc)" ariaLabel="Cerrar panel" />
-              </div>
-              <div class="drawer-mockup-body">
-                <div class="drawer-detail-grid">
-                  <div class="detail-field">
-                    <span class="field-label">Proveedor</span>
-                    <span class="field-val">Servicios Ambientales del Sur</span>
-                  </div>
-                  <div class="detail-field">
-                    <span class="field-label">Monto Certificado</span>
-                    <span class="field-val" style="color: var(--oefa-primary-root); font-weight: 700;">S/
-                      48,500.00</span>
-                  </div>
-                </div>
-                <div class="drawer-timeline">
-                  <div class="timeline-step">
-                    <span class="timeline-bullet"></span>
-                    <div class="timeline-info">
-                      <strong>Conformidad Emitida</strong>
-                      <span>24/03/2026 · Firma digital registrada</span>
+                <div class="drawer-body">
+                  <div class="drawer-detail-grid">
+                    <div class="detail-field">
+                      <span class="field-label">Proveedor</span>
+                      <span class="field-val">Servicios Ambientales del Sur</span>
+                    </div>
+                    <div class="detail-field">
+                      <span class="field-label">Monto Certificado</span>
+                      <span class="field-val" style="color: var(--oefa-primary-root); font-weight: 700;">S/
+                        48,500.00</span>
                     </div>
                   </div>
-                  <div class="timeline-step">
-                    <span class="timeline-bullet" style="background: var(--oefa-border-color);"></span>
-                    <div class="timeline-info">
-                      <strong>Trámite de Devengado</strong>
-                      <span>Pendiente de envío a Contabilidad</span>
+                  <div class="drawer-timeline">
+                    <div class="timeline-step">
+                      <span class="timeline-bullet"></span>
+                      <div class="timeline-info">
+                        <strong>Conformidad Emitida</strong>
+                        <span>24/03/2026 · Firma digital registrada</span>
+                      </div>
+                    </div>
+                    <div class="timeline-step">
+                      <span class="timeline-bullet" style="background: var(--oefa-border-color);"></span>
+                      <div class="timeline-info">
+                        <strong>Trámite de Devengado</strong>
+                        <span>Pendiente de envío a Contabilidad</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div class="drawer-mockup-footer">
-                <oefa-button variant="secondary" size="sm">Cerrar</oefa-button>
-                <oefa-button variant="primary" size="sm" icon="download">Descargar Ficha</oefa-button>
+                <div class="drawer-footer">
+                  <oefa-button variant="secondary" size="sm">Cerrar</oefa-button>
+                  <oefa-button variant="primary" size="sm" icon="download">Descargar Ficha</oefa-button>
+                </div>
               </div>
             </div>
           </div>
@@ -3042,8 +3514,14 @@
                 Escape o cliquear fuera del panel.
               </div>
               <div
-                style="background: var(--oefa-surface-subtle); border: 1px solid var(--oefa-border-color); border-radius: var(--oefa-radius-sm); padding: 8px 12px; font-size: 0.72rem;">
-                <code>&lt;oefa-drawer [isOpen]="isOpen" title="Detalle" position="right" size="md" (closed)="onClose()"&gt;</code>
+                style="background: var(--oefa-surface-subtle); border: 1px solid var(--oefa-border-color); border-radius: var(--oefa-radius-sm); padding: 8px 12px; font-size: 0.70rem; font-family: var(--oefa-font-mono, monospace); line-height: 1.4; color: var(--oefa-text-primary); overflow-x: auto;">
+                <code>&lt;oefa-drawer [isOpen]="isOpen" title="Detalle" badge="OS-2026" position="right" size="md" (closed)="onClose()"&gt;<br>
+&nbsp;&nbsp;&lt;div class="content"&gt;...&lt;/div&gt;<br>
+&nbsp;&nbsp;&lt;div footer style="display: flex; gap: 8px; justify-content: flex-end;"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;oefa-button variant="secondary" (clicked)="onClose()"&gt;Cerrar&lt;/oefa-button&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;oefa-button variant="primary" icon="download"&gt;Descargar&lt;/oefa-button&gt;<br>
+&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/oefa-drawer&gt;</code>
               </div>
             </div>
           </div>
@@ -3052,7 +3530,7 @@
         <div class="catalog-exec-summary avoid-break" style="margin-top: 14px;">
           <div class="summary-col">
             <div class="summary-icon">
-              <oefa-icon name="sidebar" size="sm" />
+              <oefa-icon name="layout" size="sm" />
             </div>
             <div class="summary-text">
               <strong>Multiposición Flexible</strong>
@@ -3063,7 +3541,7 @@
           <div class="summary-divider"></div>
           <div class="summary-col">
             <div class="summary-icon">
-              <oefa-icon name="layout" size="sm" />
+              <oefa-icon name="layers" size="sm" />
             </div>
             <div class="summary-text">
               <strong>5 Tamaños Tipados</strong>
@@ -3074,7 +3552,7 @@
           <div class="summary-divider"></div>
           <div class="summary-col">
             <div class="summary-icon">
-              <oefa-icon name="lock" size="sm" />
+              <oefa-icon name="clipboard-check" size="sm" />
             </div>
             <div class="summary-text">
               <strong>Retención de Contexto</strong>
@@ -3091,7 +3569,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 26: ENCABEZADO DE PÁGINA Y NAVEGACIÓN (PAGE HEADER)
+         HOJA 27: ENCABEZADO DE PÁGINA Y NAVEGACIÓN (PAGE HEADER)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -3099,17 +3577,18 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 26 de 30</span>
+          <span class="meta-date">Hoja 29 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">26</div>
+          <div class="section-num">27</div>
           <div class="section-info">
             <h4>Encabezado de Página & Jerarquía Visual (Page Header)</h4>
-            <span>Molécula estructural que centraliza el h1 institucional, migas de pan interactivas y botones de acción
+            <span>Organismo estructural que centraliza el h1 institucional, migas de pan interactivas y botones de
+              acción
               principal</span>
           </div>
         </div>
@@ -3158,7 +3637,7 @@
           <div class="summary-divider"></div>
           <div class="summary-col">
             <div class="summary-icon">
-              <oefa-icon name="corner-up-left" size="sm" />
+              <oefa-icon name="arrow-left" size="sm" />
             </div>
             <div class="summary-text">
               <strong>Botón de Retorno</strong>
@@ -3168,7 +3647,7 @@
           <div class="summary-divider"></div>
           <div class="summary-col">
             <div class="summary-icon">
-              <oefa-icon name="sliders" size="sm" />
+              <oefa-icon name="layout" size="sm" />
             </div>
             <div class="summary-text">
               <strong>Ranura de Acciones</strong>
@@ -3186,7 +3665,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 27: TABLAS DE DATOS Y MATRICES (DATA TABLES & MATRIX)
+         HOJA 28: TABLAS DE DATOS Y MATRICES (DATA TABLES & MATRIX)
          ============================================================== -->
     <div class="pdf-page-container atom-page">
       <header class="doc-header">
@@ -3194,16 +3673,16 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 27 de 30</span>
+          <span class="meta-date">Hoja 30 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">27</div>
+          <div class="section-num">28</div>
           <div class="section-info">
-            <h4>Tablas de Datos & Matrices Matriciales (Data Tables & Matrix)</h4>
+            <h4>Tablas de Datos & Matrices Matriciales</h4>
             <span>Visualización tabular de expedientes masivos con ordenamiento por columnas, badges de estado y modo
               matriz compacto</span>
           </div>
@@ -3273,7 +3752,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 28: CABECERA INSTITUCIONAL Y SIDE RAIL (ORGANISMOS SHELL)
+         HOJA 29: CABECERA INSTITUCIONAL Y SIDE RAIL (ORGANISMOS SHELL)
          ============================================================== -->
     <div class="pdf-page-container organism-page pdf-page-break-before">
       <header class="doc-header">
@@ -3281,14 +3760,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 28 de 30</span>
+          <span class="meta-date">Hoja 31 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">28</div>
+          <div class="section-num">29</div>
           <div class="section-info">
             <h4>Cabecera Institucional (.oefa-header — Organismo Shell)</h4>
             <span>Top Header corporativo OEFA (64px), acrónimo oficial, toggle de tema oscuro/claro y menú de
@@ -3418,7 +3897,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 29: ARQUITECTURA DE NAVEGACIÓN LATERAL (RAIL & SUBMENÚ)
+         HOJA 30: ARQUITECTURA DE NAVEGACIÓN LATERAL (RAIL & SUBMENÚ)
          ============================================================== -->
     <div class="pdf-page-container organism-page pdf-page-break-before">
       <header class="doc-header">
@@ -3426,14 +3905,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 29 de 30</span>
+          <span class="meta-date">Hoja 32 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">29</div>
+          <div class="section-num">30</div>
           <div class="section-info">
             <h4>Arquitectura de Navegación Lateral: Rail (80px) & Submenú (260px)</h4>
             <span>Navegación M3 de dos niveles en sus tres estados operativos: Pinned (fijo), Floating (flotante) y
@@ -3749,7 +4228,7 @@
     </div>
 
     <!-- ==============================================================
-         HOJA 30: RESPONSIVE BREAKPOINTS Y REGLAS DE ADAPTACIÓN
+         HOJA 31: RESPONSIVE BREAKPOINTS Y REGLAS DE ADAPTACIÓN
          ============================================================== -->
     <div class="pdf-page-container organism-page pdf-page-break-before">
       <header class="doc-header">
@@ -3757,14 +4236,14 @@
           <img src="images/logo_oefa_primary.svg" alt="OEFA" class="brand-logo-img" />
         </div>
         <div class="doc-meta">
-          <span class="meta-date">Hoja 30 de 30</span>
+          <span class="meta-date">Hoja 33 de 34</span>
           <span class="meta-tag">OFICINA DE TECNOLOGÍAS DE LA INFORMACIÓN</span>
         </div>
       </header>
 
       <section class="doc-section">
         <div class="section-title">
-          <div class="section-num">30</div>
+          <div class="section-num">31</div>
           <div class="section-info">
             <h4>Sistema de Rejilla & Responsive Breakpoints</h4>
             <span>Matriz oficial de puntos de corte responsivos OEFA, reglas de adaptación por componente y
@@ -3870,8 +4349,10 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px;">
               <div
                 style="padding: 8px 10px; background: var(--oefa-surface-subtle); border-radius: var(--oefa-radius-sm); border: 1px solid var(--oefa-border-color);">
-                <div style="font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
-                  📊 Tablas y Matrices (.data-table / &lt;oefa-table&gt;)
+                <div
+                  style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
+                  <oefa-icon name="table" size="sm" color="var(--oefa-primary-root)" />
+                  <span>Tablas y Matrices (.data-table / &lt;oefa-table&gt;)</span>
                 </div>
                 <span
                   style="font-size: 0.6875rem; color: var(--oefa-text-secondary); line-height: 1.3; display: block;">
@@ -3882,8 +4363,10 @@
 
               <div
                 style="padding: 8px 10px; background: var(--oefa-surface-subtle); border-radius: var(--oefa-radius-sm); border: 1px solid var(--oefa-border-color);">
-                <div style="font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
-                  🖼️ Modales y Drawers (&lt;oefa-modal&gt; / &lt;oefa-drawer&gt;)
+                <div
+                  style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
+                  <oefa-icon name="sidebar" size="sm" color="var(--oefa-primary-root)" />
+                  <span>Modales y Drawers (&lt;oefa-modal&gt; / &lt;oefa-drawer&gt;)</span>
                 </div>
                 <span
                   style="font-size: 0.6875rem; color: var(--oefa-text-secondary); line-height: 1.3; display: block;">
@@ -3894,8 +4377,10 @@
 
               <div
                 style="padding: 8px 10px; background: var(--oefa-surface-subtle); border-radius: var(--oefa-radius-sm); border: 1px solid var(--oefa-border-color);">
-                <div style="font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
-                  🪜 Stepper y Formularios (&lt;oefa-stepper&gt; / &lt;oefa-button&gt;)
+                <div
+                  style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
+                  <oefa-icon name="sliders" size="sm" color="var(--oefa-primary-root)" />
+                  <span>Stepper y Formularios (&lt;oefa-stepper&gt; / &lt;oefa-button&gt;)</span>
                 </div>
                 <span
                   style="font-size: 0.6875rem; color: var(--oefa-text-secondary); line-height: 1.3; display: block;">
@@ -3906,8 +4391,10 @@
 
               <div
                 style="padding: 8px 10px; background: var(--oefa-surface-subtle); border-radius: var(--oefa-radius-sm); border: 1px solid var(--oefa-border-color);">
-                <div style="font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
-                  👆 Accesibilidad Táctil (WCAG 2.2 SC 2.5.8)
+                <div
+                  style="display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 700; color: var(--oefa-text-primary); margin-bottom: 2px;">
+                  <oefa-icon name="smartphone" size="sm" color="var(--oefa-primary-root)" />
+                  <span>Accesibilidad Táctil (WCAG 2.2 SC 2.5.8)</span>
                 </div>
                 <span
                   style="font-size: 0.6875rem; color: var(--oefa-text-secondary); line-height: 1.3; display: block;">
@@ -3956,6 +4443,65 @@
         <div>Sistema de Diseño Institucional OEFA</div>
         <div>Responsive Breakpoints & Rejilla Adaptativa</div>
       </footer>
+    </div>
+
+    <!-- ==============================================================
+         HOJA 32: CRÉDITOS & EQUIPO RESPONSABLE
+         ============================================================== -->
+    <div class="pdf-page-container credits-page">
+      <!--       <header class="doc-header">
+        <div class="header-brand"></div>
+        <div class="doc-meta">
+          <span class="meta-date">Hoja 34 de 34</span>
+          <span class="meta-tag">CRÉDITOS &amp; RECONOCIMIENTOS</span>
+        </div>
+      </header> -->
+
+      <section class="doc-section credits-section">
+        <div class="credits-book-layout">
+          <!-- Espacio izquierdo libre (respiro editorial estilo libro) -->
+          <div class="credits-book-spacer"></div>
+
+          <!-- Columna derecha: Colofón editorial -->
+          <div class="credits-book-colophon">
+            <!-- Logo OEFA arriba -->
+            <div class="colophon-logo-wrap">
+              <img src="images/logo_oefa_primary.svg" alt="OEFA" class="colophon-logo" />
+            </div>
+
+            <!-- Reconocimiento UX -->
+            <div class="colophon-block">
+              <span class="colophon-label">Propuesta y diseño</span>
+              <h3 class="colophon-name">Jerson Brayan Alvarez Ambrosio</h3>
+              <p class="colophon-role">Asistente en Diseño de Experiencia de Usuario (UX)</p>
+              <p class="colophon-area">Oficina de Tecnologías de la Información — OEFA</p>
+            </div>
+
+            <!-- Stack Tecnológico -->
+            <div class="colophon-block">
+              <span class="colophon-label">Stack Tecnológico &amp; Arquitectura</span>
+              <div class="colophon-stack-chips">
+                <span class="colophon-chip">Angular 22</span>
+                <span class="colophon-chip">TypeScript 6</span>
+                <span class="colophon-chip">SCSS Tokens</span>
+                <span class="colophon-chip">WCAG 2.2 AA</span>
+                <span class="colophon-chip">Atomic Design</span>
+              </div>
+            </div>
+
+            <!-- Información Editorial y Legal -->
+            <div class="colophon-block colophon-legal">
+              <!--               <span class="colophon-label">Entidad</span> -->
+              <p class="colophon-copy">© 2026 Organismo de Evaluación y Fiscalización Ambiental — OEFA</p>
+              <p class="colophon-desc">
+                Documento técnico institucional de uso interno. Desarrollado por la Oficina de Tecnologías de la
+                Información (OTI).
+              </p>
+              <p class="colophon-version">v1.0.0</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
   </div>

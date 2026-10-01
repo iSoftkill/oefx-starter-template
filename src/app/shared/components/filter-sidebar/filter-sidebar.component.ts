@@ -216,11 +216,11 @@ export interface FilterStatusOption {
         @if (showSpecialConditions) {
           <div class="fs-group">
             <div class="fs-section-title-wrap">
-              <span class="fs-group-label">Condiciones Especiales</span>
+              <span class="fs-group-label">{{ specialConditionsTitle }}</span>
             </div>
             <div class="fs-toggles-list">
               <label class="fs-toggle-row">
-                <span class="fs-toggle-text">Solo medidas cautelares</span>
+                <span class="fs-toggle-text">{{ flagMedidasLabel }}</span>
                 <div class="oefa-switch-wrap">
                   <input
                     type="checkbox"
@@ -232,7 +232,7 @@ export interface FilterStatusOption {
                 </div>
               </label>
               <label class="fs-toggle-row">
-                <span class="fs-toggle-text">Solo alertas críticas</span>
+                <span class="fs-toggle-text">{{ flagAlertasLabel }}</span>
                 <div class="oefa-switch-wrap">
                   <input
                     type="checkbox"
@@ -743,6 +743,9 @@ export class OefaFilterSidebarComponent {
   @Input() searchPlaceholder: string = 'Buscar sector...';
   @Input() searchQuery: string = '';
   @Input() showSpecialConditions: boolean = true;
+  @Input() specialConditionsTitle: string = 'Condiciones Especiales';
+  @Input() flagMedidasLabel: string = 'Solo medidas cautelares';
+  @Input() flagAlertasLabel: string = 'Solo alertas críticas';
   @Input() flagMedidas: boolean = false;
   @Input() flagAlertas: boolean = false;
   @Input() isOpenMobile: boolean = false;

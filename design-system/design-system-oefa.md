@@ -53,6 +53,20 @@ Visualización en vivo disponible en la ruta: `/design-system/colores`.
 ### 2.4 Regla de contraste
 Todo texto/ícono sobre color exige verificación real de contraste (4.5:1 texto normal, 3:1 texto grande ≥18px o ícono/gráfico) — no asumir por apariencia. Los tokens ya vienen verificados en `design-tokens.json`.
 
+### 2.5 Fondos de Alto Contraste y Hero Overlay (Portales y Vistas Públicas)
+Para banners hero institucionales y cabeceras de portales públicos:
+1. **Modo Claro (Predeterminado):**
+   - **Fondo / Overlay:** Gradiente pastel suave `--oefa-primary-container` (`#EEF4FF` a `#F0FDF4`) con `.hero-overlay` claro (`--oefa-portal-hero-overlay`).
+   - **Eyebrow:** Token `--oefa-primary-root` (`#144AA7`) o `--oefa-secondary-ui-safe` (`#2C817A`) con ratio > 6.8:1.
+   - **Título principal:** Token `--oefa-text-primary` (`#1D1D1B`) con acento degradado institucional `--oefa-primary-root` a `--oefa-secondary-ui-safe` (ratio > 14:1).
+   - **Bajada / Párrafo:** Token `--oefa-text-secondary` (`#334155`) con ratio > 9:1.
+   - **Stat Pills:** Tarjetas píldora con fondo blanco translúcido (`rgba(255, 255, 255, 0.85)`), borde sutil `--oefa-border-color` y texto principal.
+2. **Modo Oscuro (Inversión automática):**
+   - **Fondo / Overlay:** Superficie profunda `--oefa-portal-hero-bg: #070E1A` con overlay gradiente oscuro 96%.
+   - **Tipografía:** Inversión a textos blancos y acentos turquesas luminosos (`--oefa-secondary-70` / `#8DD8D2`).
+   - **Transición:** Conmutación fluida mediante `transition: background 0.3s ease, color 0.3s ease`.
+3. **Uso con imagen/fotografía:** Si se incluye fotografía de fondo (`.hero-backdrop-img`), debe mantenerse a baja opacidad (`opacity: 0.18–0.25`) tras el overlay para no interferir en la relación de contraste.
+
 ---
 
 ## 3. Tipografía
@@ -113,7 +127,7 @@ Componente standalone desacoplado disponible en `src/app/shared/components/icon/
 #### API del Componente
 | Propiedad | Tipo | Default | Descripción |
 |---|---|---|---|
-| `[name]` | `string` | `''` | Clave del ícono en el catálogo (`factory`, `droplets`, `scale`, `leaf`, `close`, `check`, `search`, `alert`, `info`, `chart`, `calendar`, `plus`, etc.). |
+| `[name]` | `string` | `''` | Clave del ícono en el catálogo (`home`, `grid`, `layers`, `layout`, `tag`, `zap`, `chart`, `factory`, `droplets`, `scale`, `leaf`, `close`, `check`, `search`, `alert`, `info`, `calendar`, `plus`, `table`, `smartphone`, `check-circle`, `sidebar`, `sliders`, etc.). |
 | `[size]` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl' \| number` | `'md'` | Escala semántica (`xs`: 14px, `sm`: 16px, `md`: 20px, `lg`: 24px, `xl`: 32px) o valor numérico en `px`. |
 | `[strokeWidth]` | `number` | `2` | Grosor del trazo vectorial SVG. |
 | `[color]` | `string` | `'currentColor'` | Color de trazo. Acepta variables CSS institucionales (`var(--oefa-*)`). |
@@ -235,7 +249,7 @@ Permite pasar cualquier vector SVG externo preservando el dimensionamiento autom
     - El color del texto cambia a `var(--oefa-primary-root)` para acentuar el objetivo interactivo.
   - **Estado Seleccionado / Activo (`.selected` / `.active`)**:
     - **Fondo**: `var(--oefa-primary-container)` (`#EEF4FF` en claro / `#103D89` en oscuro).
-    - **Borde Perimetral Limpio**: `1px solid var(--oefa-primary-container-hc)` (`#A4C1F4` en claro / `#23529E` en oscuro) uniforme en todos sus lados, sin `border-left` grueso para mantener una estética limpia y simétrica.
+    - **Borde Perimetral Limpio**: `1px solid var(--oefa-primary-container-hc)` (`#A4C1F4` en claro / `#4984E9` en oscuro) uniforme en todos sus lados, sin `border-left` grueso para mantener una estética limpia y simétrica.
   - **Títulos Separadores de Grupo (`.group-header`, `.group-title`) — Opción A**:
     - **Comportamiento Fijo**: Son categorías estructurales permanentes; **no llevan flecha de colapso** para evitar falsas expectativas de interacción.
     - **Tipografía Micro-Overline**: `font-size: 0.6875rem` (11px), `font-weight: 700`, `text-transform: uppercase`, `letter-spacing: 0.08em`.
@@ -305,6 +319,10 @@ Permite pasar cualquier vector SVG externo preservando el dimensionamiento autom
   - **REGLA ARQUITECTURAL**: En formularios de autenticación o ingreso de datos críticos, los errores deben mostrarse en `.oefa-alert-banner` inline (permanente junto al input), **NUNCA** sustituirse exclusivamente por toasts flotantes temporales.
   - Atributos obligatorios: `role="alert"`, `aria-live="assertive"`, `tabindex="-1"`.
 - **Estados Deshabilitados**: Superficie atenuada (`--oefa-surface-muted`), borde suave (`--oefa-border-color-subtle`), texto muted (`--oefa-text-muted`) y cursor `not-allowed`.
+- **Indicador de Obligatoriedad y Accesibilidad (WCAG 2.2 SC 3.3.2 - Nivel A)**:
+  - **Problema de Accesibilidad:** Los lectores de pantalla (NVDA, JAWS, VoiceOver) omiten por defecto los signos ortográficos como asteriscos `*`. Por ello, un asterisco meramente visual deja a usuarios con discapacidad visual sin conocer qué campos son obligatorios.
+  - **Sistemas Internos / Backoffice (`requiredMode="asterisk"` - Predeterminado):** Para evitar la saturación visual en formularios de alta densidad operativa (15-40 campos por vista), se utiliza el asterisco rojo `*` con `aria-hidden="true"` complementado obligatoriamente con texto oculto accesible `<span class="sr-only"> (obligatorio)</span>` y el atributo `aria-required="true"` en el control.
+  - **Formularios a la Ciudadanía / Trámites Públicos (`requiredMode="text"`):** En portales públicos (Gob.pe, Mesa de Partes Virtual, denuncias ambientales), es normativo utilizar la indicación textual explícita `(Obligatorio)` en lugar de simbología para evitar ambigüedades cognitivas.
 
 
 ### 8.5 Segmented Switch y Conmutadores de Modo (`<oefa-segmented-switch>`, `.segmented-switch`, `.view-switch-group`)
@@ -1004,7 +1022,26 @@ En pantallas móviles (≤ 768px), los árboles de 3 o más niveles (*Padre → 
 
 ---
 
-## 13. Motion & Micro-interacciones (Material 3 Expressive)
+## 13. Border Radius & Geometría (Shape Tokens)
+
+### 13.1 Escala Oficial de Redondez Institucional
+OEFA normativiza una escala geométrica jerárquica de 5 tokens CSS para garantizar armonía visual y consistencia en todas las plataformas:
+
+| Token CSS | Valor | Uso Normado | Ejemplos de Componentes |
+|---|---|---|---|
+| `--oefa-radius-sm` | `6px` | Micro-elementos y esquinas sutiles | Badges de estado (`<oefa-status-badge>`), tooltips, checkboxes, tags de código, inputs compactos. |
+| `--oefa-radius-md` | `10px` | Estándar operativo interactivo | Botones institucionales (`<oefa-button>`), campos de formulario (`<oefa-form-field>`), selects, switch segmentado. |
+| `--oefa-radius-lg` | `16px` | Contenedores estructurales medianos | Modales (`<oefa-modal>`), drawers laterales en móvil, contenedores agrupadores y tarjetas estándar. |
+| `--oefa-radius-xl` | `24px` | Contenedores panorámicos y tarjetas macro | Bento KPI Tiles (`<oefa-bento-kpi-tile>`), tarjetas héroe y paneles dashboard. |
+| `--oefa-radius-full` | `9999px` | Elementos píldora y circulares | Status badges circulares, chips de filtro, pastillas de selección y avatares. |
+
+### 13.2 Reglas de Concentricidad y Jerarquía
+1. **Regla concéntrica:** Un elemento hijo anidado dentro de un contenedor nunca debe poseer un radio de curvatura mayor al de su contenedor padre (`radio_hijo <= radio_padre`).
+2. **Prohibición de valores arbitrarios:** Queda prohibido hardcodear valores en píxeles (`4px`, `8px`, `12px`, `20px`) sin vincularlos a los tokens estandarizados del sistema.
+
+---
+
+## 14. Motion & Micro-interacciones (Material 3 Expressive)
 
 ### 13.1 Filosofía de Movimiento Institucional
 El movimiento en OEFA cumple un rol funcional de orientación y feedback táctil; no es meramente decorativo. Sigue los lineamientos de **Material 3 Expressive**:
@@ -1122,6 +1159,56 @@ Tarjeta de catálogo institucional para exploración de sistemas, módulos y tab
 | `[actionText]` | `string` | Texto del botón (por defecto 'Abrir'). |
 | `(cardClick)` | `EventEmitter<void>` | Disparado al presionar la tarjeta completa. |
 | `(actionClick)` | `EventEmitter<Event>` | Disparado al pulsar el botón de acción específico. |
+
+---
+
+### 15.3 Process Card (`<oefa-process-card>`)
+
+#### Propósito y Estructura
+Tarjeta de alto impacto visual para portales y páginas principales (landing) que presentan procesos institucionales (Estratégicos, Misionales, Apoyo):
+- **Capa fotográfica de fondo (`bgImage`):** Soporta fotografía contextualizada con sujeto enfocado hacia la derecha. Si no se pasa imagen, despliega un degradado institucional limpio y estilizado.
+- **Degradado protector direccional:** Degradado horizontal de 0% a 100% que preserva máxima solidez a la izquierda (garantizando ratio WCAG AAA > 12:1 en textos blancos) y transparencia hacia la derecha para apreciar la imagen.
+- **Badge circular de icono:** Círculo vibrante de 58px con icono concéntrico o icono semántico.
+- **Título en 2 líneas:** Tipografía Poppins ExtraBold (`1.5rem`) de gran legibilidad.
+- **CTA claro:** Texto y flecha interactiva con animación fluida `translateX(6px)` en hover.
+
+#### Especificación de Imágenes Recomendadas
+| Dimensión Ideal | Relación de Aspecto | Formato Recomendado | Peso Máximo | Composición |
+|---|---|---|---|---|
+| **800 x 400 px** (o 1000 x 500 px @2x) | **2:1** | WebP / JPG optimizado | 50 KB – 90 KB | Sujeto principal (personas, edificio, mapa) ubicado en la **mitad derecha**. |
+
+#### API del Componente
+| Propiedad | Tipo | Predeterminado | Descripción |
+|---|---|---|---|
+| `[title]` | `string` | `''` | Título del proceso (admite salto de línea `\n`). |
+| `[description]` | `string` | `''` | Párrafo breve descriptivo. |
+| `[actionText]` | `string` | `'Explorar'` | Texto del enlace de acción inferior. |
+| `[variant]` | `'estrategico' \| 'misional' \| 'apoyo' \| 'custom'` | `'estrategico'` | Variante temática institucional. |
+| `[theme]` | `'dark' \| 'light'` | `'dark'` | Modo visual: `'dark'` (degradado intenso con texto blanco) o `'light'` (inverso: degradado suave/pastel estilo Bento KPI con textos oscuros). |
+| `[bgImage]` | `string` | `''` | URL de la imagen de fondo (opcional). |
+| `[icon]` | `string` | `''` | Clave de icono en `<oefa-icon>`. Si no se especifica, usa el icono concéntrico institucional. |
+| `[iconBg]` | `string` | `''` | Color de fondo del círculo del icono. |
+| `[customGradient]` | `string` | `''` | Sobrescritura de degradado personalizada. |
+| `(cardClick)` | `EventEmitter<void>` | — | Emitido al hacer clic en cualquier punto de la tarjeta. |
+| `(actionClick)` | `EventEmitter<void>` | — | Emitido al pulsar la acción. |
+
+---
+
+### 15.4 Split KPI & Highlights (50% / 50%)
+
+#### Propósito y Estructura
+Patrón de presentación en dos columnas de ancho equivalente (`1fr 1fr`) para páginas de inicio institucional:
+- **Columna 1: Tarjeta "OEFA en Cifras":**
+  - **Fondo:** `var(--oefa-primary-container)` (`#EEF4FF`) con borde `var(--oefa-primary-90)` (`#D1E0FA`).
+  - **Título:** Tipografía Poppins ExtraBold en `var(--oefa-primary-on-container)` (`#002463`).
+  - **Fila de métricas divididas:** 4 columnas distribuidas uniformemente con divisores verticales en `var(--oefa-primary-80)` (`#A4C1F4`).
+  - **Iconografía:** Acento secundario institucional `var(--oefa-secondary-root)` (`#44BFB5`).
+  - **Números clave:** Poppins ExtraBold 44px en `var(--oefa-primary-on-container)` (`#002463`).
+  - **Etiquetas:** Inter SemiBold en `var(--oefa-primary-30)` (`#103D89`) para cumplir ratio WCAG AAA > 7.5:1.
+- **Columna 2: Tarjeta "Destacados":**
+  - **Fondo:** Superficie `var(--oefa-surface-card)` (`#FFFFFF`) con borde `var(--oefa-border-color)`.
+  - **Lista de accesos directos:** Elementos con badge de fecha institucional (`var(--oefa-primary-container)`), categoría en `var(--oefa-primary-root)`, hover interactivo con translación horizontal y flecha de avance.
+  - **Modo Oscuro:** Adaptación automática a `var(--oefa-neutral-900)` y `var(--oefa-neutral-800)` con textos de alto contraste.
 
 ---
 

@@ -170,7 +170,7 @@ export interface BentoChipConfig {
   `,
   styles: [`
     .bento-kpi-card {
-      border-radius: var(--oefa-radius-xl, 20px);
+      border-radius: var(--oefa-radius-xl, 24px);
       padding: 20px;
       border: 1px solid var(--oefa-border-color);
       display: flex;

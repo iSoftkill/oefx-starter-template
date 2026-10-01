@@ -193,6 +193,77 @@ export const OEFA_ICON_SIZES: Record<'xs' | 'sm' | 'md' | 'lg' | 'xl', number> =
               <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/>
             </svg>
           }
+          @case ('home') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+          }
+          @case ('grid') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="7" height="7" x="3" y="3" rx="1"/><rect width="7" height="7" x="14" y="3" rx="1"/><rect width="7" height="7" x="14" y="14" rx="1"/><rect width="7" height="7" x="3" y="14" rx="1"/>
+            </svg>
+          }
+          @case ('layers') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/>
+            </svg>
+          }
+          @case ('layout') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+            </svg>
+          }
+          @case ('tag') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12.586 2.586A2 2 0 0 0 11.172 2H4a2 2 0 0 0-2 2v7.172a2 2 0 0 0 .586 1.414l8.704 8.704a2.426 2.426 0 0 0 3.42 0l6.58-6.58a2.426 2.426 0 0 0 0-3.42z"/><circle cx="7.5" cy="7.5" r=".5" fill="currentColor"/>
+            </svg>
+          }
+          @case ('zap') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+            </svg>
+          }
+          @case ('table') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 3v18"/><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/>
+            </svg>
+          }
+          @case ('smartphone') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/>
+            </svg>
+          }
+          @case ('check-circle') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/>
+            </svg>
+          }
+          @case ('sidebar') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/>
+            </svg>
+          }
+          @case ('sliders') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="4" x2="4" y1="21" y2="14"/><line x1="4" x2="4" y1="10" y2="3"/><line x1="12" x2="12" y1="21" y2="12"/><line x1="12" x2="12" y1="8" y2="3"/><line x1="20" x2="20" y1="21" y2="16"/><line x1="20" x2="20" y1="12" y2="3"/><line x1="2" x2="6" y1="14" y2="14"/><line x1="10" x2="14" y1="8" y2="8"/><line x1="18" x2="22" y1="16" y2="16"/>
+            </svg>
+          }
+          @case ('users') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          }
+          @case ('building') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><path d="M9 22v-4h6v4"/><path d="M8 6h.01"/><path d="M16 6h.01"/><path d="M12 6h.01"/><path d="M12 10h.01"/><path d="M12 14h.01"/><path d="M16 10h.01"/><path d="M16 14h.01"/><path d="M8 10h.01"/><path d="M8 14h.01"/>
+            </svg>
+          }
+          @case ('code') {
+            <svg viewBox="0 0 24 24" [attr.stroke-width]="strokeWidth" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+            </svg>
+          }
+
           @default {
             @if (name) {
               <!-- Fallback cuando no coincide con un icono específico -->

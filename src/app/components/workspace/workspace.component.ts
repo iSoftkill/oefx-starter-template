@@ -18,6 +18,10 @@ export class WorkspaceComponent {
   navService = inject(NavigationService);
   private router = inject(Router);
 
+  isStandaloneRoute(): boolean {
+    return this.router.url.includes('/login') || this.router.url.includes('/pin-demo');
+  }
+
   isLoginRoute(): boolean {
     return this.router.url.includes('/login');
   }

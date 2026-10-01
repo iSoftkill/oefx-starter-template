@@ -237,6 +237,12 @@ export class NavigationService {
           groupName: '4. PLANTILLAS Y LAYOUT (TEMPLATES)',
           items: [
             {
+              id: 'ds_layouts',
+              label: 'Arquitectura de Layouts (Interno vs Portal)',
+              route: '/design-system/layouts',
+              badge: 'Nuevo'
+            },
+            {
               id: 'ds_navegacion',
               label: 'Cabecera y Sidebar Rail',
               route: '/design-system/navegacion'
@@ -245,6 +251,12 @@ export class NavigationService {
               id: 'ds_responsividad',
               label: 'Responsividad y Breakpoints',
               route: '/design-system/responsividad'
+            },
+            {
+              id: 'ds_pin_demo',
+              label: 'Maqueta Portal PIN (Vista Completa)',
+              route: '/pin-demo',
+              badge: 'Portal'
             }
           ]
         }

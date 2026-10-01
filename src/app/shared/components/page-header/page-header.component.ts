@@ -18,7 +18,7 @@ export interface BreadcrumbItem {
   standalone: true,
   imports: [CommonModule, RouterModule, OefaStatusBadgeComponent],
   template: `
-    <header class="oefa-page-header" role="banner">
+    <header class="oefa-page-header">
       @if (breadcrumbs && breadcrumbs.length > 0) {
         <nav class="breadcrumb-nav" aria-label="Ruta de navegación">
           <ol class="breadcrumb-list">
@@ -127,7 +127,7 @@ export interface BreadcrumbItem {
 
       &:hover {
         text-decoration: underline;
-        color: var(--oefa-primary-hover, #0e3478);
+        color: var(--oefa-primary-hover, var(--oefa-primary-root));
       }
 
       &:focus-visible {
@@ -138,7 +138,7 @@ export interface BreadcrumbItem {
     }
 
     .breadcrumb-separator {
-      color: var(--oefa-text-disabled, #94a3b8);
+      color: var(--oefa-text-muted, #94a3b8);
       user-select: none;
     }
 
@@ -217,7 +217,9 @@ export interface BreadcrumbItem {
     }
 
     .header-extra {
-      empty-cells: hide;
+      &:empty {
+        display: none;
+      }
     }
 
     @media (max-width: 768px) {

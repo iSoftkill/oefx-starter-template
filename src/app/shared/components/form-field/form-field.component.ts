@@ -25,7 +25,12 @@ import { CommonModule } from '@angular/common';
         <label class="form-label">
           {{ label }}
           @if (required) {
-            <span class="required-indicator" aria-hidden="true">*</span>
+            @if (requiredMode === 'text') {
+              <span class="required-text">(Obligatorio)</span>
+            } @else {
+              <span class="required-indicator" aria-hidden="true">*</span>
+              <span class="sr-only"> (obligatorio)</span>
+            }
           }
         </label>
       }
@@ -46,6 +51,7 @@ import { CommonModule } from '@angular/common';
 export class OefaFormFieldComponent {
   @Input() label = '';
   @Input() required = false;
+  @Input() requiredMode: 'asterisk' | 'text' = 'asterisk';
   @Input() help = '';
   @Input() error = '';
 }

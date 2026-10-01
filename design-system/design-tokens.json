@@ -157,7 +157,9 @@
           "input": "#FFFFFF",
           "border": "#E2E8F0",
           "borderSubtle": "#F1F5F9",
-          "loginOverlay": "rgba(0, 0, 0, 0.55)"
+          "loginOverlay": "rgba(0, 0, 0, 0.55)",
+          "portalHeroBg": "linear-gradient(135deg, #EEF4FF 0%, #E2EDFC 50%, #F0FDF4 100%)",
+          "portalHeroOverlay": "linear-gradient(135deg, rgba(238, 244, 255, 0.92) 0%, rgba(226, 237, 252, 0.88) 50%, rgba(240, 253, 244, 0.90) 100%)"
         },
         "text": {
           "primary": "#1D1D1B",
@@ -218,7 +220,9 @@
           "input": "#0F172A",
           "border": "#334155",
           "borderSubtle": "#1E293B",
-          "loginOverlay": "linear-gradient(135deg, rgba(11, 17, 32, 0.88) 0%, rgba(5, 20, 46, 0.78) 100%)"
+          "loginOverlay": "linear-gradient(135deg, rgba(11, 17, 32, 0.88) 0%, rgba(5, 20, 46, 0.78) 100%)",
+          "portalHeroBg": "#070E1A",
+          "portalHeroOverlay": "linear-gradient(135deg, rgba(7, 14, 26, 0.96) 0%, rgba(11, 24, 46, 0.92) 50%, rgba(4, 9, 18, 0.98) 100%)"
         },
         "text": {
           "primary": "#F8FAFC",
@@ -327,6 +331,7 @@
     "md": { "value": "768px", "token": "--oefa-breakpoint-md", "target": "Tablet vertical", "behavior": "Menú lateral colapsable / drawer, scroll horizontal táctil en tablas." },
     "lg": { "value": "1024px", "token": "--oefa-breakpoint-lg", "target": "Tablet horizontal / Laptop", "behavior": "Sidebar fijo (pinned), layout login conmuta a 1 columna centrada sin hero lateral." },
     "xl": { "value": "1280px", "token": "--oefa-breakpoint-xl", "target": "Desktop", "behavior": "Layout completo sin scroll horizontal forzado." },
+    "portalMaxWidth": { "value": "1920px", "token": "--oefa-portal-max-width", "target": "Portales Analíticos / GIS / Tableros", "behavior": "Tope panorámico centrado para mapas y dashboards sin distorsión." },
     "touchTarget": { "minSize": "44px", "wcagAbsoluteMin": "24px", "standard": "WCAG 2.2 SC 2.5.8" }
   },
 
@@ -363,6 +368,15 @@
         "uso": "Contenedores interactivos de selección o destino (bento, catalog, selection, launcher, dropzone)."
       }
     }
+  },
+
+  "radii": {
+    "_descripcion": "Escala oficial de border-radius institucional para componentes, contenedores y micro-elementos OEFA.",
+    "sm": { "value": "6px", "token": "--oefa-radius-sm", "uso": "Badges, tooltips, checkboxes, tags de código y micro-inputs." },
+    "md": { "value": "10px", "token": "--oefa-radius-md", "uso": "Botones estándar, campos de formulario, selects, conmutadores segmentados (Estándar Operativo)." },
+    "lg": { "value": "16px", "token": "--oefa-radius-lg", "uso": "Modales, cabeceras de drawer, contenedores principales y tarjetas agrupadoras." },
+    "xl": { "value": "24px", "token": "--oefa-radius-xl", "uso": "Bento KPI Tiles, tarjetas héroe y paneles panorámicos." },
+    "full": { "value": "9999px", "token": "--oefa-radius-full", "uso": "Pills de estado, chips de filtro, avatares y botones circulares." }
   },
 
   "components": {

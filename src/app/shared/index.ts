@@ -37,6 +37,8 @@ export { OefaKpiCardComponent } from './components/kpi-card/kpi-card.component';
 export { OefaBentoKpiTileComponent } from './components/bento-kpi-tile/bento-kpi-tile.component';
 export { OefaCatalogCardComponent } from './components/catalog-card/catalog-card.component';
 export { OefaDotBadgeComponent } from './components/dot-badge/dot-badge.component';
+export { OefaFilterSidebarComponent } from './components/filter-sidebar/filter-sidebar.component';
+export { OefaProcessCardComponent, type ProcessCardVariant } from './components/process-card/process-card.component';
 
 // Utils & Types
 export { getStatusBadgeClass, getStatusLabel } from './utils/status.utils';
@@ -56,3 +58,4 @@ export type { SkeletonVariant } from './components/skeleton/skeleton.component';
 export type { ChipVariant } from './components/chip/chip.component';
 export type { TableColumn, SortDirection, TableDensity } from './components/table/table.component';
 export type { OefaDotBadgeColor, OefaDotBadgeSize } from './components/dot-badge/dot-badge.component';
+export type { FilterOption, FilterGroupItem, FilterStatusOption } from './components/filter-sidebar/filter-sidebar.component';
