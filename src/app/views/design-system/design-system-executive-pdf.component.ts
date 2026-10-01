@@ -28,9 +28,6 @@ import { OefaSpinnerComponent } from '../../shared/components/spinner/spinner.co
 import { OefaAppLauncherComponent } from '../../shared/components/app-launcher/app-launcher.component';
 import { UserMenuComponent } from '../../shared/components/user-menu/user-menu.component';
 
-// @ts-ignore
-import html2pdf from 'html2pdf.js';
-
 @Component({
   selector: 'app-design-system-executive-pdf',
   standalone: true,
@@ -195,59 +192,25 @@ export class DesignSystemExecutivePdfComponent {
     { code: 'ORD-2026-00145', provider: 'GEO-CONSULTORES AMBIENTALES S.R.L.', emissionDate: '2026-03-20', amount: 34200.00, status: 'BORRADOR' }
   ];
 
-  async exportToPdf(): Promise<void> {
-    // Modo nativo de impresión/guardar PDF (0 KB en bundle, calidad vectorial 100%)
-    window.print();
+  exportToPdf(): void {
+    // Inyecta clase temporal para aplicar modo ficha ejecutiva en A4 landscape
+    document.body.classList.add('is-printing-executive-pdf');
 
-    /*
-    // --- Lógica anterior basada en html2canvas y jsPDF (pesaba ~612 KB) ---
-    if (!this.pdfContent) return;
-    this.isGenerating.set(true);
+    const cleanup = () => {
+      document.body.classList.remove('is-printing-executive-pdf');
+      window.removeEventListener('afterprint', cleanup);
+    };
 
-    try {
-      const container = this.pdfContent.nativeElement;
-      const pages = container.querySelectorAll<HTMLElement>('.pdf-page-container');
+    window.addEventListener('afterprint', cleanup);
 
-      if (!pages || pages.length === 0) {
-        this.isGenerating.set(false);
-        return;
-      }
+    // Breve pausa para asegurar aplicación de estilos antes del diálogo
+    setTimeout(() => {
+      window.print();
+    }, 50);
 
-      const html2canvasModule = await import('html2canvas');
-      const html2canvas = html2canvasModule.default || html2canvasModule;
-      const { jsPDF } = await import('jspdf');
-
-      const pdf = new jsPDF({
-        orientation: 'landscape',
-        unit: 'mm',
-        format: 'a4'
-      });
-
-      const pdfWidth = 297;
-      const pdfHeight = 210;
-
-      for (let i = 0; i < pages.length; i++) {
-        const pageEl = pages[i];
-        if (i > 0) {
-          pdf.addPage('a4', 'landscape');
-        }
-
-        const canvas = await html2canvas(pageEl, {
-          scale: 2,
-          useCORS: true,
-          logging: false
-        });
-
-        const imgData = canvas.toDataURL('image/jpeg', 0.98);
-        pdf.addImage(imgData, 'JPEG', 0, 0, pdfWidth, pdfHeight);
-      }
-
-      pdf.save('OEFA_Sistema_Diseno_Atomos_Ejecutivo.pdf');
-    } catch (err) {
-      console.error('Error generando PDF:', err);
-    } finally {
-      this.isGenerating.set(false);
-    }
-    */
+    // Fallback de seguridad si afterprint no es soportado
+    setTimeout(() => {
+      cleanup();
+    }, 2500);
   }
 }

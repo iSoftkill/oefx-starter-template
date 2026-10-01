@@ -3168,13 +3168,45 @@
   }
 
   .print-actions-bar,
-  oefa-page-header,
-  header,
-  nav,
-  aside,
-  footer,
   .no-print {
     display: none !important;
+  }
+
+  /* Encabezado institucional de la hoja (Logo + Título + Metadatos) */
+  .doc-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-bottom: 2px solid var(--oefa-primary-root) !important;
+    padding-bottom: 8px !important;
+    margin-bottom: 12px !important;
+
+    .header-brand {
+      display: flex !important;
+      align-items: center !important;
+
+      .brand-logo-img {
+        display: block !important;
+        height: 30px !important;
+        width: auto !important;
+      }
+    }
+
+    .doc-meta {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: flex-end !important;
+    }
+  }
+
+  /* Pie institucional de la hoja (Copyright + Numeración) */
+  .doc-footer {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    border-top: 1px solid var(--oefa-border-color) !important;
+    padding-top: 8px !important;
+    margin-top: 8px !important;
   }
 
   .executive-sheet-container {
