@@ -174,6 +174,67 @@ Permite pasar cualquier vector SVG externo preservando el dimensionamiento autom
 | `--oefa-breakpoint-lg` | `1024px` | Tablet horizontal / Laptop | Sidebar fijable, grillas de 2 a 3 columnas. **En Login**: conmuta de 2 columnas (Hero + Tarjeta) a 1 columna centrada sin Hero lateral. |
 | `--oefa-breakpoint-xl` | `1280px` | Desktop | Layout institucional completo sin scroll horizontal forzado. |
 
+### 5.3 Escala Oficial de Espaciados (Spacing Scale)
+Basada en múltiplos de 4px/8px para garantizar ritmo vertical, coherencia de interfaces y áreas táctiles accesibles (WCAG 2.2 SC 2.5.8):
+
+| Token CSS | Variable Sass | Valor | Uso estándar |
+|---|---|---|---|
+| `--oefa-spacing-3xs` | `$oefa-spacing-3xs` | `2px` | Micro-bordes, separadores mínimos. |
+| `--oefa-spacing-2xs` | `$oefa-spacing-2xs` | `4px` | Gaps entre iconos y textos compactos, paddings de chips. |
+| `--oefa-spacing-xs` | `$oefa-spacing-xs` | `8px` | Espaciado compacto entre elementos de formulario, badges. |
+| `--oefa-spacing-sm` | `$oefa-spacing-sm` | `12px` | Padding interno de inputs, selects y botones estándar. |
+| `--oefa-spacing-md` | `$oefa-spacing-md` | `16px` | Gap estándar de grillas y espaciado de tarjetas en móvil. |
+| `--oefa-spacing-lg` | `$oefa-spacing-lg` | `20px` | Padding interno estándar de tarjetas y paneles agrupadores. |
+| `--oefa-spacing-xl` | `$oefa-spacing-xl` | `24px` | Padding de página institucional y gap principal de layout. |
+| `--oefa-spacing-2xl` | `$oefa-spacing-2xl` | `32px` | Separación de secciones mayores y cabeceras. |
+| `--oefa-spacing-3xl` | `$oefa-spacing-3xl` | `48px` | Separación de módulos y banners panorámicos. |
+
+### 5.4 Contenedores de Página y Rejillas Responsivas (Grid System)
+Para evitar que los desarrolladores creen archivos `.css` manuales con clases ad-hoc (ej. `.modulo-container`), el sistema provee clases globales listas para usar en HTML:
+
+#### Contenedores de Página
+- `.oefa-page` o `.oefa-page-container`: Contenedor principal de cualquier vista. Incluye padding adaptativo (`24px` desktop / `16px` móvil), ancho máximo de 1920px centrado y `box-sizing: border-box`.
+- `.oefa-page-compact`: Contenedor de formulario o flujo estrecho centrado (`max-width: 1024px`).
+- `.oefa-page-fluid`: Contenedor al 100% de ancho sin límite panorámico (para mapas, GIS o visores analíticos).
+
+#### Grillas Directas (CSS Grid Nativo)
+- `.oefa-grid-auto`: Grilla adaptativa automática (`repeat(auto-fit, minmax(280px, 1fr))`) con gap de 16px. Ideal para dashboards, catálogos y paneles de KPI.
+- `.oefa-grid-1`: Columna única centrada con gap estándar.
+- `.oefa-grid-2`: 2 columnas en desktop/tablet, colapsa automáticamente a 1 columna en pantallas ≤768px (**WCAG 1.4.10 Reflow**).
+- `.oefa-grid-3`: 3 columnas en desktop, 2 en tablet (≤1024px), 1 en móvil (≤640px).
+- `.oefa-grid-4`: 4 columnas en monitores anchos, 3 en desktop, 2 en tablet y 1 en móvil.
+
+#### Sistema de 12 Columnas Familiar (.oefa-row / .oefa-col-*)
+Para desarrolladores habituados a PrimeNG / Bootstrap:
+- `.oefa-row`: Contenedor flexible con wrap y márgenes compensados.
+- `.oefa-col-12`, `.oefa-col-6`, `.oefa-col-4`, `.oefa-col-3`, `.oefa-col-8`, `.oefa-col-9`.
+- Breakpoints: `.oefa-col-sm-*`, `.oefa-col-md-*`, `.oefa-col-lg-*`, `.oefa-col-xl-*`.
+
+### 5.5 Tarjeta Estándar (.oefa-card) y Componente `<oefa-card>`
+Estructura visual estandarizada para tarjetas de contenido:
+```html
+<!-- Opción 1: Clase utilitaria global (sin abrir CSS) -->
+<div class="oefa-card">
+  <div class="oefa-card-header">
+    <h3>Título de la Tarjeta</h3>
+  </div>
+  <div class="oefa-card-body">
+    <p>Contenido informativo...</p>
+  </div>
+</div>
+
+<!-- Opción 2: Componente Angular compartido -->
+<oefa-card title="Título de la Tarjeta" subtitle="Descripción opcional">
+  <p>Contenido proyectado con ng-content...</p>
+</oefa-card>
+```
+
+### 5.6 Accesibilidad en Layout y Grilla (WCAG 2.1 / 2.2 AA)
+1. **WCAG 1.3.2 (Meaningful Sequence):** El orden visual del grid coincide exactamente con el orden DOM. No se usan propiedades `order` arbitrarias para no desorientar a lectores de pantalla.
+2. **WCAG 1.4.10 (Reflow):** Todas las grillas colapsan a 1 columna a ≤640px/768px para evitar cualquier desplazamiento horizontal a 320px o con zoom del navegador al 400%.
+3. **WCAG 2.4.13 (Focus Appearance):** Las tarjetas interactivas (`.oefa-card-interactive`) cuentan con anillo de foco de 2px sólido (`--oefa-focus-ring`) con separación visual (`outline-offset: 2px`).
+4. **WCAG 2.5.8 (Target Size Minimum):** Todo elemento clickeable dentro de tarjetas o headers conserva área de toque mínima de 44px (o mínimo absoluto de 24px con espacio circundante).
+
 ---
 
 ## 6. Componentes primitivos (genéricos, sin lógica de negocio)
@@ -1180,7 +1241,8 @@ Tarjeta de catálogo institucional para exploración de sistemas, módulos y tab
 | `[description]` | `string` | Descripción del objetivo funcional (soporta clamp de 2 líneas). |
 | `[tags]` | `string[]` | Etiquetas de texto secundarias. |
 | `[chips]` | `CatalogChipConfig[]` | Chips institucionales OEFA con variantes semánticas. |
-| `[status]` | `string` | Estado para el badge semántico. |
+| `[status]` | `string` | Estado o variante de color para el badge semántico (ej: 'warning', 'exito', 'info'). |
+| `[statusLabel]` | `string` | Texto descriptivo personalizado para el badge (ej: 'Destacado', 'Nuevo'). Si no se define, hereda el valor de `status`. |
 | `[type]` | `string` | Tipo de clasificación (ej: 'Misional • Minería'). |
 | `[color]` | `string` | Color temático primario de la tarjeta. |
 | `[bgTint]` | `string` | Tinte de fondo para el badge y botón. |
@@ -1247,7 +1309,8 @@ Patrón de presentación en dos columnas de ancho equivalente (`1fr 1fr`) para p
 
 ### 16.1 Propósito y Comportamiento Híbrido
 Organismo para refinamiento de listas densas y catálogos de expedientes:
-- **Desktop (>= 769px):** Panel lateral fijo y sticky con altura adaptativa, scroll interno y footer fijo para acciones inmediatas (*Aplicar* / *Limpiar*).
+- **Desktop (>= 769px) - Split Fijo (Recomendado):** En vistas con `<oefa-page-layout [fit]="true">`, el panel lateral ocupa el 100% de la altura visible (`height: 100%`), con header y footer anclados (`flex-shrink: 0`) y cuerpo con scroll propio independiente (`overflow-y: auto`, `overscroll-behavior: contain`). La página nunca se scrolea globalmente; la columna de catálogo a la derecha cuenta con su propio canal de scroll autónomo.
+- **Desktop - Flotante Sticky alternativo:** En páginas con scroll general abierto, se ancla de forma sticky respetando la altura máxima visible de viewport.
 - **Móvil (<= 768px):** Bottom sheet táctil (`max-height: 88vh`) con tirador de arrastre (`handle bar`), backdrop translúcido con desenfoque (`backdrop-filter: blur(3px)`) y animación elástica de entrada M3.
 - **Secciones integradas:** Chips de estado, selectores de rango de fecha, inputs numéricos con slider dual de apoyo, acordeones facetados con buscador instantáneo y switches booleanos.
 
@@ -1257,6 +1320,7 @@ Organismo para refinamiento de listas densas y catálogos de expedientes:
 | `[title]` | `string` | Título del panel (por defecto 'Refinar Búsqueda'). |
 | `[activeCount]` | `number` | Contador de filtros activos reflejado en botones y badge. |
 | `[statusOptions]` | `FilterStatusOption[]` | Opciones de estado para chips interactivos. |
+| `[statusTitle]` | `string` | Título del grupo de opciones de estado (por defecto 'Estado del Expediente'). |
 | `[selectedStatus]` | `string` | Estado seleccionado actualmente. |
 | `[dateFrom]` / `[dateTo]` | `string` | Rango de fechas ISO (`YYYY-MM-DD`). |
 | `[amountMin]` / `[amountMax]` | `number` | Rango numérico monetario o sancionatorio. |
@@ -1409,7 +1473,59 @@ El shell ergonómico del OEFA organiza la pantalla en cuatro capas operativas co
 
 ---
 
-## 22. Siguiente paso
+## 23. Utilidades Globales de Maquetación Zero CSS (PrimeFlex / Tailwind nativo)
+
+### 23.1 Contenedores y Rejillas
+- `.oefa-page`, `.oefa-page-compact`, `.oefa-page-fluid`: Gestión unificada de márgenes perimetrales (24px en escritorio, 16px en móvil).
+- `.oefa-grid-auto`: Rejilla adaptable que auto-ajusta tarjetas sin media queries locales (mínimo 280px por tarjeta).
+- `.oefa-form-grid`, `.oefa-form-grid-3`: Rejilla de 2 o 3 columnas para formularios que colapsa a 1 columna en móviles.
+- `.oefa-form-col-span-full`: Expande un campo a lo ancho de todo el formulario.
+- `.oefa-row` y `.oefa-col-*` (con variantes `-sm-`, `-md-`, `-lg-`, `-xl-`): Sistema clásico de 12 columnas.
+
+### 23.2 Flexbox y Visibilidad Responsiva
+- Flexbox: `.oefa-justify-between`, `.oefa-justify-center`, `.oefa-justify-end`, `.oefa-justify-start`, `.oefa-align-center`, `.oefa-align-start`, `.oefa-align-end`, `.oefa-flex-wrap`, `.oefa-flex-nowrap`, `.oefa-flex-1`.
+- Ocultamiento: `.oefa-hide-sm` (<640px), `.oefa-hide-md` (<768px), `.oefa-only-sm` (≥640px oculto), `.oefa-sr-only` (accesibilidad / lectores).
+- Divisores: `.oefa-divider` (horizontal), `.oefa-divider-vertical` (en barras/menús), `.oefa-divider-text` (con texto centrado).
+- Barra fija inferior: `.oefa-sticky-bar` para barras de acción al pie de página (touch target 44px).
+
+---
+
+## 24. Componentes de Estructura y Agrupación
+
+### 24.1 `<oefa-page-layout>`
+Wrapper institucional que centraliza el padding `.oefa-page`, el encabezado `<oefa-page-header>` y la proyección de contenido:
+```html
+<oefa-page-layout
+  title="Título del Módulo"
+  subtitle="Descripción de la vista"
+  [breadcrumbs]="[{ label: 'Inicio', url: '/' }, { label: 'Módulo' }]">
+  <div actions>
+    <button class="oefa-btn oefa-btn-primary">Nueva Solicitud</button>
+  </div>
+
+  <div class="oefa-stack-lg">
+    <!-- Contenido de vista sin CSS local -->
+  </div>
+</oefa-page-layout>
+```
+
+### 24.2 `<oefa-accordion>`
+Contenedor sincronizado para paneles plegables `<oefa-collapsible>`. Soporta modo exclusivo (`[multiple]="false"`) o apertura múltiple (`[multiple]="true"`):
+```html
+<oefa-accordion [multiple]="false" gap="sm">
+  <oefa-collapsible title="Sección 1: Información General" [isOpen]="true">
+    <p>Contenido del primer panel...</p>
+  </oefa-collapsible>
+  <oefa-collapsible title="Sección 2: Documentación">
+    <p>Contenido del segundo panel...</p>
+  </oefa-collapsible>
+</oefa-accordion>
+```
+
+---
+
+## 25. Siguiente paso
 Con esto cerrado como fundación general, cada proyecto (empezando por Control de Pagos de Entregables) escribe su propio documento corto que solo mapea estos tokens a sus casos de uso específicos — ver `design-project-control-pagos.md`.
+
 
 

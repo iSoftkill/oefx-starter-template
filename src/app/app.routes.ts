@@ -35,7 +35,9 @@ import { DesignSystemChipsComponent } from './views/design-system/design-system-
 import { DesignSystemFoundationsComponent } from './views/design-system/design-system-foundations.component';
 import { DesignSystemDotBadgeComponent } from './views/design-system/design-system-dot-badge.component';
 import { DesignSystemLayoutsComponent } from './views/design-system/design-system-layouts.component';
+import { DesignSystemDevGuideComponent } from './views/design-system/design-system-dev-guide.component';
 import { PinDemoComponent } from './views/pin-demo/pin-demo.component';
+import { PruebaComponent } from './views/prueba/prueba.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -87,6 +89,9 @@ export const routes: Routes = [
   { path: 'design-system/catalog-card', component: DesignSystemCatalogCardComponent },
   { path: 'design-system/catalog-cards', component: DesignSystemCatalogCardComponent },
   { path: 'design-system/filter-sidebar', component: DesignSystemFilterSidebarComponent },
+  { path: 'design-system/guia-dev', component: DesignSystemDevGuideComponent },
+  { path: 'design-system/guia-desarrollador', component: DesignSystemDevGuideComponent },
+  { path: 'prueba', component: PruebaComponent },
 
   { path: '**', redirectTo: 'dashboard' }
 ];

@@ -7,6 +7,7 @@
     <div 
       class="dropdown-menu"
       [ngClass]="'align-' + align"
+      [ngStyle]="fixedPosition ? menuStyles() : null"
       (click)="handleMenuClick($event)">
       <ng-content select="[menu]" />
     </div>

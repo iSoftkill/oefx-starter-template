@@ -115,10 +115,10 @@
 
 .page-title {
   margin: 0;
-  font-family: var(--oefa-font-family, inherit);
+  font-family: var(--oefa-font-display, 'Poppins', sans-serif);
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--oefa-text-primary, #0f172a);
+  color: var(--oefa-primary-root, #144AA7);
   letter-spacing: -0.01em;
   line-height: 1.25;
 }

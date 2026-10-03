@@ -16,7 +16,7 @@ description: >
 | **1** | `design-system-oefa.md` | `/design-system/design-system-oefa.md` | Directrices de uso, reglas, variantes, accesibilidad y catálogo documentado. |
 | **2** | `design-tokens.json` | `/design-system/design-tokens.json` | Tokens y valores numéricos (colores, tipografía, spacing, breakpoints). |
 | **3** | `styles.scss` | `/src/styles.scss` | Clases utilitarias globales, variables CSS y mixins globales. |
-| **4** | `shared/components/` | `/src/app/shared/components/` | Componentes Angular reutilizables implementados (button, modal, table, tabs, etc.). |
+| **4** | `shared/components/` | `/src/app/shared/components/` | Componentes Angular reutilizables implementados (button, modal, table, tabs, page-layout, accordion, card, etc.). |
 | **5** | Vista demo | `/src/app/views/design-system/` | Ejemplos vivos de implementación y uso de los componentes. |
 
 > **Regla de oro:** 

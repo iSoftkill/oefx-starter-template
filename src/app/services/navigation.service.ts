@@ -38,6 +38,7 @@ export class NavigationService {
   activeItemId = signal<string>('dashboard');
   hoveredItemId = signal<string | null>(null);
   selectedTreeItemId = signal<string>('');
+  clickedFlyoutItemId = signal<string | null>(null);
 
   // Quick action '+' modal trigger
   isQuickActionOpen = signal<boolean>(false);
@@ -52,6 +53,13 @@ export class NavigationService {
     },
 
     {
+      id: 'prueba',
+      label: 'Prueba',
+      icon: 'grid',
+      route: '/prueba'
+    },
+
+    {
       id: 'sistema_diseno',
       label: 'Sistema Diseño',
       icon: 'palette',
@@ -61,10 +69,15 @@ export class NavigationService {
           groupName: '0. FUNDACIONES Y RESUMEN',
           items: [
             {
+              id: 'ds_guia_dev',
+              label: '💻 Guía del Desarrollador',
+              route: '/design-system/guia-dev',
+              badgeDot: true
+            },
+            {
               id: 'ds_fundaciones',
               label: '🏛️ Principios y Fundaciones',
-              route: '/design-system/fundaciones',
-              badgeDot: true
+              route: '/design-system/fundaciones'
             },
             {
               id: 'ds_ficha_ejecutiva',
@@ -423,6 +436,7 @@ export class NavigationService {
   }
 
   private syncActiveItemWithUrl(url: string) {
+    this.clickedFlyoutItemId.set(null);
     const cleanUrl = url.split('?')[0].split('#')[0];
 
     // Caso 1: Sub-flujos de órdenes (nueva orden, detalle)

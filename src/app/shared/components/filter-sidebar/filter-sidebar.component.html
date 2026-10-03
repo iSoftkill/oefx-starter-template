@@ -39,7 +39,7 @@
     @if (statusOptions && statusOptions.length > 0) {
       <div class="fs-group">
         <div class="fs-section-title-wrap">
-          <span class="fs-group-label">Estado del Expediente</span>
+          <span class="fs-group-label">{{ statusTitle }}</span>
         </div>
         <div class="fs-chips-group" role="group" aria-label="Filtrar por estado">
           @for (st of statusOptions; track st.value) {

@@ -18,6 +18,7 @@ export class OefaFilterSidebarComponent {
   @Input() title: string = 'Refinar Búsqueda';
   @Input() activeCount: number = 0;
   @Input() statusOptions?: FilterStatusOption[];
+  @Input() statusTitle: string = 'Estado del Expediente';
   @Input() selectedStatus: string = 'TODOS';
   @Input() showDateRange: boolean = true;
   @Input() dateFrom: string = '';

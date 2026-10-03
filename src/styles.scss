@@ -8,6 +8,17 @@ $oefa-bp-lg: 1024px;
 $oefa-bp-xl: 1280px;
 $oefa-header-height: 64px;
 
+/* Sass Spacing Variables */
+$oefa-spacing-3xs: 2px;
+$oefa-spacing-2xs: 4px;
+$oefa-spacing-xs: 8px;
+$oefa-spacing-sm: 12px;
+$oefa-spacing-md: 16px;
+$oefa-spacing-lg: 20px;
+$oefa-spacing-xl: 24px;
+$oefa-spacing-2xl: 32px;
+$oefa-spacing-3xl: 48px;
+
 :root {
   /* Header & Navigation Shell Component Tokens */
   --oefa-header-height: 64px;
@@ -17,6 +28,11 @@ $oefa-header-height: 64px;
   --oefa-header-logo-height-mobile: 30px;
   --oefa-rail-width: 80px;
   --oefa-submenu-width: 260px;
+
+  /* Filter Sidebar Tokens */
+  --oefa-filter-sidebar-width: 280px;
+  --oefa-filter-sidebar-top: 0;
+  --oefa-filter-sidebar-max-height: calc(100vh - var(--oefa-header-height, 64px) - 186px);
 
   /* Color Tokens OEFA (Primary, Secondary, Tertiary, Success, Error, Neutral) */
   --oefa-primary-root: #144AA7;
@@ -171,6 +187,17 @@ $oefa-header-height: 64px;
   --oefa-breakpoint-xl: 1280px;
   --oefa-portal-max-width: 1920px;
   --oefa-touch-target: 44px;
+
+  /* Spacing Scale (4px/8px Grid) */
+  --oefa-spacing-3xs: 2px;
+  --oefa-spacing-2xs: 4px;
+  --oefa-spacing-xs: 8px;
+  --oefa-spacing-sm: 12px;
+  --oefa-spacing-md: 16px;
+  --oefa-spacing-lg: 20px;
+  --oefa-spacing-xl: 24px;
+  --oefa-spacing-2xl: 32px;
+  --oefa-spacing-3xl: 48px;
 
   /* Text colors - WCAG 2.2 AA/AAA Compliant (Min contrast ratio 4.5:1) */
   --oefa-text-primary: #1D1D1B;
@@ -1391,12 +1418,48 @@ h4 {
   width: 100%;
   overflow-x: auto;
 
+  &.oefa-table-scroll {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    border: 1px solid var(--oefa-border-color);
+    border-radius: var(--oefa-radius-md);
+  }
+}
+
+/* Regla global para vistas dentro del espacio de trabajo OEFA */
+.workspace-card {
+  > router-outlet {
+    display: none !important;
+  }
+
+  > *:not(router-outlet) {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.oefa-table-wrapper {
+
   table {
     width: 100%;
     border-collapse: separate;
     border-spacing: 0;
     font-size: 0.875rem;
     font-family: var(--oefa-font-body);
+  }
+
+  thead.sticky-th th,
+  thead th.sticky-th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--oefa-surface-subtle);
+    box-shadow: 0 1px 0 var(--oefa-border-color);
   }
 
   thead th {
@@ -3466,6 +3529,455 @@ select.table-input,
     scroll-behavior: auto !important;
   }
 }
+
+/* ==========================================================================
+   OEFA LAYOUT, GRID & CARD SYSTEM (WCAG 2.1 / 2.2 AA COMPLIANT)
+   Elimina la necesidad de CSS local en módulos y vistas.
+   ========================================================================== */
+
+/* 1. Contenedores de Página */
+.oefa-page,
+.oefa-page-container {
+  width: 100%;
+  max-width: var(--oefa-portal-max-width, 1920px);
+  margin-inline: auto;
+  padding: var(--oefa-spacing-xl, 24px);
+  box-sizing: border-box;
+
+  @media (max-width: $oefa-bp-sm) {
+    padding: var(--oefa-spacing-md, 16px);
+  }
+}
+
+.oefa-page-compact {
+  width: 100%;
+  max-width: 1024px;
+  margin-inline: auto;
+  padding: var(--oefa-spacing-xl, 24px);
+  box-sizing: border-box;
+
+  @media (max-width: $oefa-bp-sm) {
+    padding: var(--oefa-spacing-md, 16px);
+  }
+}
+
+.oefa-page-fluid {
+  width: 100%;
+  max-width: none;
+  padding: var(--oefa-spacing-xl, 24px);
+  box-sizing: border-box;
+
+  @media (max-width: $oefa-bp-sm) {
+    padding: var(--oefa-spacing-md, 16px);
+  }
+}
+
+/* 2. Rejillas Directas (CSS Grid Nativo — WCAG 1.4.10 Reflow) */
+.oefa-grid-auto {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--oefa-spacing-md, 16px);
+}
+
+.oefa-grid-1 {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--oefa-spacing-md, 16px);
+}
+
+.oefa-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--oefa-spacing-md, 16px);
+
+  @media (max-width: $oefa-bp-md) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.oefa-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--oefa-spacing-md, 16px);
+
+  @media (max-width: $oefa-bp-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $oefa-bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.oefa-grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--oefa-spacing-md, 16px);
+
+  @media (max-width: $oefa-bp-xl) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media (max-width: $oefa-bp-lg) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: $oefa-bp-sm) {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* 2.1 Rejilla Estructurada para Formularios (.oefa-form-grid) */
+.oefa-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--oefa-spacing-md, 16px);
+  box-sizing: border-box;
+
+  &.oefa-form-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+
+    @media (max-width: $oefa-bp-lg) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: $oefa-bp-sm) {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+.oefa-form-col-span-full {
+  grid-column: 1 / -1;
+}
+
+/* 3. Sistema de 12 Columnas Familiar (.oefa-row / .oefa-col-*) */
+.oefa-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-inline: calc(var(--oefa-spacing-md, 16px) * -0.5);
+  row-gap: var(--oefa-spacing-md, 16px);
+  box-sizing: border-box;
+}
+
+[class*="oefa-col-"] {
+  padding-inline: calc(var(--oefa-spacing-md, 16px) * 0.5);
+  box-sizing: border-box;
+  flex: 0 0 100%;
+  max-width: 100%;
+}
+
+.oefa-col-1  { flex: 0 0 8.333333%;  max-width: 8.333333%; }
+.oefa-col-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+.oefa-col-3  { flex: 0 0 25%;        max-width: 25%; }
+.oefa-col-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+.oefa-col-5  { flex: 0 0 41.666667%; max-width: 41.666667%; }
+.oefa-col-6  { flex: 0 0 50%;        max-width: 50%; }
+.oefa-col-7  { flex: 0 0 58.333333%; max-width: 58.333333%; }
+.oefa-col-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+.oefa-col-9  { flex: 0 0 75%;        max-width: 75%; }
+.oefa-col-10 { flex: 0 0 83.333333%; max-width: 83.333333%; }
+.oefa-col-11 { flex: 0 0 91.666667%; max-width: 91.666667%; }
+.oefa-col-12 { flex: 0 0 100%;       max-width: 100%; }
+
+@media (min-width: $oefa-bp-sm) {
+  .oefa-col-sm-1  { flex: 0 0 8.333333%;  max-width: 8.333333%; }
+  .oefa-col-sm-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .oefa-col-sm-3  { flex: 0 0 25%;        max-width: 25%; }
+  .oefa-col-sm-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .oefa-col-sm-6  { flex: 0 0 50%;        max-width: 50%; }
+  .oefa-col-sm-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .oefa-col-sm-12 { flex: 0 0 100%;       max-width: 100%; }
+}
+
+@media (min-width: $oefa-bp-md) {
+  .oefa-col-md-1  { flex: 0 0 8.333333%;  max-width: 8.333333%; }
+  .oefa-col-md-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .oefa-col-md-3  { flex: 0 0 25%;        max-width: 25%; }
+  .oefa-col-md-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .oefa-col-md-6  { flex: 0 0 50%;        max-width: 50%; }
+  .oefa-col-md-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .oefa-col-md-9  { flex: 0 0 75%;        max-width: 75%; }
+  .oefa-col-md-12 { flex: 0 0 100%;       max-width: 100%; }
+}
+
+@media (min-width: $oefa-bp-lg) {
+  .oefa-col-lg-1  { flex: 0 0 8.333333%;  max-width: 8.333333%; }
+  .oefa-col-lg-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .oefa-col-lg-3  { flex: 0 0 25%;        max-width: 25%; }
+  .oefa-col-lg-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .oefa-col-lg-6  { flex: 0 0 50%;        max-width: 50%; }
+  .oefa-col-lg-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .oefa-col-lg-9  { flex: 0 0 75%;        max-width: 75%; }
+  .oefa-col-lg-12 { flex: 0 0 100%;       max-width: 100%; }
+}
+
+@media (min-width: $oefa-bp-xl) {
+  .oefa-col-xl-1  { flex: 0 0 8.333333%;  max-width: 8.333333%; }
+  .oefa-col-xl-2  { flex: 0 0 16.666667%; max-width: 16.666667%; }
+  .oefa-col-xl-3  { flex: 0 0 25%;        max-width: 25%; }
+  .oefa-col-xl-4  { flex: 0 0 33.333333%; max-width: 33.333333%; }
+  .oefa-col-xl-6  { flex: 0 0 50%;        max-width: 50%; }
+  .oefa-col-xl-8  { flex: 0 0 66.666667%; max-width: 66.666667%; }
+  .oefa-col-xl-12 { flex: 0 0 100%;       max-width: 100%; }
+}
+
+/* 4. Tarjeta Institucional (.oefa-card) */
+.oefa-card {
+  background-color: var(--oefa-surface-card, #ffffff);
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  border-radius: var(--oefa-radius-lg, 16px);
+  padding: var(--oefa-spacing-lg, 20px);
+  display: flex;
+  flex-direction: column;
+  box-shadow: var(--oefa-shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06));
+  box-sizing: border-box;
+  transition: box-shadow var(--oefa-duration-medium, 300ms) var(--oefa-ease-standard),
+              border-color var(--oefa-duration-medium, 300ms) var(--oefa-ease-standard);
+
+  .oefa-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--oefa-spacing-sm, 12px);
+    margin-bottom: var(--oefa-spacing-md, 16px);
+    padding-bottom: var(--oefa-spacing-sm, 12px);
+    border-bottom: 1px solid var(--oefa-border-color-subtle, #f1f5f9);
+
+    h2, h3, h4 {
+      margin: 0;
+      color: var(--oefa-text-primary, #1d1d1b);
+      font-size: 1.125rem;
+      font-weight: 600;
+    }
+
+    .oefa-card-subtitle {
+      margin: 0;
+      font-size: 0.875rem;
+      color: var(--oefa-text-secondary, #334155);
+    }
+  }
+
+  .oefa-card-body {
+    flex: 1 1 auto;
+    color: var(--oefa-text-primary, #1d1d1b);
+
+    p {
+      margin: 0;
+      color: var(--oefa-text-secondary, #334155);
+    }
+  }
+
+  .oefa-card-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: var(--oefa-spacing-sm, 12px);
+    margin-top: var(--oefa-spacing-md, 16px);
+    padding-top: var(--oefa-spacing-sm, 12px);
+    border-top: 1px solid var(--oefa-border-color-subtle, #f1f5f9);
+  }
+
+  &.oefa-card-interactive {
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: var(--oefa-shadow-md, 0 4px 16px rgba(15, 23, 42, 0.08));
+      border-color: var(--oefa-primary-container-hc, #a4c1f4);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--oefa-focus-ring, #144aa7);
+      outline-offset: 2px;
+    }
+  }
+}
+
+/* 5. Utilidades Rápidas de Flex, Stack y Espaciado */
+.oefa-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-md, 16px);
+}
+
+.oefa-stack-sm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-sm, 12px);
+}
+
+.oefa-stack-lg {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-xl, 24px);
+}
+
+.oefa-flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: var(--oefa-spacing-md, 16px);
+  flex-wrap: wrap;
+}
+
+.oefa-flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--oefa-spacing-md, 16px);
+}
+
+.oefa-gap-xs { gap: var(--oefa-spacing-xs, 8px) !important; }
+.oefa-gap-sm { gap: var(--oefa-spacing-sm, 12px) !important; }
+.oefa-gap-md { gap: var(--oefa-spacing-md, 16px) !important; }
+.oefa-gap-lg { gap: var(--oefa-spacing-xl, 24px) !important; }
+
+.oefa-mt-xs { margin-top: var(--oefa-spacing-xs, 8px) !important; }
+.oefa-mt-sm { margin-top: var(--oefa-spacing-sm, 12px) !important; }
+.oefa-mt-md { margin-top: var(--oefa-spacing-md, 16px) !important; }
+.oefa-mt-lg { margin-top: var(--oefa-spacing-xl, 24px) !important; }
+
+.oefa-mb-xs { margin-bottom: var(--oefa-spacing-xs, 8px) !important; }
+.oefa-mb-sm { margin-bottom: var(--oefa-spacing-sm, 12px) !important; }
+.oefa-mb-md { margin-bottom: var(--oefa-spacing-md, 16px) !important; }
+.oefa-mb-lg { margin-bottom: var(--oefa-spacing-xl, 24px) !important; }
+
+/* 6. Utilidades Flexbox y Alineación Avanzada */
+.oefa-justify-start   { justify-content: flex-start !important; }
+.oefa-justify-center  { justify-content: center !important; }
+.oefa-justify-end     { justify-content: flex-end !important; }
+.oefa-justify-between { justify-content: space-between !important; }
+
+.oefa-align-start     { align-items: flex-start !important; }
+.oefa-align-center    { align-items: center !important; }
+.oefa-align-end       { align-items: flex-end !important; }
+
+.oefa-flex-wrap       { flex-wrap: wrap !important; }
+.oefa-flex-nowrap     { flex-wrap: nowrap !important; }
+.oefa-flex-1          { flex: 1 1 0% !important; }
+
+/* 7. Visibilidad y Ocultamiento Responsivo */
+.oefa-hide-sm {
+  @media (max-width: ($oefa-bp-sm - 1px)) {
+    display: none !important;
+  }
+}
+
+.oefa-hide-md {
+  @media (max-width: ($oefa-bp-md - 1px)) {
+    display: none !important;
+  }
+}
+
+.oefa-only-sm {
+  @media (min-width: $oefa-bp-sm) {
+    display: none !important;
+  }
+}
+
+.oefa-sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+/* 8. Tipografía y Helpers de Texto */
+.oefa-text-truncate {
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+}
+
+.oefa-text-left   { text-align: left !important; }
+.oefa-text-center { text-align: center !important; }
+.oefa-text-right  { text-align: right !important; }
+
+.oefa-text-muted   { color: var(--oefa-text-muted, #475569) !important; }
+.oefa-text-danger  { color: var(--oefa-error-root, #e51a2f) !important; }
+.oefa-text-success { color: var(--oefa-success-ui-safe, #578221) !important; }
+
+/* 9. Divisores y Separadores Visuales */
+.oefa-divider {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--oefa-border-color, #e2e8f0);
+  border: none;
+  margin: var(--oefa-spacing-md, 16px) 0;
+}
+
+.oefa-divider-vertical {
+  display: inline-block;
+  align-self: stretch;
+  width: 1px;
+  min-height: 1rem;
+  background-color: var(--oefa-border-color, #e2e8f0);
+  border: none;
+  margin: 0 var(--oefa-spacing-sm, 12px);
+}
+
+.oefa-divider-text {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: var(--oefa-spacing-md, 16px) 0;
+  color: var(--oefa-text-muted, #475569);
+  font-size: 0.8125rem;
+  font-weight: 500;
+
+  &::before,
+  &::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid var(--oefa-border-color, #e2e8f0);
+  }
+
+  &:not(:empty)::before {
+    margin-right: var(--oefa-spacing-sm, 12px);
+  }
+
+  &:not(:empty)::after {
+    margin-left: var(--oefa-spacing-sm, 12px);
+  }
+}
+
+/* 10. Barra de Acciones Inferior Fija (.oefa-sticky-bar) */
+.oefa-sticky-bar {
+  position: sticky;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--oefa-spacing-sm, 12px);
+  padding: var(--oefa-spacing-md, 16px) var(--oefa-spacing-xl, 24px);
+  background: var(--oefa-surface-card, #ffffff);
+  border-top: 1px solid var(--oefa-border-color, #e2e8f0);
+  box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.06);
+  margin-top: var(--oefa-spacing-xl, 24px);
+  min-height: var(--oefa-touch-target, 44px);
+  box-sizing: border-box;
+
+  @media (max-width: $oefa-bp-sm) {
+    padding: var(--oefa-spacing-sm, 12px);
+    flex-direction: column-reverse;
+    align-items: stretch;
+
+    button,
+    .oefa-btn {
+      width: 100%;
+      min-height: var(--oefa-touch-target, 44px);
+    }
+  }
+}
+
+
 
 /* ==========================================================================
    OEFA PRINT STYLES (LIMPIEZA DE SHELL PARA EXPORTACIÓN A PDF)

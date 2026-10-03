@@ -370,6 +370,19 @@
     }
   },
 
+  "spacing": {
+    "_descripcion": "Escala oficial de espaciados institucionales OEFA basada en múltiplos de 4px/8px para ritmo vertical y touch targets accesibles.",
+    "3xs": { "value": "2px", "token": "--oefa-spacing-3xs", "sass": "$oefa-spacing-3xs", "uso": "Micro-bordes, separadores mínimos." },
+    "2xs": { "value": "4px", "token": "--oefa-spacing-2xs", "sass": "$oefa-spacing-2xs", "uso": "Gaps entre iconos y textos compactos, paddings de chips." },
+    "xs": { "value": "8px", "token": "--oefa-spacing-xs", "sass": "$oefa-spacing-xs", "uso": "Espaciado compacto entre elementos de formulario, badges." },
+    "sm": { "value": "12px", "token": "--oefa-spacing-sm", "sass": "$oefa-spacing-sm", "uso": "Padding interno de inputs, selects y botones estándar." },
+    "md": { "value": "16px", "token": "--oefa-spacing-md", "sass": "$oefa-spacing-md", "uso": "Gap estándar de grillas y espaciado de tarjetas en móvil." },
+    "lg": { "value": "20px", "token": "--oefa-spacing-lg", "sass": "$oefa-spacing-lg", "uso": "Padding interno estándar de tarjetas y paneles agrupadores." },
+    "xl": { "value": "24px", "token": "--oefa-spacing-xl", "sass": "$oefa-spacing-xl", "uso": "Padding de página institucional y gap principal de layout." },
+    "2xl": { "value": "32px", "token": "--oefa-spacing-2xl", "sass": "$oefa-spacing-2xl", "uso": "Separación de secciones mayores y cabeceras." },
+    "3xl": { "value": "48px", "token": "--oefa-spacing-3xl", "sass": "$oefa-spacing-3xl", "uso": "Separación de módulos y banners panorámicos." }
+  },
+
   "radii": {
     "_descripcion": "Escala oficial de border-radius institucional para componentes, contenedores y micro-elementos OEFA.",
     "sm": { "value": "6px", "token": "--oefa-radius-sm", "uso": "Badges, tooltips, checkboxes, tags de código y micro-inputs." },
@@ -406,9 +419,13 @@
     "filterSidebar": {
       "_descripcion": "Panel lateral de filtrado avanzado facetado para escritorio y bottom sheet deslizable accesible para dispositivos móviles.",
       "desktopWidth": "280px",
+      "desktopTop": "0",
+      "desktopMaxHeight": "calc(100vh - var(--oefa-header-height, 64px) - 186px)",
       "borderRadiusDesktop": "16px",
       "borderRadiusMobile": "20px 20px 0 0",
       "maxHeightMobile": "88vh",
+      "scrollbarWidth": "6px",
+      "overscrollBehavior": "contain",
       "transition": "transform var(--oefa-duration-medium) var(--oefa-ease-emphasized)"
     },
 

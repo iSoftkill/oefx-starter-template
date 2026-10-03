@@ -26,6 +26,7 @@ export class OefaCatalogCardComponent {
   @Input() tags: string[] = [];
   @Input() chips?: CatalogChipConfig[];
   @Input() status?: string;
+  @Input() statusLabel?: string;
   @Input() type?: string;
   @Input() typeColor?: string;
   @Input() color: string = 'var(--oefa-primary-root)';

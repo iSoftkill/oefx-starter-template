@@ -15,7 +15,7 @@
     </div>
     <div class="bcc-status-wrap">
       @if (status) {
-        <oefa-status-badge [status]="status" size="sm" [dot]="true" />
+        <oefa-status-badge [status]="status" [label]="statusLabel" size="sm" [dot]="true" />
       } @else if (type) {
         <span class="bcc-badge" [style.background]="bgTint || 'var(--oefa-surface-muted)'" [style.color]="typeColor || color">
           {{ type }}

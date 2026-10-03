@@ -39,6 +39,7 @@ export { ToastService } from './components/toast/toast.service';
 export { OefaTabsComponent } from './components/tabs/tabs.component';
 export { OefaStepperComponent } from './components/stepper/stepper.component';
 export { OefaPageHeaderComponent } from './components/page-header/page-header.component';
+export { OefaPageLayoutComponent } from './components/page-layout/page-layout.component';
 export { OefaPaginationComponent } from './components/pagination/pagination.component';
 export { OefaDrawerComponent } from './components/drawer/drawer.component';
 export { OefaDropdownComponent } from './components/dropdown/dropdown.component';
@@ -46,6 +47,7 @@ export { OefaAppLauncherComponent } from './components/app-launcher/app-launcher
 export { UserMenuComponent } from './components/user-menu/user-menu.component';
 export { OefaFilterSidebarComponent } from './components/filter-sidebar/filter-sidebar.component';
 export { OefaCollapsibleComponent } from './components/collapsible/collapsible.component';
+export { OefaAccordionComponent } from './components/accordion/accordion.component';
 
 // 5. Visualización de Datos y Tarjetas
 export { OefaTableComponent, TableComponent } from './components/table/table.component';
@@ -55,6 +57,7 @@ export { OefaKpiCardComponent } from './components/kpi-card/kpi-card.component';
 export { OefaBentoKpiTileComponent } from './components/bento-kpi-tile/bento-kpi-tile.component';
 export { OefaCatalogCardComponent } from './components/catalog-card/catalog-card.component';
 export { OefaProcessCardComponent } from './components/process-card/process-card.component';
+export { OefaCardComponent } from './components/card/card.component';
 
 // Utils
 export { getStatusBadgeClass, getStatusLabel } from './utils/status.utils';
