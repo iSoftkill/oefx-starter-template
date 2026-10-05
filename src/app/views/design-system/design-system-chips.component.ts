@@ -1,17 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaChipComponent } from '../../shared/components/chip/chip.component';
+import { OefaIconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-design-system-chips',
   standalone: true,
-  imports: [CommonModule, OefaChipComponent],
+  imports: [CommonModule, OefaChipComponent, OefaIconComponent],
   template: `
     <div class="ds-container">
       <div class="ds-header">
         <div>
-          <h2>🏷️ Chips y Etiquetas de Negocio (Átomos)</h2>
-          <p class="subtitle">Componente reutilizable &lt;oefa-chip&gt; para proyectos de inversión, expedientes SIGED, áreas usuarias y numeración de entregables.</p>
+          <h2>🏷️ Chips y Etiquetas Interactivas (Átomos)</h2>
+          <p class="subtitle">Componente institucional &lt;oefa-chip&gt; para clasificación contextual, metadatos con logos/iconos y filtros rápidos accionables.</p>
         </div>
         <span class="ds-badge">ÁTOMO</span>
       </div>
@@ -19,7 +20,7 @@ import { OefaChipComponent } from '../../shared/components/chip/chip.component';
       <!-- Tarjeta 1: Variantes de Negocio OEFA -->
       <div class="card ds-card">
         <div class="card-header">
-          <h3>1. Variantes de Chip OEFA (&lt;oefa-chip&gt;)</h3>
+          <h3>1. Variantes Institucionales OEFA</h3>
           <span class="text-muted">Componente tipado para clasificar información contextual sin confundirse con badges de estado transaccional.</span>
         </div>
         <div class="card-body">
@@ -68,23 +69,72 @@ import { OefaChipComponent } from '../../shared/components/chip/chip.component';
         </div>
       </div>
 
-      <!-- Tarjeta 2: Especificación y API -->
+      <!-- Tarjeta 2: Chips de Filtro Rápido Interactivo -->
       <div class="card ds-card">
         <div class="card-header">
-          <h3>2. Especificación de Uso y API</h3>
-          <span class="text-muted">Consumo simple y tipado mediante <code>variant</code> y <code>label</code>.</span>
+          <h3>2. Chips de Filtro Rápido Interactivo (Accionables)</h3>
+          <span class="text-muted">Permiten filtrar tablas y catálogos con respuesta táctil y estado activo persistente.</span>
         </div>
         <div class="card-body">
-          <pre class="code-block">&lt;!-- Chip de proyecto --&gt;
+          <div class="filter-chips-carousel" style="margin-bottom: 16px;">
+            <oefa-chip [active]="filtroActivo() === 'todos'" (clicked)="filtroActivo.set('todos')">
+              Todos (11)
+            </oefa-chip>
+            <oefa-chip icon="star" [active]="filtroActivo() === 'destacados'" (clicked)="filtroActivo.set('destacados')">
+              Destacados (3)
+            </oefa-chip>
+            <oefa-chip [active]="filtroActivo() === 'activos'" (clicked)="filtroActivo.set('activos')">
+              Activos (9)
+            </oefa-chip>
+            <oefa-chip [active]="filtroActivo() === 'powerbi'" (clicked)="filtroActivo.set('powerbi')">
+              Power BI
+            </oefa-chip>
+            <oefa-chip [active]="filtroActivo() === 'tableau'" (clicked)="filtroActivo.set('tableau')">
+              Tableau
+            </oefa-chip>
+          </div>
+          <p class="text-muted" style="font-size: 0.8125rem;">
+            Filtro seleccionado actualmente: <strong>{{ filtroActivo() }}</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Tarjeta 3: Chips con Iconos, Logos y Remoción -->
+      <div class="card ds-card">
+        <div class="card-header">
+          <h3>3. Chips con Icono / Logo y Remoción (Removable)</h3>
+          <span class="text-muted">Para tags de filtros aplicados que el usuario puede limpiar individualmente.</span>
+        </div>
+        <div class="card-body">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center;">
+            <oefa-chip icon="star" label="Destacado" />
+            <oefa-chip icon="filter" label="Filtro Aplicado" [removable]="true" (removed)="onRemoverFiltro('Filtro Aplicado')" />
+            <oefa-chip label="Área: DEAM" [removable]="true" (removed)="onRemoverFiltro('Área: DEAM')" />
+            <oefa-chip label="Año 2026" [removable]="true" (removed)="onRemoverFiltro('Año 2026')" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta 4: Especificación y API -->
+      <div class="card ds-card">
+        <div class="card-header">
+          <h3>4. Especificación de Uso y API</h3>
+          <span class="text-muted">Consumo simple y tipado mediante <code>variant</code>, <code>label</code>, <code>icon</code>, <code>[active]</code> y <code>(clicked)</code>.</span>
+        </div>
+        <div class="card-body">
+          <pre class="code-block">&lt;!-- 1. Chips de Filtro Rápido --&gt;
+&lt;oefa-chip [active]="filtro === 'todos'" (clicked)="filtrar('todos')"&gt;Todos&lt;/oefa-chip&gt;
+&lt;oefa-chip icon="star" [active]="filtro === 'destacados'" (clicked)="filtrar('destacados')"&gt;Destacados&lt;/oefa-chip&gt;
+
+&lt;!-- 2. Chip Removible (Etiqueta de búsqueda activa) --&gt;
+&lt;oefa-chip [removable]="true" (removed)="limpiarFiltro()"&gt;
+  Filtro: Fiscalización
+&lt;/oefa-chip&gt;
+
+&lt;!-- 3. Variantes Institucionales OEFA --&gt;
 &lt;oefa-chip variant="project" label="PRY-2026-001" /&gt;
-
-&lt;!-- Expediente SIGED --&gt;
 &lt;oefa-chip variant="siged" label="2025-E01-013000" /&gt;
-
-&lt;!-- Área usuaria --&gt;
 &lt;oefa-chip variant="area" label="Subdirección de Fiscalización" /&gt;
-
-&lt;!-- Entregable contractual --&gt;
 &lt;oefa-chip variant="deliverable" label="ENTREGABLE N° 1" /&gt;</pre>
         </div>
       </div>
@@ -122,4 +172,10 @@ import { OefaChipComponent } from '../../shared/components/chip/chip.component';
     }
   `]
 })
-export class DesignSystemChipsComponent {}
+export class DesignSystemChipsComponent {
+  filtroActivo = signal<string>('todos');
+
+  onRemoverFiltro(tag: string): void {
+    console.log('Removido:', tag);
+  }
+}

@@ -40,8 +40,13 @@ export class NavigationService {
   selectedTreeItemId = signal<string>('');
   clickedFlyoutItemId = signal<string | null>(null);
 
-  // Quick action '+' modal trigger
+  // Quick action '+' button and modal configuration
+  showQuickAction = signal<boolean>(true);
   isQuickActionOpen = signal<boolean>(false);
+
+  setShowQuickAction(show: boolean): void {
+    this.showQuickAction.set(show);
+  }
 
   // Navigation Items: Módulos OEFA + Sistema de Diseño + Ejemplo Jerárquico Demo
   navItems: NavItem[] = [
