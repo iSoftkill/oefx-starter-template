@@ -1,14 +1,11 @@
-<div class="oefa-page oefa-stack-lg">
-  <oefa-page-header title="Plantilla Base OEFA"
-    subtitle="Inicio rápido para nuevos sistemas institucionales con Design System integrado.">
-    <div actions>
-      <a routerLink="/design-system">
-        <oefa-button variant="primary" icon="search">
-          Ver Catálogo Design System
-        </oefa-button>
-      </a>
-    </div>
-  </oefa-page-header>
+<oefa-page-layout title="Template del OEFA"
+  subtitle="Información integrada para una gestión ambiental eficiente, transparente y basada en evidencia."
+  [fit]="false">
+    <div actions class="oefa-flex-row oefa-gap-sm">
+    <oefa-button variant="primary" size="md" icon="search" routerLink="/design-system">
+Ver Catálogo Design System
+</oefa-button>
+  </div>
 
   <!-- KPI Summary Bar (Cards nativas OEFA) -->
   <div class="oefa-grid-auto">
@@ -59,4 +56,4 @@
       </a>
     </div>
   </div>
-</div>
+</oefa-page-layout>

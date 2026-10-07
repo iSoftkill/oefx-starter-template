@@ -6,12 +6,14 @@ import { OefaPageHeaderComponent } from '../../shared/components/page-header/pag
 import { OefaBentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/bento-kpi-tile.component';
 import { OefaIconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
 import { OefaKpiCardComponent } from '../../shared/components/kpi-card/kpi-card.component';
+import { OefaPageLayoutComponent } from '../../shared/components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
   imports: [
     CommonModule,
+    OefaPageLayoutComponent,
     RouterModule,
     OefaButtonComponent,
     OefaPageHeaderComponent,
@@ -20,7 +22,7 @@ import { OefaKpiCardComponent } from '../../shared/components/kpi-card/kpi-card.
     OefaKpiCardComponent
   ],
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css']
+  styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
   onSelectTile(title: string): void {
