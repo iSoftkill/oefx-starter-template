@@ -2,12 +2,14 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaStatusBadgeComponent } from '../../shared/components/status-badge/status-badge.component';
 import { OefaChipComponent } from '../../shared/components/chip/chip.component';
+import { OefaPageLayoutComponent } from '../../shared/components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-design-system-typography',
   standalone: true,
-  imports: [CommonModule, OefaStatusBadgeComponent, OefaChipComponent],
+  imports: [CommonModule, OefaStatusBadgeComponent, OefaChipComponent, OefaPageLayoutComponent],
   template: `
+    <oefa-page-layout title="🔤 Tipografía e Identidad Escrita" subtitle="Fuentes corporativas autorizadas, jerarquía de escala WCAG 2.2 y casos de uso en componentes OEFA." [fit]="false">
     <div class="ds-container">
       <div class="ds-header">
         <div>
@@ -305,6 +307,7 @@ import { OefaChipComponent } from '../../shared/components/chip/chip.component';
         </div>
       </div>
     </div>
+    </oefa-page-layout>
   `,
   styles: [`
     .guidelines-grid {
@@ -815,4 +818,4 @@ import { OefaChipComponent } from '../../shared/components/chip/chip.component';
     }
   `]
 })
-export class DesignSystemTypographyComponent {}
+export class DesignSystemTypographyComponent { }

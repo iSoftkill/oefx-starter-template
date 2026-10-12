@@ -4,6 +4,7 @@ import { ThemeService } from '../../services/theme.service';
 import { OefaButtonComponent } from '../../shared/components/button/button.component';
 import { OefaAppLauncherComponent } from '../../shared/components/app-launcher/app-launcher.component';
 import { UserMenuComponent } from '../../shared/components/user-menu/user-menu.component';
+import { OefaPageLayoutComponent } from '../../shared/components/page-layout/page-layout.component';
 
 export type SidebarSimMode = 'pinned' | 'floating' | 'hidden';
 
@@ -11,12 +12,15 @@ export type SidebarSimMode = 'pinned' | 'floating' | 'hidden';
   selector: 'app-design-system-navigation',
   standalone: true,
   imports: [
-    CommonModule, 
-    OefaButtonComponent, 
-    OefaAppLauncherComponent, 
-    UserMenuComponent
+    CommonModule,
+    OefaButtonComponent,
+    OefaAppLauncherComponent,
+    UserMenuComponent,
+    OefaPageLayoutComponent
   ],
   template: `
+      <oefa-page-layout title="🧭 Cabecera Institucional y Side Rail (Organismos Shell)" subtitle="Especificación del Top Header corporativo OEFA (64px), Rail lateral de 80px, Submenú flyout de 260px y adaptación por breakpoints oficiales." [fit]="false">
+
     <div class="ds-container">
       <div class="ds-header">
         <div>
@@ -477,6 +481,7 @@ export type SidebarSimMode = 'pinned' | 'floating' | 'hidden';
         </div>
       </div>
     </div>
+    </oefa-page-layout>
   `,
   styles: [`
     .ds-container { display: flex; flex-direction: column; gap: 24px; }

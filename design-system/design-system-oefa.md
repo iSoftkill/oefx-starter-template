@@ -1717,6 +1717,30 @@ Componente reutilizable para visualización de cifras institucionales, indicador
 
 ---
 
+### 24.5 Mosaicos de Acceso Rápido y Portales (`<oefa-portal-tile>`)
+Componente institucional (`src/app/shared/components/portal-tile/`) para paneles intranet, accesos directos de portales y tableros de servicios:
+```html
+<oefa-portal-tile
+  label="Beneficios OEFA"
+  icon="star"
+  variant="primary"
+  (tileClick)="onOpenBeneficios()" />
+```
+
+#### API de `<oefa-portal-tile>`
+| Propiedad | Tipo | Default | Descripción |
+|---|---|---|---|
+| `[label]` | `string` | `''` | Texto descriptivo del acceso directo. |
+| `[icon]` | `string` | `'star'` | Nombre del icono en `<oefa-icon>`. |
+| `[variant]` | `'primary' \| 'secondary' \| 'success' \| 'warning' \| 'error' \| 'neutral'` | `'primary'` | Variante de color firme y bajo tono (tokens M3 `container` con texto `on-container`). Sin degradados. |
+| `[iconColor]` | `string` | `undefined` | Color manual opcional para el icono. |
+| `[routerLink]` | `string` | `undefined` | Ruta Angular para navegación interna accesible. |
+| `[href]` | `string` | `undefined` | URL absoluta externa. |
+| `[external]` | `boolean` | `false` | Abre en nueva pestaña con `rel="noopener noreferrer"`. |
+| `(tileClick)` | `EventEmitter<void>` | — | Evento emitido al hacer clic o presionar Enter/Espacio. |
+
+---
+
 ## 25. Siguiente paso
 Con esto cerrado como fundación general, cada proyecto (empezando por Control de Pagos de Entregables) escribe su propio documento corto que solo mapea estos tokens a sus casos de uso específicos — ver `design-project-control-pagos.md`.
 

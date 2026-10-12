@@ -1,0 +1,43 @@
+@if (routerLink) {
+  <a
+    [routerLink]="routerLink"
+    class="oefa-portal-tile-root"
+    [ngClass]="'variant-' + variant"
+    [attr.aria-label]="ariaLabel || label"
+    (click)="onClick()"
+  >
+    <div class="tile-icon-wrapper">
+      <oefa-icon [name]="icon" [size]="24" [color]="computedIconColor"></oefa-icon>
+    </div>
+    <span class="tile-label">{{ label }}</span>
+  </a>
+} @else if (href) {
+  <a
+    [href]="href"
+    [attr.target]="external ? '_blank' : null"
+    [attr.rel]="external ? 'noopener noreferrer' : null"
+    class="oefa-portal-tile-root"
+    [ngClass]="'variant-' + variant"
+    [attr.aria-label]="ariaLabel || label"
+    (click)="onClick()"
+  >
+    <div class="tile-icon-wrapper">
+      <oefa-icon [name]="icon" [size]="24" [color]="computedIconColor"></oefa-icon>
+    </div>
+    <span class="tile-label">{{ label }}</span>
+  </a>
+} @else {
+  <button
+    type="button"
+    class="oefa-portal-tile-root"
+    [ngClass]="'variant-' + variant"
+    [attr.aria-label]="ariaLabel || label"
+    (click)="onClick()"
+    (keydown)="onKeyDown($event)"
+  >
+    <div class="tile-icon-wrapper">
+      <oefa-icon [name]="icon" [size]="24" [color]="computedIconColor"></oefa-icon>
+    </div>
+    <span class="tile-label">{{ label }}</span>
+  </button>
+}

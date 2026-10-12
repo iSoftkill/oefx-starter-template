@@ -2,12 +2,15 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaButtonComponent } from '../../shared/components/button/button.component';
 import { OefaIconButtonComponent } from '../../shared/components/icon-button/icon-button.component';
+import { OefaPageLayoutComponent } from '../../shared/components/page-layout/page-layout.component';
 
 @Component({
   selector: 'app-design-system-buttons',
   standalone: true,
-  imports: [CommonModule, OefaButtonComponent, OefaIconButtonComponent],
+  imports: [CommonModule, OefaButtonComponent, OefaIconButtonComponent, OefaPageLayoutComponent],
   template: `
+  <oefa-page-layout title="🎨 Catálogo Integral de Colores & Tokens OEFA" subtitle="Tokens semánticos de color, escalas monocromáticas (tonal ramps 10–99), contrastes normados y guía de
+          aplicación en componentes institucionales." [fit]="false">
     <div class="ds-container">
       <div class="ds-header">
         <div>
@@ -163,6 +166,7 @@ import { OefaIconButtonComponent } from '../../shared/components/icon-button/ico
         </div>
       </div>
     </div>
+</oefa-page-layout>
   `,
   styles: [`
     .ds-container { display: flex; flex-direction: column; gap: 24px; }
@@ -185,4 +189,4 @@ import { OefaIconButtonComponent } from '../../shared/components/icon-button/ico
     .info-col p { margin: 0; font-size: 0.8125rem; color: var(--oefa-text-secondary); line-height: 1.4; }
   `]
 })
-export class DesignSystemButtonsComponent {}
+export class DesignSystemButtonsComponent { }

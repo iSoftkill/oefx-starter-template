@@ -7,6 +7,7 @@ import { OefaButtonComponent } from '../../shared/components/button/button.compo
 import { OefaStatusBadgeComponent } from '../../shared/components/status-badge/status-badge.component';
 import { OefaAlertComponent } from '../../shared/components/alert/alert.component';
 import { OefaBentoKpiTileComponent } from '../../shared/components/bento-kpi-tile/bento-kpi-tile.component';
+import { OefaPageLayoutComponent } from '../../shared/components/page-layout/page-layout.component';
 
 interface ColorToken {
   token: string;
@@ -48,7 +49,8 @@ interface TonalRamp {
     OefaButtonComponent,
     OefaStatusBadgeComponent,
     OefaAlertComponent,
-    OefaBentoKpiTileComponent
+    OefaBentoKpiTileComponent,
+    OefaPageLayoutComponent
   ],
   templateUrl: './design-system-colors.component.html',
   styleUrl: './design-system-colors.component.scss'

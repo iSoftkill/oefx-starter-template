@@ -1,0 +1,142 @@
+:host {
+  display: block;
+  width: 100%;
+  min-width: 0;
+}
+
+.oefa-portal-tile-root {
+  display: flex;
+  align-items: center;
+  gap: var(--oefa-spacing-sm, 12px);
+  width: 100%;
+  min-height: 54px;
+  padding: 10px 14px;
+  border-radius: var(--oefa-radius-md, 10px);
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  box-sizing: border-box;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: left;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.05);
+  transition: all var(--oefa-duration-fast, 150ms) var(--oefa-ease-standard, ease);
+  position: relative;
+  min-width: 0;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
+  }
+
+  &:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.05);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--oefa-focus-ring, #144aa7);
+    outline-offset: 2px;
+  }
+}
+
+.tile-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+}
+
+.tile-label {
+  font-family: var(--oefa-font-family-display, 'Poppins', sans-serif);
+  font-size: 0.84375rem;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: normal;
+  word-break: normal;
+  overflow-wrap: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+/* ============================================================== */
+/* VARIANTES: COLORES FIRMES DE BAJO TONO (SIN DEGRADADOS)        */
+/* Mismo estándar de contraste que Bento KPI tiles y Toasts      */
+/* ============================================================== */
+
+/* Azul Primario Institucional */
+.variant-primary,
+.variant-blue {
+  background-color: var(--oefa-primary-container, #eef4ff);
+  border-color: var(--oefa-primary-container-hc, #a4c1f4);
+  color: var(--oefa-primary-on-container, #002463);
+
+  &:hover {
+    background-color: #e2edfc;
+    border-color: var(--oefa-primary-root, #144aa7);
+  }
+}
+
+/* Verde Agua / Cian Secundario */
+.variant-secondary,
+.variant-cyan,
+.variant-teal {
+  background-color: var(--oefa-secondary-container, #eefffe);
+  border-color: var(--oefa-secondary-container-hc, #b3e5e1);
+  color: var(--oefa-secondary-on-container, #005d58);
+
+  &:hover {
+    background-color: #daf2f0;
+    border-color: var(--oefa-secondary-ui-safe, #2c817a);
+  }
+}
+
+/* Verde Éxito Institucional */
+.variant-success,
+.variant-emerald {
+  background-color: var(--oefa-success-container, #f7ffee);
+  border-color: var(--oefa-success-container-hc, #d0eaae);
+  color: var(--oefa-success-on-container, #386200);
+
+  &:hover {
+    background-color: #ebf7de;
+    border-color: var(--oefa-success-ui-safe, #578221);
+  }
+}
+
+/* Ámbar / Advertencia */
+.variant-warning {
+  background-color: var(--oefa-tertiary-container, #fff0cc);
+  border-color: var(--oefa-tertiary-container-hc, #ffe199);
+  color: var(--oefa-tertiary-on-container, #664800);
+
+  &:hover {
+    background-color: #ffe6a8;
+    border-color: var(--oefa-tertiary-ui-safe, #996d00);
+  }
+}
+
+/* Superficie Neutral */
+.variant-neutral {
+  background-color: var(--oefa-surface-subtle, #f8fafc);
+  border-color: var(--oefa-border-color, #e2e8f0);
+  color: var(--oefa-text-primary, #1d1d1b);
+
+  &:hover {
+    background-color: var(--oefa-surface-card, #ffffff);
+    border-color: var(--oefa-primary-container-hc, #a4c1f4);
+  }
+}
+
+/* Error Institucional */
+.variant-error {
+  background-color: var(--oefa-error-container, #ffeff1);
+  border-color: var(--oefa-error-container-hc, #eec4c9);
+  color: var(--oefa-error-on-container, #aa1223);
+
+  &:hover {
+    background-color: #fee2e5;
+    border-color: var(--oefa-error-root, #e51a2f);
+  }
+}
+

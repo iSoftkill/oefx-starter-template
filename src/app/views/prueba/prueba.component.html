@@ -1,10 +1,230 @@
-<div class="oefa-page">
-  <div class="oefa-grid-auto">
-    <oefa-card title="Expediente N° 2026-001" subtitle="En Evaluación">
-      <p>Detalle de la inspección técnica ambiental...</p>
-      <div card-footer>
-        <oefa-button variant="primary" size="sm">Ver Detalle</oefa-button>
+<oefa-page-layout
+  title="Portal del Colaborador OEFA"
+  subtitle="Canal integrado de comunicaciones, herramientas institucionales y servicios al colaborador."
+  [fit]="true"
+>
+  <!-- Portal Hub: Distribución 1 a 2 entre Comunicaciones y Panel Principal -->
+  <div class="oefa-portal-dashboard">
+    
+    <!-- ======================================================= -->
+    <!-- COLUMNA 1 (1 PARTE): SECCIÓN DE COMUNICACIONES Y FEED  -->
+    <!-- ======================================================= -->
+    <section class="portal-feed-panel" aria-label="Canales de comunicación institucional">
+      <oefa-tabs
+        [tabs]="portalTabs"
+        [(activeTab)]="activeTab"
+        variant="pill"
+        (tabChange)="onTabChange($event)"
+      >
+        <!-- Lista de Publicaciones según pestaña activa -->
+        <div class="feed-items-container">
+          @for (item of currentFeedItems; track item.id) {
+            <article class="feed-item" (click)="onReadMoreFeed(item)">
+              <!-- Espacio para Imagen (.webp, .png, etc.) con fallback a placeholder -->
+              <div class="feed-image-space" aria-label="Espacio de imagen informativa">
+                @if (item.imageUrl) {
+                  <img
+                    [src]="item.imageUrl"
+                    [alt]="item.title"
+                    class="feed-image"
+                    loading="lazy"
+                  />
+                  @if (item.imageTag) {
+                    <span class="feed-image-overlay-badge">{{ item.imageTag }}</span>
+                  }
+                } @else {
+                  <div class="feed-image-placeholder">
+                    <oefa-icon name="video" [size]="20" color="var(--oefa-primary-root)"></oefa-icon>
+                    <span class="feed-image-tag">{{ item.imageTag || 'OEFA' }}</span>
+                  </div>
+                }
+              </div>
+
+              <!-- Contenido textual de la publicación -->
+              <div class="feed-body">
+                <h3 class="feed-title">
+                  @if (item.icon) {
+                    <oefa-icon [name]="item.icon" [size]="14" color="var(--oefa-primary-root)" class="feed-inline-icon"></oefa-icon>
+                    <span class="feed-separator">|</span>
+                  }
+                  {{ item.title }}
+                </h3>
+
+                <div class="feed-meta">
+                  <span class="feed-published-label">Publicado en</span>
+                  <span class="feed-published-category">{{ item.category }}</span>
+                </div>
+
+                <div class="feed-footer-row">
+                  <time class="feed-date">{{ item.date }}</time>
+                  <a
+                    class="feed-read-more"
+                    href="javascript:void(0)"
+                    (click)="$event.stopPropagation(); onReadMoreFeed(item)"
+                  >
+                    Ver más
+                  </a>
+                </div>
+              </div>
+            </article>
+          }
+        </div>
+      </oefa-tabs>
+    </section>
+
+    <!-- ============================================================== -->
+    <!-- COLUMNA 2 (2 PARTES): EN DOS FILAS (SOCIAL HUB Y PORTAL TILES) -->
+    <!-- ============================================================== -->
+    <section class="portal-main-panel" aria-label="Panel de colaboradores y servicios">
+      
+      <!-- FILA 1: Feliz Cumpleaños y Nuevos Compañeros (Lado a Lado) -->
+      <div class="portal-social-row">
+        
+        <!-- Tarjeta Feliz Cumpleaños: Bajo tono primary-container -->
+        <article class="portal-hub-card card-birthday">
+          <header class="hub-card-header">
+            <h2 class="hub-card-title">Feliz cumpleaños</h2>
+            <oefa-icon name="cake" [size]="20" color="var(--oefa-primary-root)"></oefa-icon>
+          </header>
+
+          <ul class="hub-user-list">
+            @for (user of cumpleaneros; track user.id) {
+              <li class="hub-user-item">
+                <div class="hub-avatar avatar-primary">
+                  <span class="avatar-initials">{{ user.initials }}</span>
+                </div>
+                <div class="hub-user-info">
+                  <span class="hub-user-name">{{ user.name }}</span>
+                  <span class="hub-user-area">{{ user.area }}</span>
+                </div>
+              </li>
+            }
+          </ul>
+
+          <footer class="hub-card-footer">
+            <oefa-button
+              variant="primary"
+              size="md"
+              class="hub-oefa-button"
+              (clicked)="onSendGreeting()">
+              ¡Mándales un saludo!
+            </oefa-button>
+          </footer>
+        </article>
+
+        <!-- Tarjeta Nuevos Compañeros: Bajo tono secondary-container -->
+        <article class="portal-hub-card card-teammates">
+          <header class="hub-card-header">
+            <h2 class="hub-card-title">Nuevos compañeros</h2>
+            <oefa-icon name="users" [size]="20" color="var(--oefa-secondary-ui-safe)"></oefa-icon>
+          </header>
+
+          <ul class="hub-user-list scrollable-teammates">
+            @for (user of nuevosCompaneros; track user.id) {
+              <li class="hub-user-item">
+                <div class="hub-avatar avatar-secondary">
+                  <span class="avatar-initials">{{ user.initials }}</span>
+                </div>
+                <div class="hub-user-info">
+                  <span class="hub-user-name">{{ user.name }}</span>
+                  <span class="hub-user-area">{{ user.area }}</span>
+                </div>
+              </li>
+            }
+          </ul>
+
+          <footer class="hub-card-footer">
+            <oefa-button
+              variant="secondary"
+              size="md"
+              class="hub-oefa-button"
+              (clicked)="onOpenMoreCompaneros()">
+              Ver más!
+            </oefa-button>
+          </footer>
+        </article>
       </div>
-    </oefa-card>
+
+      <!-- FILA 2: Mosaicos Portal Tiles (Grilla amplia con gama completa de colores OEFA) -->
+      <div class="portal-tiles-grid">
+        <oefa-portal-tile
+          label="Beneficios OEFA"
+          icon="star"
+          variant="primary"
+          (tileClick)="onOpenTile('Beneficios OEFA')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Tickets de la felicidad"
+          icon="ticket"
+          variant="warning"
+          (tileClick)="onOpenTile('Tickets de la felicidad')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="TFA Secretaría Técnica"
+          icon="scale"
+          variant="secondary"
+          (tileClick)="onOpenTile('TFA Secretaría Técnica')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Relaciones Colectivas"
+          icon="people-network"
+          variant="success"
+          (tileClick)="onOpenTile('Relaciones Colectivas')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Servicios más utilizados"
+          icon="folder-open"
+          variant="neutral"
+          (tileClick)="onOpenTile('Servicios más utilizados')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Videoteca OEFA"
+          icon="play-box"
+          variant="primary"
+          (tileClick)="onOpenTile('Videoteca OEFA')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Sistemas de Gestión"
+          icon="list-check"
+          variant="secondary"
+          (tileClick)="onOpenTile('Sistemas de Gestión')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Recursos Humanos"
+          icon="megaphone"
+          variant="success"
+          (tileClick)="onOpenTile('Recursos Humanos')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Buzón de Sugerencias"
+          icon="inbox"
+          variant="error"
+          (tileClick)="onOpenTile('Buzón de Sugerencias')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Fortalecimiento de Capacidades"
+          icon="book"
+          variant="warning"
+          (tileClick)="onOpenTile('Fortalecimiento de Capacidades')"
+        ></oefa-portal-tile>
+
+        <oefa-portal-tile
+          label="Archivos Compartidos"
+          icon="folder-open"
+          variant="neutral"
+          (tileClick)="onOpenTile('Archivos Compartidos')"
+        ></oefa-portal-tile>
+      </div>
+
+    </section>
   </div>
-</div>
+</oefa-page-layout>

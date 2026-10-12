@@ -58,6 +58,7 @@ export { OefaBentoKpiTileComponent } from './components/bento-kpi-tile/bento-kpi
 export { OefaCatalogCardComponent } from './components/catalog-card/catalog-card.component';
 export { OefaProcessCardComponent } from './components/process-card/process-card.component';
 export { OefaCardComponent } from './components/card/card.component';
+export { OefaPortalTileComponent, type PortalTileVariant } from './components/portal-tile/portal-tile.component';
 export { OefaStatComponent } from './components/stat/stat.component';
 export { OefaDescriptionListComponent, OefaDescriptionItemComponent } from './components/description-list';
 export type { DescriptionListColumns, DescriptionListDensity, DescriptionListLayout } from './components/description-list';

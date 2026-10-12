@@ -1,0 +1,483 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+}
+
+/* ============================================================== */
+/* MACRO-LAYOUT: DISTRIBUCIÓN 1 A 2 AJUSTADA A LA ALTURA TOTAL    */
+/* ============================================================== */
+.oefa-portal-dashboard {
+  display: grid;
+  /* Reparto 1 a 2 del espacio disponible */
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+  gap: var(--oefa-spacing-md, 16px);
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 1100px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+/* ============================================================== */
+/* 1. COLUMNA 1 (ESPACIO 1): COMUNICACIONES AJUSTADO A LA ALTURA  */
+/* ============================================================== */
+.portal-feed-panel {
+  background: var(--oefa-surface-card, #ffffff);
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  border-radius: var(--oefa-radius-md, 12px);
+  box-shadow: var(--oefa-shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.05));
+  padding: var(--oefa-spacing-md, 16px);
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+
+  oefa-tabs {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+
+    ::ng-deep .oefa-tabs-wrapper {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      min-height: 0;
+    }
+
+    ::ng-deep .tabs-content {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+  }
+}
+
+/* Lista de Artículos / Publicaciones con scroll interno adaptado */
+.feed-items-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--oefa-spacing-sm, 12px);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--oefa-border-color, #cbd5e1) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--oefa-border-color, #cbd5e1);
+    border-radius: 4px;
+  }
+}
+
+.feed-item {
+  display: flex;
+  gap: var(--oefa-spacing-sm, 12px);
+  padding: var(--oefa-spacing-sm, 12px) var(--oefa-spacing-2xs, 4px);
+  border-bottom: 1px solid var(--oefa-border-color-subtle, #f1f5f9);
+  cursor: pointer;
+  border-radius: var(--oefa-radius-sm, 6px);
+  transition: background-color var(--oefa-duration-fast, 150ms) ease;
+  min-width: 0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: var(--oefa-primary-container, #eef4ff);
+
+    .feed-read-more {
+      text-decoration: underline;
+      color: var(--oefa-primary-root, #144aa7);
+    }
+  }
+}
+
+/* Espacio reservado para Imagen */
+.feed-image-space {
+  position: relative; /* Contexto de posicionamiento para .feed-image-overlay-badge */
+  flex-shrink: 0;
+  width: 104px;
+  height: 68px;
+  border-radius: var(--oefa-radius-sm, 6px);
+  overflow: hidden;
+  background-color: var(--oefa-surface-subtle, #f8fafc);
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  box-sizing: border-box;
+}
+
+.feed-image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.feed-image-tag {
+  font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+  font-size: 0.625rem;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.15;
+  color: var(--oefa-text-secondary, #475569);
+  word-break: break-word;
+}
+
+.feed-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.feed-image-overlay-badge {
+  position: absolute;
+  bottom: 3px;
+  left: 4px;
+  right: 4px;
+  font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+  font-size: 0.5625rem;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(0, 36, 99, 0.78);
+  backdrop-filter: blur(2px);
+  border-radius: 3px;
+  padding: 1px 4px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Cuerpo de la Noticia */
+.feed-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+  justify-content: center;
+}
+
+.feed-title {
+  margin: 0 0 3px 0;
+  font-family: var(--oefa-font-family-display, 'Poppins', sans-serif);
+  font-size: 0.8125rem;
+  font-weight: var(--oefa-font-weight-semibold, 600);
+  color: var(--oefa-text-primary, #1e293b);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+
+  .feed-inline-icon {
+    vertical-align: middle;
+    margin-right: 3px;
+  }
+
+  .feed-separator {
+    color: var(--oefa-border-color, #94a3b8);
+    margin-right: 3px;
+  }
+}
+
+.feed-meta {
+  font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+  font-size: 0.6875rem;
+  margin-bottom: 2px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+
+  .feed-published-label {
+    color: var(--oefa-text-muted, #64748b);
+  }
+
+  .feed-published-category {
+    color: var(--oefa-secondary-ui-safe, #2c817a);
+    font-weight: 600;
+  }
+}
+
+.feed-footer-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 2px;
+
+  .feed-date {
+    font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+    font-size: 0.6875rem;
+    color: var(--oefa-text-muted, #94a3b8);
+  }
+
+  .feed-read-more {
+    font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--oefa-secondary-ui-safe, #2c817a);
+    text-decoration: none;
+    cursor: pointer;
+  }
+}
+
+/* ============================================================== */
+/* 2. COLUMNA 2 (ESPACIO 2): ORGANIZADA EN DOS FILAS (50% / 50%)    */
+/* ============================================================== */
+.portal-main-panel {
+  display: grid;
+  /* Proporción equitativa 50% / 50%: Fila 1 (1fr) y Fila 2 (1fr) */
+  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--oefa-spacing-md, 16px);
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+
+  @media (max-width: 900px) {
+    grid-template-rows: auto auto;
+    height: auto;
+  }
+}
+
+/* FILA 1: SOCIAL HUB (1 PARTE DE LA PROPORCIÓN 1 A 2)             */
+.portal-social-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--oefa-spacing-md, 16px);
+  align-items: stretch;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  @media (max-width: 720px) {
+    grid-template-columns: 1fr;
+    height: auto;
+  }
+}
+
+/* Tarjetas Sociales: Sin fondo teñido, bordes limpios */
+.portal-hub-card {
+  background: transparent;
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  border-radius: var(--oefa-radius-md, 10px);
+  padding: var(--oefa-spacing-sm, 12px) var(--oefa-spacing-md, 16px);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+  box-shadow: none;
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+/* Tarjeta Feliz Cumpleaños */
+.card-birthday {
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  background: transparent;
+
+  .hub-card-title {
+    color: var(--oefa-text-primary, #1d1d1b);
+  }
+
+  .hub-avatar.avatar-primary {
+    background-color: var(--oefa-primary-root, #144aa7);
+    color: #ffffff;
+  }
+}
+
+/* Tarjeta Nuevos Compañeros */
+.card-teammates {
+  border: 1px solid var(--oefa-border-color, #e2e8f0);
+  background: transparent;
+
+  .hub-card-title {
+    color: var(--oefa-text-primary, #1d1d1b);
+  }
+
+  .hub-avatar.avatar-secondary {
+    background-color: var(--oefa-secondary-ui-safe, #2c817a);
+    color: #ffffff;
+  }
+}
+
+.hub-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--oefa-spacing-xs, 8px);
+  flex-shrink: 0;
+
+  .hub-card-title {
+    margin: 0;
+    font-family: var(--oefa-font-family-display, 'Poppins', sans-serif);
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+}
+
+.hub-user-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--oefa-border-color, #cbd5e1) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: var(--oefa-border-color, #cbd5e1);
+    border-radius: 4px;
+  }
+
+  &.scrollable-teammates {
+    max-height: 100%;
+  }
+}
+
+.hub-user-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.hub-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: var(--oefa-radius-full, 9999px);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .avatar-initials {
+    font-family: var(--oefa-font-family-display, 'Poppins', sans-serif);
+    font-size: 0.65625rem;
+    font-weight: 700;
+    color: #ffffff;
+  }
+}
+
+.hub-user-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  flex: 1;
+
+  .hub-user-name {
+    font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--oefa-text-primary, #1d1d1b);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .hub-user-area {
+    font-family: var(--oefa-font-family-body, 'Inter', sans-serif);
+    font-size: 0.65625rem;
+    color: var(--oefa-text-secondary, #475569);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+.hub-card-footer {
+  margin-top: auto; /* Apegado a la parte inferior del card */
+  padding-top: var(--oefa-spacing-xs, 8px);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-sizing: border-box;
+
+  .hub-oefa-button,
+  oefa-button {
+    width: 100%;
+    display: flex;
+
+    ::ng-deep .btn,
+    ::ng-deep button {
+      width: 100%;
+      height: 38px; /* Altura fija requerida */
+      min-height: 38px;
+      max-height: 38px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      box-sizing: border-box;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      border-radius: var(--oefa-radius-sm, 6px);
+    }
+  }
+}
+
+/* FILA 2: MOSAICOS PORTAL TILES (2 PARTES DE LA PROPORCIÓN 1 A 2)  */
+.portal-tiles-grid {
+  display: grid;
+  /* 3 columnas fluidas con ajuste de filas vertical (grid-auto-rows: 1fr) */
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-rows: 1fr;
+  gap: var(--oefa-spacing-sm, 12px);
+  height: 100%;
+  min-height: 0;
+  box-sizing: border-box;
+
+  /* Ajustar la altura de cada portal-tile para estirar verticalmente */
+  /* sin modificar el componente compartido oefa-portal-tile */
+  oefa-portal-tile {
+    display: flex;
+    height: 100%;
+    min-height: 0;
+
+    ::ng-deep .oefa-portal-tile-root {
+      height: 100%;
+      min-height: 0;
+    }
+  }
+
+  @media (max-width: 600px) {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+}
