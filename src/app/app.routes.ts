@@ -38,13 +38,15 @@ import { DesignSystemLayoutsComponent } from './views/design-system/design-syste
 import { DesignSystemDevGuideComponent } from './views/design-system/design-system-dev-guide.component';
 import { PinDemoComponent } from './views/pin-demo/pin-demo.component';
 import { PruebaComponent } from './views/prueba/prueba.component';
+import { LoginComponent2 } from './views/login2/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'pin-demo', component: PinDemoComponent },
-  
+  { path: 'login2', component: LoginComponent2 },
+
   // Módulo Sistema de Diseño OEFA
   { path: 'design-system', redirectTo: 'design-system/fundaciones', pathMatch: 'full' },
   { path: 'design-system/fundaciones', component: DesignSystemFoundationsComponent },

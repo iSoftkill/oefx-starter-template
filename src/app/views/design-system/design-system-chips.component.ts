@@ -27,8 +27,8 @@ import { OefaIconComponent } from '../../shared/components/icon/icon.component';
           <div class="chip-spec-list">
             <div class="chip-row">
               <div class="chip-demo">
-                <oefa-chip variant="project" label="PRY-2026-001" />
-                <oefa-chip variant="maintenance" label="MNT-2026-001" />
+                <oefa-chip variant="pill" color="info" prefix="[PRY]" label="PRY-2026-001" />
+                <oefa-chip variant="pill" color="success" prefix="[MNT]" label="MNT-2026-001" />
               </div>
               <div class="chip-info">
                 <strong>&lt;oefa-chip variant="project | maintenance"&gt;</strong>
@@ -38,30 +38,30 @@ import { OefaIconComponent } from '../../shared/components/icon/icon.component';
 
             <div class="chip-row">
               <div class="chip-demo">
-                <oefa-chip variant="siged" label="2025-E01-013000" />
+                <oefa-chip variant="rounded" color="neutral" label="2025-E01-013000" />
               </div>
               <div class="chip-info">
-                <strong>&lt;oefa-chip variant="siged"&gt;</strong>
+                <strong>&lt;oefa-chip variant="rounded" color="neutral"&gt;</strong>
                 <p>Etiqueta en fuente monoespaciada para destacar expedientes del Sistema de Gestión Documental (SIGED).</p>
               </div>
             </div>
 
             <div class="chip-row">
               <div class="chip-demo">
-                <oefa-chip variant="area" label="Subdirección de Fiscalización" />
+                <oefa-chip variant="rounded" color="info" label="Subdirección de Fiscalización" />
               </div>
               <div class="chip-info">
-                <strong>&lt;oefa-chip variant="area"&gt;</strong>
+                <strong>&lt;oefa-chip variant="rounded" color="info"&gt;</strong>
                 <p>Etiqueta para indicar la unidad orgánica o dirección requirente del requerimiento.</p>
               </div>
             </div>
 
             <div class="chip-row">
               <div class="chip-demo">
-                <oefa-chip variant="deliverable" label="ENTREGABLE N° 1" />
+                <oefa-chip variant="rounded" color="secondary" label="ENTREGABLE N° 1" />
               </div>
               <div class="chip-info">
-                <strong>&lt;oefa-chip variant="deliverable"&gt;</strong>
+                <strong>&lt;oefa-chip variant="rounded" color="secondary"&gt;</strong>
                 <p>Chips compactos para la numeración y secuencia de hitos o entregables contractuales.</p>
               </div>
             </div>
@@ -132,10 +132,10 @@ import { OefaIconComponent } from '../../shared/components/icon/icon.component';
 &lt;/oefa-chip&gt;
 
 &lt;!-- 3. Variantes Institucionales OEFA --&gt;
-&lt;oefa-chip variant="project" label="PRY-2026-001" /&gt;
-&lt;oefa-chip variant="siged" label="2025-E01-013000" /&gt;
-&lt;oefa-chip variant="area" label="Subdirección de Fiscalización" /&gt;
-&lt;oefa-chip variant="deliverable" label="ENTREGABLE N° 1" /&gt;</pre>
+&lt;oefa-chip variant="pill" color="info" prefix="[PRY]" label="PRY-2026-001" /&gt;
+&lt;oefa-chip variant="rounded" color="neutral" label="2025-E01-013000" /&gt;
+&lt;oefa-chip variant="rounded" color="info" label="Subdirección de Fiscalización" /&gt;
+&lt;oefa-chip variant="rounded" color="secondary" label="ENTREGABLE N° 1" /&gt;</pre>
         </div>
       </div>
     </div>

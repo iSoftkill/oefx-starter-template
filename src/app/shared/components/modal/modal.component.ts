@@ -45,6 +45,7 @@ export class OefaModalComponent {
   }
 
   onBackdropClick(event: MouseEvent): void {
+    if (event.target !== event.currentTarget) return;
     if (this.closeOnBackdrop && this.showCloseButton) {
       this.onClose();
     }

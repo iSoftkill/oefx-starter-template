@@ -5,3 +5,91 @@
   line-height: 1;
   vertical-align: middle;
 }
+
+.oefa-dot-badge {
+  display: inline-block;
+  border-radius: 50%;
+  flex-shrink: 0;
+  vertical-align: middle;
+  line-height: 1;
+  box-shadow: 0 0 0 2px var(--oefa-surface-card, #ffffff);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+
+  /* Variantes de Color */
+  &.oefa-dot-danger {
+    background-color: var(--oefa-error-root, #B3261E);
+    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+    color: var(--oefa-error-root, #B3261E);
+  }
+  &.oefa-dot-warning {
+    background-color: var(--oefa-tertiary-root, #FFB500);
+    box-shadow: 0 0 6px rgba(245, 158, 11, 0.4);
+    color: var(--oefa-tertiary-root, #FFB500);
+  }
+  &.oefa-dot-primary {
+    background-color: var(--oefa-primary-root, #144aa7);
+    box-shadow: 0 0 6px rgba(20, 74, 167, 0.4);
+    color: var(--oefa-primary-root, #144aa7);
+  }
+  &.oefa-dot-success {
+    background-color: var(--oefa-success-root, #4B830D);
+    box-shadow: 0 0 6px rgba(16, 185, 129, 0.4);
+    color: var(--oefa-success-root, #4B830D);
+  }
+  &.oefa-dot-info {
+    background-color: var(--oefa-primary-root, #144aa7);
+    box-shadow: 0 0 6px rgba(14, 165, 233, 0.4);
+    color: var(--oefa-primary-root, #144aa7);
+  }
+  &.oefa-dot-neutral {
+    background-color: var(--oefa-text-muted, #94a3b8);
+    box-shadow: 0 0 6px rgba(148, 163, 184, 0.3);
+    color: var(--oefa-text-muted, #94a3b8);
+  }
+
+  /* Variantes de Tamaño */
+  &.oefa-dot-sm {
+    width: 6px;
+    height: 6px;
+  }
+  &.oefa-dot-md {
+    width: 8px;
+    height: 8px;
+  }
+  &.oefa-dot-lg {
+    width: 10px;
+    height: 10px;
+  }
+
+  /* Animación Ping / Pulso para alertas en tiempo real */
+  &.oefa-dot-ping {
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      border-radius: 50%;
+      border: 2px solid currentColor;
+      opacity: 0.75;
+      animation: oefa-dot-pulse 1.8s cubic-bezier(0.24, 0, 0.38, 1) infinite;
+    }
+  }
+}
+
+@keyframes oefa-dot-pulse {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}

@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OefaChipComponent, ChipVariant } from '../chip/chip.component';
+import { OefaChipComponent, ChipVariant, ChipColor } from '../chip/chip.component';
 import { OefaStatusBadgeComponent } from '../status-badge/status-badge.component';
 import { OefaIconComponent } from '../icon/icon.component';
 
@@ -9,6 +9,10 @@ export type CatalogActivityType = 'sparkline' | 'bar' | 'pulse' | 'none';
 export interface CatalogChipConfig {
   variant: ChipVariant;
   label: string;
+  color?: ChipColor;
+  icon?: string;
+  logo?: string;
+  size?: 'sm' | 'md';
 }
 
 @Component({
@@ -36,9 +40,16 @@ export class OefaCatalogCardComponent {
   @Input() activityLabel?: string;
   @Input() updatedAt?: string;
   @Input() actionText: string = 'Abrir';
+  @Input() pinned: boolean = false;
+  @Input() showPin: boolean = false;
+  @Input() pinIcon: string = 'pin';
+  @Input() pinVariant: 'primary' | 'warning' = 'warning';
+  @Input() pinColor?: string;
+  @Input() pinAriaLabel?: string;
 
   @Output() cardClick = new EventEmitter<void>();
   @Output() actionClick = new EventEmitter<Event>();
+  @Output() pinClick = new EventEmitter<Event>();
 
   onCardClick(): void {
     this.cardClick.emit();
@@ -47,5 +58,10 @@ export class OefaCatalogCardComponent {
   onActionClick(event: Event): void {
     event.stopPropagation();
     this.actionClick.emit(event);
+  }
+
+  onPinClick(event: Event): void {
+    event.stopPropagation();
+    this.pinClick.emit(event);
   }
 }

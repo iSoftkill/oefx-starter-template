@@ -5,3 +5,160 @@
 button {
   width: 100%;
 }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oefa-spacing-xs, 8px);
+  padding: 9px 18px;
+  border: 1px solid transparent;
+  border-radius: var(--oefa-radius-md, 8px);
+  font-family: var(--oefa-font-body, inherit);
+  font-size: var(--oefa-font-size-sm, 0.875rem);
+  font-weight: var(--oefa-font-weight-semibold, 600);
+  line-height: var(--oefa-line-height-sm, 1.25rem);
+  cursor: pointer;
+  transition: background-color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+              border-color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+              color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+              box-shadow var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+              transform var(--oefa-duration-short, 100ms) var(--oefa-ease-standard, ease);
+  user-select: none;
+  text-decoration: none;
+  box-sizing: border-box;
+
+  &:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--oefa-focus-ring, var(--oefa-primary-root));
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    box-shadow: none !important;
+    transform: none !important;
+  }
+}
+
+/* Button Sizing Variants */
+.btn-sm {
+  padding: 6px 14px;
+  font-size: 0.8125rem;
+  line-height: 1.125rem;
+  border-radius: var(--oefa-radius-sm, 4px);
+  gap: 6px;
+}
+
+.btn-xs {
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  border-radius: var(--oefa-radius-sm, 4px);
+  gap: 4px;
+}
+
+.btn-lg {
+  padding: 12px 24px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  border-radius: var(--oefa-radius-md, 8px);
+  gap: 10px;
+}
+
+/* Primary Button (Blue OEFA) */
+.btn-primary {
+  background-color: var(--oefa-primary-root);
+  color: var(--oefa-primary-on, #ffffff);
+  box-shadow: 0 2px 6px rgba(20, 74, 167, 0.25);
+
+  &:hover:not(:disabled) {
+    background-color: var(--oefa-primary-hover, #103D89);
+    box-shadow: 0 4px 12px rgba(20, 74, 167, 0.35);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(20, 74, 167, 0.2);
+  }
+}
+
+/* Secondary Button (Border / Surface Neutral) */
+.btn-secondary {
+  background-color: var(--oefa-surface-card, #ffffff);
+  color: var(--oefa-text-primary, #1d1d1b);
+  border-color: var(--oefa-border-color, #e2e8f0);
+  box-shadow: var(--oefa-shadow-sm, 0 1px 3px rgba(15, 23, 42, 0.06));
+
+  &:hover:not(:disabled) {
+    background-color: var(--oefa-surface-subtle, #f8fafc);
+    border-color: var(--oefa-primary-root);
+    color: var(--oefa-primary-root);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--oefa-surface-muted, #f1f5f9);
+  }
+}
+
+/* Excel Export Button */
+.btn-excel {
+  background-color: var(--oefa-btn-excel-bg, #107C41);
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(16, 124, 65, 0.25);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+    box-shadow: 0 4px 12px rgba(16, 124, 65, 0.35);
+  }
+}
+
+/* Danger / Destructive Button */
+.btn-danger {
+  background-color: var(--oefa-error-root, #B3261E);
+  color: var(--oefa-error-on, #FFFFFF);
+  box-shadow: 0 2px 6px rgba(229, 26, 47, 0.25);
+
+  &:hover:not(:disabled) {
+    filter: brightness(0.9);
+    box-shadow: 0 4px 12px rgba(229, 26, 47, 0.35);
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(1px);
+    box-shadow: 0 1px 3px rgba(229, 26, 47, 0.2);
+  }
+}
+
+/* Ghost Button */
+.btn-ghost {
+  background-color: transparent;
+  color: var(--oefa-text-secondary, #334155);
+  border-color: transparent;
+
+  &:hover:not(:disabled) {
+    background-color: var(--oefa-surface-muted, #f1f5f9);
+    color: var(--oefa-text-primary, #1d1d1b);
+  }
+}
+
+/* Loading spinner */
+.spinner-small {
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: currentColor;
+  animation: btn-spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+@keyframes btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

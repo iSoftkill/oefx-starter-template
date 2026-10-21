@@ -1,3 +1,42 @@
 :host {
   display: block;
 }
+
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+.oefa-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--oefa-surface-muted, #f1f5f9) 0px,
+    var(--oefa-border-color, #e2e8f0) 50px,
+    var(--oefa-surface-muted, #f1f5f9) 100px
+  );
+  background-size: 200px 100%;
+  animation: skeleton-shimmer 1.5s infinite ease-in-out;
+  border-radius: var(--oefa-radius-sm, 4px);
+  display: block;
+  box-sizing: border-box;
+
+  &.skeleton-text {
+    border-radius: var(--oefa-radius-xs, 2px);
+    margin-bottom: var(--oefa-spacing-2xs, 4px);
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &.skeleton-circle {
+    border-radius: var(--oefa-radius-full, 9999px);
+  }
+
+  &.skeleton-rect {
+    border-radius: var(--oefa-radius-md, 8px);
+  }
+}

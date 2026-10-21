@@ -2,20 +2,37 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaIconComponent } from '../icon/icon.component';
 
-export type ChipVariant =
-  | 'project'
-  | 'maintenance'
-  | 'siged'
-  | 'area'
-  | 'deliverable'
-  | 'filter'
-  | 'default';
+/**
+ * Variantes visuales de forma/estilo según estándar OEFA Design System.
+ * - 'pill': Cápsula redondeada completa (radius-full). Estilo estándar para tags/badges.
+ * - 'rounded': Esquinas redondeadas suaves (radius-sm/md). Ideal para códigos y metadatos.
+ * - 'outlined': Solo contorno/borde con fondo transparente o tenue.
+ * - 'filter': Chip interactivo para barras de filtro (soporta [active], hover, toggle).
+ *
+ * Retrocompatibilidad:
+ * 'project', 'maintenance', 'siged', 'area', 'deliverable', 'default',
+ * y variantes semánticas directas ('success', 'warning', 'info', etc.).
+ */
+export type ChipVariant = 'pill' | 'rounded' | 'outlined' | 'filter';
+
+/**
+ * Paleta semántica institucional OEFA (Tokens WCAG 2.2 AA).
+ */
+export type ChipColor =
+  | 'default'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error'
+  | 'neutral'
+  | 'secondary'
+  | 'primary';
 
 /**
  * Componente Institucional de Chips y Etiquetas OEFA.
- * Admite variantes institucionales de negocio ([PRY], [SIGED], área),
- * chips interactivos de filtro rápido con estado activo, iconos/logos,
- * y opción de eliminación/limpieza (removable).
+ * Desacoplado: Estilo/Forma (`variant`) + Color Semántico (`color`).
+ * Admite iconos y logos (vía input o proyección [logo]), prefijos configurables,
+ * chips interactivos de filtro rápido con estado activo, y opción de remoción (removable).
  */
 @Component({
   selector: 'oefa-chip',
@@ -25,10 +42,16 @@ export type ChipVariant =
   styleUrls: ['./chip.component.scss']
 })
 export class OefaChipComponent {
-  @Input() variant: ChipVariant = 'default';
+  /** Estilo de forma / comportamiento del chip: 'pill' | 'rounded' | 'outlined' | 'filter' */
+  @Input() variant: ChipVariant = 'pill';
+  /** Color semántico explícito independiente de la forma */
+  @Input() color: ChipColor = 'default';
+  /** Prefijo opcional no acoplado (ej: '[PRY]', '[MNT]', '[EXP]') */
+  @Input() prefix?: string;
   @Input() label: string = '';
   @Input() title?: string;
   @Input() icon?: string;
+  @Input() logo?: string;
   @Input() size: 'sm' | 'md' = 'md';
   @Input() active: boolean = false;
   @Input() clickable: boolean = false;
@@ -38,6 +61,10 @@ export class OefaChipComponent {
   @Output() clicked = new EventEmitter<MouseEvent>();
   @Output() activeChange = new EventEmitter<boolean>();
   @Output() removed = new EventEmitter<MouseEvent>();
+
+  get isImageLogo(): boolean {
+    return !!this.logo && (this.logo.includes('/') || this.logo.endsWith('.svg') || this.logo.endsWith('.png'));
+  }
 
   get isInteractive(): boolean {
     return (

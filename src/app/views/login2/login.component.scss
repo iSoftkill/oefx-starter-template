@@ -1,0 +1,485 @@
+﻿// =========================================================
+// login2 — Maquetación SISCOA (node 247:4002 Figma)
+// Usa exclusivamente tokens var(--oefa-*) del design system
+// =========================================================
+
+// — Variables locales (alias semánticos de tokens) —
+$panel-radius: 48px;
+$form-radius:  32px;
+
+// -------------------------------------------------------
+// ROOT: ocupa toda la pantalla y centra la tarjeta
+// -------------------------------------------------------
+.l2-root {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: var(--oefa-spacing-md);
+  overflow: hidden;
+  font-family: 'Poppins', sans-serif;
+}
+
+// -------------------------------------------------------
+// FONDO: foto de paisaje (a implementar con asset real)
+// -------------------------------------------------------
+.l2-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('/images/oefa-selva-bg.webp');
+  background-size: cover;
+  background-position: center;
+  filter: saturate(0.7) brightness(0.7);
+  z-index: 0;
+}
+
+// -------------------------------------------------------
+// TARJETA CENTRAL: contenedor de dos columnas
+// -------------------------------------------------------
+.l2-card {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  width: min(100%, 1080px);
+  min-height: 720px;
+  background: #fdfdfd;
+  border-radius: $panel-radius;
+  overflow: hidden;
+}
+
+// -------------------------------------------------------
+// COLUMNA IZQUIERDA: hero con nombre del sistema
+// -------------------------------------------------------
+.l2-hero {
+  display: grid;
+  grid-template-rows: 1fr auto;
+  padding: var(--oefa-spacing-2xl) var(--oefa-spacing-md);
+}
+
+.l2-hero__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--oefa-spacing-md);
+}
+
+.l2-hero__bienvenida {
+  margin: 0 0 var(--oefa-spacing-xs);
+  color: var(--oefa-secondary-root);
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.l2-hero__titulo {
+  margin: 0 0 var(--oefa-spacing-xs);
+  color: var(--oefa-primary-root);
+  font-weight: 700;
+  font-size: clamp(2rem, 4vw, 3.25rem);
+  line-height: 1.1;
+}
+
+.l2-hero__siglas {
+  margin: 0 0 var(--oefa-spacing-xl);
+  color: var(--oefa-text-primary);
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.l2-hero__eslogan {
+  display: inline-block;
+  align-self: flex-start;
+  padding: 4px 12px;
+  background: var(--oefa-secondary-root);
+  color: #fff;
+  border-radius: 12px;
+  font-size: 0.9375rem;
+  font-weight: 600;
+}
+
+// -------------------------------------------------------
+// BANNER OEFA Móvil
+// -------------------------------------------------------
+.l2-banner {
+  position: relative;
+  display: flex;
+  gap: var(--oefa-spacing-sm);
+  align-items: center;
+  justify-content: flex-end;
+  padding: var(--oefa-spacing-xs) var(--oefa-spacing-xl);
+  background: var(--oefa-primary-root);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 36, 99, 0.48);
+}
+
+.l2-banner__circles {
+  pointer-events: none;
+}
+
+.l2-banner__circle {
+  position: absolute;
+  border-radius: 50%;
+
+  &--a {
+    width: 96px;
+    height: 96px;
+    top: 48px;
+    left: -24px;
+    background: radial-gradient(circle, #14195080 0%, #14317c80 50%, #144aa780 100%);
+  }
+  &--b {
+    width: 153px;
+    height: 153px;
+    top: -52px;
+    left: 156px;
+    background: radial-gradient(circle, rgba(0,36,99,0.6) 0%, rgba(20,74,167,0) 100%);
+  }
+  &--c {
+    width: 168px;
+    height: 168px;
+    top: -28px;
+    right: 140px;
+    background: radial-gradient(circle, #14195080 0%, #14317c80 50%, #144aa780 100%);
+  }
+}
+
+.l2-banner__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-2xs);
+  flex: 1;
+}
+
+.l2-banner__titulo-row {
+  display: flex;
+  align-items: center;
+  gap: var(--oefa-spacing-xs);
+}
+
+.l2-banner__app-name {
+  color: #fff;
+  font-size: 1.25rem;
+  font-weight: 800;
+}
+
+.l2-banner__badge {
+  padding: 2px 8px;
+  background: #fff200;
+  color: #000;
+  border-radius: 16px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  font-style: italic;
+}
+
+.l2-banner__desc {
+  margin: 0;
+  padding: var(--oefa-spacing-xs) var(--oefa-spacing-sm);
+  background: rgba(0, 0, 0, 0.30);
+  border-radius: 12px;
+  color: rgba(255,255,255,0.92);
+  font-size: 0.8125rem;
+  font-style: italic;
+  line-height: 1.4;
+}
+
+.l2-banner__stores {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-2xs);
+  align-items: flex-start;
+  padding: 6px var(--oefa-spacing-2xs);
+  background: var(--oefa-primary-container);
+  border-radius: 6px;
+  flex-shrink: 0;
+}
+
+.l2-banner__disponible {
+  color: var(--oefa-text-primary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.l2-banner__store-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--oefa-spacing-2xs);
+  width: 114px;
+  height: 33px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-decoration: none;
+
+  svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+  }
+
+  &--gplay {
+    background: #000;
+  }
+  &--apple {
+    background: #000;
+  }
+}
+
+// -------------------------------------------------------
+// COLUMNA DERECHA: panel del formulario
+// -------------------------------------------------------
+.l2-form-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--oefa-spacing-xl);
+  padding: var(--oefa-spacing-2xl) var(--oefa-spacing-md);
+  width: 360px;
+  background: #fdfdfd;
+  border-radius: $form-radius;
+  box-shadow: 1px 1px 24px 2px rgba(0, 36, 99, 0.12);
+}
+
+// -------------------------------------------------------
+// LOGO
+// -------------------------------------------------------
+.l2-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.l2-logo__img {
+  width: 208px;
+  height: 48px;
+  object-fit: contain;
+}
+
+// -------------------------------------------------------
+// TÍTULO DEL FORMULARIO
+// -------------------------------------------------------
+.l2-form-panel__titulo {
+  width: 100%;
+  padding: 0 var(--oefa-spacing-xl);
+  margin: 0;
+  color: var(--oefa-text-secondary);
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+// -------------------------------------------------------
+// ALERTA DE ERROR
+// -------------------------------------------------------
+.l2-alert {
+  width: 100%;
+  padding: var(--oefa-spacing-xs) var(--oefa-spacing-xl);
+  background: var(--oefa-error-container);
+  color: var(--oefa-error-on-container);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: var(--oefa-spacing-2xs);
+}
+
+// -------------------------------------------------------
+// FORMULARIO
+// -------------------------------------------------------
+.l2-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-xs);
+  width: 100%;
+  padding: 0 var(--oefa-spacing-xl);
+}
+
+// -------------------------------------------------------
+// CAMPOS
+// -------------------------------------------------------
+.l2-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.l2-field__label {
+  color: var(--oefa-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.l2-field__input-wrap {
+  display: flex;
+  align-items: center;
+  gap: var(--oefa-spacing-xs);
+  padding: 0.55rem 0.625rem;
+  border: 1px solid #999;
+  border-radius: 4px;
+  background: #fdfdfd;
+  transition: border-color 0.15s, box-shadow 0.15s;
+
+  &:focus-within {
+    border-color: var(--oefa-primary-root);
+    box-shadow: 0 0 0 3px var(--oefa-focus-glow);
+    outline: none;
+  }
+}
+
+.l2-field__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  color: #696a6a;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+}
+
+.l2-field__input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background: transparent;
+  color: var(--oefa-text-primary);
+  font: inherit;
+  font-size: 0.8125rem;
+  outline: none;
+
+  &::placeholder {
+    color: #696a6a;
+  }
+
+  &--password {
+    padding-right: var(--oefa-spacing-2xs);
+  }
+}
+
+.l2-field__eye {
+  display: flex;
+  align-items: center;
+  padding: 3px;
+  border: none;
+  background: transparent;
+  color: #696a6a;
+  cursor: pointer;
+  border-radius: 4px;
+  flex-shrink: 0;
+
+  svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover {
+    color: var(--oefa-primary-root);
+  }
+}
+
+// -------------------------------------------------------
+// BOTÓN SUBMIT
+// -------------------------------------------------------
+.l2-submit {
+  align-self: center;
+  margin-top: var(--oefa-spacing-xs);
+}
+
+// -------------------------------------------------------
+// SECCIÓN AYUDA
+// -------------------------------------------------------
+.l2-ayuda {
+  display: flex;
+  flex-direction: column;
+  gap: var(--oefa-spacing-md);
+  width: 100%;
+  padding: 0 var(--oefa-spacing-xl);
+}
+
+.l2-ayuda__titulo {
+  margin: 0;
+  color: var(--oefa-text-primary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.l2-ayuda__opciones {
+  display: flex;
+  gap: var(--oefa-spacing-md);
+}
+
+.l2-ayuda__opcion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: var(--oefa-spacing-2xs);
+  background: var(--oefa-surface-muted);
+  border-radius: 8px;
+  color: var(--oefa-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition: background 0.15s;
+
+  &:hover {
+    background: var(--oefa-primary-container);
+    color: var(--oefa-primary-root);
+  }
+}
+
+.l2-ayuda__opcion-icon {
+  display: flex;
+  align-items: center;
+
+  svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+// -------------------------------------------------------
+// RESPONSIVE
+// -------------------------------------------------------
+@media (max-width: 900px) {
+  .l2-card {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    border-radius: 24px;
+    min-height: unset;
+  }
+
+  .l2-hero {
+    padding: var(--oefa-spacing-xl) var(--oefa-spacing-md);
+  }
+
+  .l2-form-panel {
+    width: 100%;
+    border-radius: 0 0 24px 24px;
+    box-shadow: none;
+  }
+
+  .l2-banner {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .l2-hero__titulo {
+    font-size: 1.75rem;
+  }
+
+  .l2-form-panel {
+    padding: var(--oefa-spacing-xl) var(--oefa-spacing-md);
+  }
+}

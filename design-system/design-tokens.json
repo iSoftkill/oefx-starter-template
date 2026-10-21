@@ -1,4 +1,4 @@
-{
+﻿{
   "meta": {
     "descripcion": "Design tokens generales OEFA — reutilizables entre proyectos. Colores raiz y Poppins confirmados por el usuario / Manual de Identidad. Todo lo demas (tonal ramps, tonos UI-safe, correcciones de contraste, escala tipografica revisada) es propuesta tecnica verificada con formula de contraste WCAG 2.1/2.2.",
     "pendiente_validar": [
@@ -669,13 +669,13 @@
     },
 
     "toast": {
-      "_descripcion": "Notificación emergente reactiva temporal en esquina inferior derecha con gestión por ToastService.",
+      "_descripcion": "Notificación emergente reactiva temporal en esquina superior derecha con gestión por ToastService.",
       "background": "surface-card",
       "borderRadius": "radius-md",
       "boxShadow": "shadow-flyout",
       "minWidth": "320px",
       "maxWidth": "440px",
-      "zIndex": 100,
+      "zIndex": 2000,`n      "position": { "top": "24px", "right": "24px" },`n      "defaultDurationMs": 3200,
       "variants": {
         "success": { "borderLeft": "4px solid var(--oefa-success-root)", "iconColor": "var(--oefa-success-root)" },
         "info": { "borderLeft": "4px solid var(--oefa-primary-root)", "iconColor": "var(--oefa-primary-root)" },

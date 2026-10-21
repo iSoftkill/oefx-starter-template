@@ -551,9 +551,9 @@
                 <p class="card-desc">{{ item.description }}</p>
 
                 <div class="card-chips">
-                  <oefa-chip [label]="item.category" variant="area"></oefa-chip>
+                  <oefa-chip [label]="item.category" variant="rounded" color="info"></oefa-chip>
                   @for (tag of item.tags; track tag) {
-                  <oefa-chip [label]="tag" variant="default"></oefa-chip>
+                  <oefa-chip [label]="tag" variant="pill" color="neutral"></oefa-chip>
                   }
                 </div>
 

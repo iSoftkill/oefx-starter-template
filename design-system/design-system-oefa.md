@@ -1,4 +1,4 @@
-# Design System OEFA — Fundaciones
+﻿# Design System OEFA — Fundaciones
 
 Sistema de diseño **general**, no atado a un proyecto. Cualquier sistema institucional que use el shell de referencia (header + sidebar de 3 estados que compartiste) debe partir de este documento y de `design-tokens.json`. Lo específico de un proyecto puntual (ej. Control de Pagos de Entregables) vive en un documento aparte que *extiende* esto, nunca lo reemplaza.
 
@@ -441,8 +441,10 @@ Componentes primitivos con **menos de 20 líneas de template y sin lógica de ne
   - Indicadores de estado (`.in-use-badge`, `.inactive-badge`): contenedores semánticos Success y Error respectivamente.
 - **Notificaciones Emergentes Reactivas (`<oefa-toast>`, `ToastService`)**:
   - Componente global montado en `app.html` (`src/app/shared/components/toast/`).
-  - Gestionado reactivamente mediante `ToastService` inyectable (`success()`, `info()`, `warning()`, `error()`, `remove()`).
-  - Animación suave de entrada con deslizamiento (`translateY`), auto-cierre configurable (default 4000ms), botón manual de descarte y botón opcional de acción.
+  - Posicionamiento oficial: Esquina superior derecha fija (`top: 24px; right: 24px; z-index: 2000;`). En dispositivos móviles (`<= 640px`) se expande perimetralmente (`top: 16px; left: 16px; right: 16px; bottom: auto;`).
+  - Gestionado reactivamente mediante `ToastService` inyectable (`success()`, `info()`, `warning()`, `error()`, `dismiss()`, `remove()`).
+  - Duración y auto-cierre configurable: Tiempo institucional por defecto de **3200ms** (`DEFAULT_TOAST_DURATION`), configurable globalmente con `setDefaultDuration(ms)` o por llamado individual con el parámetro opcional `duration?: number` (en milisegundos; o `0` para toast persistente).
+  - Animación suave de entrada con deslizamiento (`translateY`), botón manual de descarte (`dismiss(id)`) y cierre accesible.
   - Región en vivo para accesibilidad WCAG (`role="status"` o `role="alert"` según el tipo de severidad).
   - Fondo semántico `var(--oefa-[variant]-container)`, marco perimetral uniforme `1px solid var(--oefa-[variant]-container-hc)` y elevación `var(--oefa-shadow-flyout)`.
 
@@ -1036,6 +1038,32 @@ Componentes primitivos con **menos de 20 líneas de template y sin lógica de ne
   - Estructura con `role="group"` y `aria-label`.
   - Botones con `type="button"`, `aria-pressed="true|false"` y soporte completo de teclado.
   - El trigger de tooltip incluye `(click)="$event.stopPropagation()"` y teclas accesibles para consultar información sin disparar la conmutación.
+
+### 8.30 Estándar de Formularios Reactivos Multi-Paso (`FormGroup` + Stepper)
+- **Clasificación Atomic Design**: **Patrón Arquitectural de Formularios Transaccionales**.
+- **Propósito**: Estandarizar la construcción de modales, asistentes o wizards de múltiples pasos utilizando `ReactiveFormsModule` (`FormGroup`, `FormControl`, `Validators`) con tipado estricto (`Typed Forms`), garantizando validación atómica por paso, accesibilidad WCAG y coherencia en toda la plataforma institucional OEFA.
+- **Estructura Recomendada**:
+  - `FormGroup` principal estructurado con sub-grupos dedicados por cada paso:
+    ```typescript
+    form = new FormGroup<TableroForm>({
+      paso1: new FormGroup<Paso1Form>({ ... }),
+      paso2: new FormGroup<Paso2Form>({ ... }),
+      paso3: new FormGroup<Paso3Form>({ ... })
+    });
+    ```
+  - Controles con `{ nonNullable: true }` y validadores nativos (`Validators.required`, `Validators.pattern(...)`).
+- **Reglas de Interacción y Navegación**:
+  - **Validación granular por paso**: Cada paso se valida atómicamente con `this.form.controls.pasoN.valid` antes de permitir avanzar (`siguientePaso()`) o cambiar de paso en el stepper (`onStepChange()`).
+  - **Marcado de errores accesible**: Al pulsar 'Siguiente' o 'Guardar', se invoca `this.form.controls.pasoN.markAllAsTouched()` para desplegar mensajes de error contextuales (`.form-error-msg` con `role="alert"` e ícono de alerta).
+  - **Modo Nuevo vs Modo Edición en Stepper**: En modo nuevo el stepper se mantiene no navegable por clics directos (`[clickable]="false"`), forzando el avance secuencial con validación. En modo edición se habilita `[clickable]="true"`, bloqueando el cambio únicamente si el paso actual contiene campos obligatorios vacíos o inválidos.
+- **Directivas y Enlace en Template**:
+  - Formulario contenedor: `<form [formGroup]="form" novalidate>`
+  - Paneles de paso: `<div class="step-pane" formGroupName="paso1">`
+  - Controles individuales: `formControlName="nombreCampo"`
+  - Etiquetas accesibles: `<label class="form-label" for="id">... <span class="form-required-tag">(Obligatorio)</span></label>`
+- **Carga y Reseteo**:
+  - `form.patchValue({ paso1: { ... }, paso2: { ... } })` para modo edición o carga de datos del backend.
+  - `form.reset({ ... })` para inicialización de formulario limpio en modo nuevo.
 
 ---
 

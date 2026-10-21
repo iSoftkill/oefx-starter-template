@@ -1,3 +1,92 @@
 :host {
   display: inline-flex;
+  vertical-align: middle;
+}
+
+.badge-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--oefa-spacing-2xs, 6px);
+  padding: 4px 10px;
+  border-radius: var(--oefa-radius-full, 9999px);
+  font-family: var(--oefa-font-body, inherit);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  box-sizing: border-box;
+  white-space: nowrap;
+
+  /* 1. INFO */
+  &.info,
+  &.registered {
+    background-color: var(--oefa-primary-container, #EEF4FF);
+    color: var(--oefa-primary-on-container, #002463);
+    border: 1px solid var(--oefa-primary-container-hc, #A4C1F4);
+  }
+
+  /* 2. ÉXITO */
+  &.exito,
+  &.success,
+  &.conforme {
+    background-color: var(--oefa-success-container, #F7FFEE);
+    color: var(--oefa-success-on-container, #386200);
+    border: 1px solid var(--oefa-success-container-hc, #C3E991);
+  }
+
+  /* 3. DANGER / WARNING */
+  &.danger,
+  &.warning,
+  &.observado {
+    background-color: var(--oefa-tertiary-container, #FFF0CC);
+    color: var(--oefa-tertiary-on-container, #664800);
+    border: 1px solid var(--oefa-tertiary-container-hc, #FFE199);
+  }
+
+  /* 4. ERROR */
+  &.error,
+  &.desestimado {
+    background-color: var(--oefa-error-container, #FFEFF1);
+    color: var(--oefa-error-on-container, #AA1223);
+    border: 1px solid var(--oefa-error-container-hc, #FCA5A5);
+  }
+
+  /* 5. NEUTRAL */
+  &.neutral,
+  &.gray {
+    background-color: var(--oefa-surface-muted, #F1F5F9);
+    color: var(--oefa-text-primary, #1E293B);
+    border: 1px solid var(--oefa-border-color, #E2E8F0);
+  }
+
+  /* 6. ALTERNO */
+  &.alterno,
+  &.secondary,
+  &.prevision {
+    background-color: var(--oefa-secondary-container, #EEFFFE);
+    color: var(--oefa-secondary-on-container, #005D58);
+    border: 1px solid var(--oefa-secondary-container-hc, #B3E5E1);
+  }
+
+  /* Variantes de tamaño */
+  &.badge-sm {
+    padding: 2px 7px;
+    font-size: 0.6875rem;
+    gap: 4px;
+
+    .badge-dot {
+      width: 5px;
+      height: 5px;
+    }
+  }
+
+  /* Punto semántico indicador (WCAG 2.2 SC 1.4.1) */
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: currentColor;
+    flex-shrink: 0;
+  }
 }

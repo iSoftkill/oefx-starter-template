@@ -21,6 +21,18 @@
           {{ type }}
         </span>
       }
+      @if (pinned || showPin) {
+        <button
+          type="button"
+          class="bcc-pin-btn"
+          [class.is-pinned]="pinned"
+          [class.variant-warning]="pinVariant === 'warning'"
+          [attr.aria-label]="pinAriaLabel || (pinned ? 'Desfijar elemento' : 'Fijar elemento')"
+          (click)="onPinClick($event)"
+        >
+          <oefa-icon [name]="pinIcon" [size]="15" [color]="pinColor" />
+        </button>
+      }
     </div>
   </div>
 
@@ -38,7 +50,7 @@
     <div class="bcc-tags">
       @if (chips && chips.length > 0) {
         @for (chip of chips; track chip.label) {
-          <oefa-chip [variant]="chip.variant" [label]="chip.label" />
+          <oefa-chip [variant]="chip.variant" [color]="chip.color || 'default'" [icon]="chip.icon" [logo]="chip.logo" [size]="chip.size || 'sm'" [label]="chip.label" />
         }
       }
       @if (tags && tags.length > 0) {

@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+﻿import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OefaButtonComponent } from '../../shared/components/button/button.component';
 import { ToastService, ToastType } from '../../shared/components/toast/toast.service';
@@ -100,14 +100,22 @@ import { ToastService, ToastType } from '../../shared/components/toast/toast.ser
           <span class="text-muted">Inyección de servicio reactivo disponible globalmente en la aplicación.</span>
         </div>
         <div class="card-body">
-          <pre class="code-block">// Inyección de dependencias en componentes Angular standalone
+          <pre class="code-block">// Inyeccion de dependencias en componentes Angular standalone
 private toastService = inject(ToastService);
 
-// Métodos directos disponibles:
-this.toastService.success('Operación completada exitosamente.');
+// Metodos directos con duracion por defecto (3200ms en esquina superior derecha):
+this.toastService.success('Operacion completada exitosamente.');
 this.toastService.info('Registro actualizado.');
 this.toastService.warning('Advertencia de plazo.');
-this.toastService.error('Ocurrió un error en el servidor.');</pre>
+this.toastService.error('Ocurrio un error en el servidor.');
+
+// Duracion personalizada opcional (en ms):
+this.toastService.success('Operacion completada', 5000); // 5 segundos
+this.toastService.error('Error critico en proceso', 8000); // 8 segundos
+this.toastService.info('Aviso persistente', 0); // 0 = permanente (requiere descarte manual)
+
+// Configuracion institucional por defecto (opcional):
+this.toastService.setDefaultDuration(4000);</pre>
         </div>
       </div>
     </div>

@@ -149,7 +149,7 @@ import { OefaPageLayoutComponent } from '../../shared/components/page-layout/pag
                 <oefa-status-badge status="EN_PROCESO" size="sm" />
                 <oefa-status-badge status="CONFORME" label="ATENDIDO" size="sm" />
                 <oefa-status-badge status="OBSERVADO" size="sm" />
-                <oefa-chip variant="area" label="DFAI" />
+                <oefa-chip variant="rounded" color="info" label="DFAI" />
                 <span class="caption-text">Texto de metadato auxiliar de fecha o estado complementario.</span>
               </div>
             </div>

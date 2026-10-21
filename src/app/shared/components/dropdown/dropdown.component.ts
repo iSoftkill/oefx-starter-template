@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, ElementRef, HostListener, signal, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter, ElementRef, HostListener, HostBinding, signal, OnChanges, SimpleChanges, OnInit, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export type DropdownAlign = 'left' | 'right';
@@ -8,6 +8,7 @@ export type DropdownAlign = 'left' | 'right';
  * Provee apertura/cierre controlado, detección de click-outside automático,
  * tecla ESC y posicionamiento alineado a la izquierda o derecha.
  * Soporta [fixedPosition]="true" para evitar cortes en contenedores con overflow (tablas, modales).
+ * Soporta [fullWidth]="true" para ocupar el 100% horizontal de contenedores form-group.
  */
 @Component({
   selector: 'oefa-dropdown',
@@ -16,17 +17,36 @@ export type DropdownAlign = 'left' | 'right';
   templateUrl: './dropdown.component.html',
   styleUrls: ['./dropdown.component.scss']
 })
-export class OefaDropdownComponent implements OnChanges {
+export class OefaDropdownComponent implements OnInit, OnChanges, OnDestroy {
   @Input() isOpen = false;
   @Input() align: DropdownAlign = 'right';
   @Input() closeOnItemClick = true;
   @Input() fixedPosition = false;
+  @Input() @HostBinding('class.full-width') fullWidth = false;
 
   @Output() isOpenChange = new EventEmitter<boolean>();
 
   menuStyles = signal<Record<string, string>>({});
 
   constructor(private elementRef: ElementRef) {}
+
+  ngOnInit(): void {
+    if (typeof document !== 'undefined') {
+      document.addEventListener('click', this.handleDocumentClickCapture, true);
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (typeof document !== 'undefined') {
+      document.removeEventListener('click', this.handleDocumentClickCapture, true);
+    }
+  }
+
+  private handleDocumentClickCapture = (event: MouseEvent): void => {
+    if (this.isOpen && !this.elementRef.nativeElement.contains(event.target as Node)) {
+      this.close();
+    }
+  };
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['isOpen'] && this.isOpen && this.fixedPosition) {

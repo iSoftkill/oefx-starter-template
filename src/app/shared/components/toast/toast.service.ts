@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+﻿import { Injectable, signal } from '@angular/core';
 
 export type ToastType = 'success' | 'warning' | 'error' | 'info';
 
@@ -9,23 +9,50 @@ export interface ToastItem {
   duration: number;
 }
 
+export const DEFAULT_TOAST_DURATION = 3200;
+
 @Injectable({
   providedIn: 'root'
 })
 export class ToastService {
+  private _defaultDuration = DEFAULT_TOAST_DURATION;
   private _toasts = signal<ToastItem[]>([]);
   readonly toasts = this._toasts.asReadonly();
 
-  show(message: string, type: ToastType = 'info', duration: number = 3200): string {
+  /**
+   * Configura la duracion global por defecto de las notificaciones toast (en ms).
+   * @param ms Milisegundos de permanencia antes de auto-cerrarse (ej. 3200, 5000).
+   */
+  setDefaultDuration(ms: number): void {
+    if (ms >= 0) {
+      this._defaultDuration = ms;
+    }
+  }
+
+  /**
+   * Obtiene la duracion configurada por defecto (en ms).
+   */
+  getDefaultDuration(): number {
+    return this._defaultDuration;
+  }
+
+  /**
+   * Muestra una notificacion emergente en la esquina superior derecha.
+   * @param message Texto del mensaje.
+   * @param type Tipo de toast ('success' | 'warning' | 'error' | 'info').
+   * @param duration Duracion en ms (opcional). Por defecto 3200ms. Si es 0, no se auto-cierra.
+   */
+  show(message: string, type: ToastType = 'info', duration?: number): string {
+    const effectiveDuration = duration !== undefined ? duration : this._defaultDuration;
     const id = `toast-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
-    const newItem: ToastItem = { id, message, type, duration };
+    const newItem: ToastItem = { id, message, type, duration: effectiveDuration };
 
     this._toasts.update(current => [...current, newItem]);
 
-    if (duration > 0) {
+    if (effectiveDuration > 0) {
       setTimeout(() => {
         this.dismiss(id);
-      }, duration);
+      }, effectiveDuration);
     }
 
     return id;
@@ -47,11 +74,15 @@ export class ToastService {
     return this.show(message, 'info', duration);
   }
 
-  dismiss(id: string) {
+  dismiss(id: string): void {
     this._toasts.update(current => current.filter(t => t.id !== id));
   }
 
-  clear() {
+  remove(id: string): void {
+    this.dismiss(id);
+  }
+
+  clear(): void {
     this._toasts.set([]);
   }
 }

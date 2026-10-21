@@ -3,63 +3,62 @@
   vertical-align: middle;
 }
 
-.chip-icon {
+.oefa-chip {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-}
-
-.chip-label {
-  display: inline-flex;
-  align-items: center;
+  box-sizing: border-box;
   line-height: 1;
-}
+  white-space: nowrap;
+  font-family: var(--oefa-font-body, inherit);
+  font-weight: 500;
+  font-size: 0.75rem;
+  height: 26px;
+  padding: 2px 10px;
+  gap: 5px;
+  letter-spacing: 0.01em;
 
-.chip-remove-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  color: inherit;
-  opacity: 0.65;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 4px;
-  width: 16px;
-  height: 16px;
-  border-radius: var(--oefa-radius-full);
-  transition: opacity var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
-              background-color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease);
-
-  &:hover {
-    opacity: 1;
-    background-color: rgba(0, 0, 0, 0.12);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--oefa-primary-root);
-    outline-offset: 1px;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.35;
-  }
-}
-
-.filter-chip {
+  // Tamaño compacto (sm)
   &.chip-sm {
-    height: 24px;
-    padding: 2px 10px;
-    font-size: 0.75rem;
+    height: 22px;
+    padding: 1px 8px;
+    font-size: 0.6875rem;
     gap: 4px;
   }
 
-  &.clickable {
+  // Formas estructurales
+  &.shape-pill {
+    border-radius: var(--oefa-radius-full, 9999px);
+  }
+
+  &.shape-rounded {
+    border-radius: var(--oefa-radius-sm, 6px);
+  }
+
+  &.shape-outlined {
+    border-radius: var(--oefa-radius-full, 9999px);
+    background-color: transparent !important;
+    border-width: 1px;
+    border-style: solid;
+  }
+
+  &.shape-filter {
+    border-radius: var(--oefa-radius-full, 9999px);
+  }
+
+  // Interactividad (chips accionables o de filtro)
+  &.clickable,
+  &.shape-filter {
     cursor: pointer;
     user-select: none;
+    transition: background-color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+                border-color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+                color var(--oefa-duration-short, 150ms) var(--oefa-ease-standard, ease),
+                transform 100ms ease;
+
+    &:active {
+      transform: scale(0.97);
+    }
 
     &:focus-visible {
       outline: 2px solid var(--oefa-primary-root);
@@ -71,5 +70,229 @@
     opacity: 0.5;
     pointer-events: none;
     cursor: not-allowed;
+  }
+
+  // Retrocompatibilidad con documentos / expedientes siged
+  &.siged-chip {
+    font-family: monospace;
+    font-size: 0.75rem;
+  }
+
+  // Prefijo desacoplado ([PRY], [MNT], etc.)
+  .chip-prefix {
+    font-weight: 700;
+    opacity: 0.9;
+    margin-right: 2px;
+  }
+
+  // Label
+  .chip-label {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1;
+  }
+
+  // Iconos y logos
+  .chip-icon,
+  .chip-logo,
+  .oefa-chip-logo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 14px;
+    height: 14px;
+    max-width: 14px;
+    max-height: 14px;
+    object-fit: contain;
+  }
+
+  &.chip-sm {
+    .chip-icon,
+    .chip-logo,
+    .oefa-chip-logo {
+      width: 12px;
+      height: 12px;
+      max-width: 12px;
+      max-height: 12px;
+    }
+  }
+
+  // Botón de remoción / cierre
+  .chip-remove-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: transparent;
+    color: inherit;
+    opacity: 0.65;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 3px;
+    width: 14px;
+    height: 14px;
+    border-radius: var(--oefa-radius-full, 9999px);
+    transition: opacity var(--oefa-duration-short, 150ms) ease,
+                background-color var(--oefa-duration-short, 150ms) ease;
+
+    &:hover {
+      opacity: 1;
+      background-color: rgba(0, 0, 0, 0.12);
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--oefa-primary-root);
+      outline-offset: 1px;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.35;
+    }
+  }
+
+  // =========================================================================
+  // PALETA SEMÁNTICA INSTITUCIONAL (Tokens WCAG 2.2 AA)
+  // =========================================================================
+
+  &.color-info,
+  &.color-primary {
+    background-color: var(--oefa-primary-container);
+    color: var(--oefa-primary-on-container);
+    border: 1px solid var(--oefa-primary-container-hc);
+
+    &.shape-outlined {
+      color: var(--oefa-primary-root);
+      border-color: var(--oefa-primary-root);
+    }
+
+    &.active {
+      background-color: var(--oefa-primary-root);
+      color: var(--oefa-primary-on, #ffffff);
+      border-color: var(--oefa-primary-root);
+      font-weight: 600;
+    }
+
+    &:hover.clickable,
+    &:hover.shape-filter {
+      border-color: var(--oefa-primary-root);
+    }
+  }
+
+  &.color-success {
+    background-color: var(--oefa-success-container);
+    color: var(--oefa-success-on-container);
+    border: 1px solid var(--oefa-success-container-hc);
+
+    &.shape-outlined {
+      color: var(--oefa-success-ui-safe);
+      border-color: var(--oefa-success-ui-safe);
+    }
+
+    &.active {
+      background-color: var(--oefa-success-root);
+      color: #ffffff;
+      border-color: var(--oefa-success-root);
+      font-weight: 600;
+    }
+
+    &:hover.clickable,
+    &:hover.shape-filter {
+      border-color: var(--oefa-success-ui-safe);
+    }
+  }
+
+  &.color-warning {
+    background-color: var(--oefa-tertiary-container);
+    color: var(--oefa-tertiary-on-container);
+    border: 1px solid var(--oefa-tertiary-container-hc);
+
+    &.shape-outlined {
+      color: var(--oefa-tertiary-ui-safe);
+      border-color: var(--oefa-tertiary-ui-safe);
+    }
+
+    &.active {
+      background-color: var(--oefa-tertiary-root);
+      color: #ffffff;
+      border-color: var(--oefa-tertiary-root);
+      font-weight: 600;
+    }
+
+    &:hover.clickable,
+    &:hover.shape-filter {
+      border-color: var(--oefa-tertiary-ui-safe);
+    }
+  }
+
+  &.color-error {
+    background-color: var(--oefa-error-container);
+    color: var(--oefa-error-on-container);
+    border: 1px solid var(--oefa-error-container-hc);
+
+    &.shape-outlined {
+      color: var(--oefa-error-root);
+      border-color: var(--oefa-error-root);
+    }
+
+    &.active {
+      background-color: var(--oefa-error-root);
+      color: #ffffff;
+      border-color: var(--oefa-error-root);
+      font-weight: 600;
+    }
+
+    &:hover.clickable,
+    &:hover.shape-filter {
+      border-color: var(--oefa-error-root);
+    }
+  }
+
+  &.color-secondary {
+    background-color: var(--oefa-secondary-container);
+    color: var(--oefa-secondary-on-container);
+    border: 1px solid var(--oefa-secondary-container-hc);
+
+    &.shape-outlined {
+      color: var(--oefa-secondary-ui-safe);
+      border-color: var(--oefa-secondary-ui-safe);
+    }
+
+    &.active {
+      background-color: var(--oefa-secondary-root);
+      color: #ffffff;
+      border-color: var(--oefa-secondary-root);
+      font-weight: 600;
+    }
+
+    &:hover.clickable,
+    &:hover.shape-filter {
+      border-color: var(--oefa-secondary-ui-safe);
+    }
+  }
+
+  &.color-neutral,
+  &.color-default {
+    background-color: var(--oefa-surface-muted);
+    color: var(--oefa-text-secondary);
+    border: 1px solid var(--oefa-border-color);
+
+    &.shape-outlined {
+      color: var(--oefa-text-secondary);
+      border-color: var(--oefa-border-color-strong, #cbd5e1);
+    }
+
+    &.active {
+      background-color: var(--oefa-text-primary);
+      color: #ffffff;
+      border-color: var(--oefa-text-primary);
+      font-weight: 600;
+    }
+
+    &:hover.clickable,
+    &:hover.shape-filter {
+      border-color: var(--oefa-border-color-strong, #94a3b8);
+    }
   }
 }

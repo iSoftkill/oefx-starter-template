@@ -954,11 +954,11 @@
 
             <h5 class="panel-card-title" style="margin-top: 12px;">Chips Contextuales (&lt;oefa-chip&gt;)</h5>
             <div class="chips-demo-flex">
-              <oefa-chip variant="project" label="PRY-2026-004" />
-              <oefa-chip variant="maintenance" label="MNT-SEDE" />
-              <oefa-chip variant="siged" label="EXP-00492" />
-              <oefa-chip variant="area" label="DFAI" />
-              <oefa-chip variant="deliverable" label="ENT-01" />
+              <oefa-chip variant="pill" color="info" prefix="[PRY]" label="PRY-2026-004" />
+              <oefa-chip variant="pill" color="success" prefix="[MNT]" label="MNT-SEDE" />
+              <oefa-chip variant="rounded" color="neutral" label="EXP-00492" />
+              <oefa-chip variant="rounded" color="info" label="DFAI" />
+              <oefa-chip variant="rounded" color="secondary" label="ENT-01" />
             </div>
           </div>
 
@@ -1259,25 +1259,25 @@
           <oefa-bento-kpi-tile sector="Sector Supervisión" title="Fiscalización Directa" value="1,248"
             metricLabel="Actas en campo" trendLabel="+8.4% este mes" periodLabel="Periodo anual 2026" icon="factory"
             iconColor="var(--oefa-primary-on-container)" bgTint="var(--oefa-primary-container)"
-            accentColor="var(--oefa-primary-root)" [chip]="{ variant: 'project', label: 'PRY-2026' }"
+            accentColor="var(--oefa-primary-root)" [chip]="{ variant: 'pill', color: 'info', label: 'PRY-2026' }"
             status="EN_PROCESO" chartType="donut" [percentage]="75" />
 
           <oefa-bento-kpi-tile sector="Evaluación Ambiental" title="Monitoreo de Agua" value="3,842"
             metricLabel="Muestras en cuencas" trendLabel="Óptimo" periodLabel="24 Regiones evaluadas" icon="droplets"
             iconColor="var(--oefa-secondary-on-container)" bgTint="var(--oefa-secondary-container)"
-            accentColor="var(--oefa-secondary-ui-safe)" [chip]="{ variant: 'area', label: 'DEAM' }" status="FINALIZADO"
+            accentColor="var(--oefa-secondary-ui-safe)" [chip]="{ variant: 'rounded', color: 'info', label: 'DEAM' }" status="FINALIZADO"
             chartType="gauge" [percentage]="85" />
 
           <oefa-bento-kpi-tile sector="Fiscalización & Sanción" title="Expedientes PAS" value="524"
             metricLabel="Medidas cautelares" trendLabel="+14% vs 2025" periodLabel="Actualizado hoy" icon="scale"
             iconColor="var(--oefa-tertiary-on-container)" bgTint="var(--oefa-tertiary-container)"
-            accentColor="var(--oefa-tertiary-ui-safe)" [chip]="{ variant: 'siged', label: 'SIGED' }" status="OBSERVADO"
+            accentColor="var(--oefa-tertiary-ui-safe)" [chip]="{ variant: 'rounded', color: 'neutral', label: 'SIGED' }" status="OBSERVADO"
             chartType="bars" [percentage]="62" />
 
           <oefa-bento-kpi-tile sector="Gestión de Residuos" title="Botaderos Clausurados" value="89"
             metricLabel="Áreas recuperadas" trendLabel="Conforme" periodLabel="Meta nacional 92%" icon="leaf"
             iconColor="var(--oefa-success-on-container)" bgTint="var(--oefa-success-container)"
-            accentColor="var(--oefa-success-ui-safe)" [chip]="{ variant: 'maintenance', label: 'MNT-VERDE' }"
+            accentColor="var(--oefa-success-ui-safe)" [chip]="{ variant: 'pill', color: 'success', label: 'MNT-VERDE' }"
             status="FINALIZADO" chartType="sparkline" [percentage]="92" />
         </div>
       </section>
@@ -1324,8 +1324,8 @@
               title="Gestión de Expedientes y Resoluciones Sancionadoras"
               description="Administración centralizada de expedientes sancionadores, medidas cautelares y actos administrativos vinculantes."
               [chips]="[
-                { variant: 'project', label: 'PRY-2026-004' },
-                { variant: 'area', label: 'DFAI' }
+                { variant: 'pill', color: 'info', label: 'PRY-2026-004' },
+                { variant: 'rounded', color: 'info', label: 'DFAI' }
               ]" [tags]="['Fiscalización', 'Digital']" activityType="sparkline" activityLabel="Uso semanal"
               updatedAt="Actualizado hoy" actionText="Explorar" />
           </div>
@@ -1341,8 +1341,8 @@
               typeColor="var(--oefa-secondary-on-container)" title="Red Nacional de Calidad del Agua y Cuencas"
               description="Registro geoespacial de estaciones de muestreo, parámetros hidroquímicos y niveles de turbidez en cuencas prioritarias."
               [chips]="[
-                { variant: 'maintenance', label: 'MNT-CUENCA' },
-                { variant: 'deliverable', label: 'ENT-02' }
+                { variant: 'pill', color: 'success', label: 'MNT-CUENCA' },
+                { variant: 'rounded', color: 'secondary', label: 'ENT-02' }
               ]" [tags]="['Sensores', 'GeoOEFA']" activityType="bar" activityLabel="Capacidad 98%"
               updatedAt="Hace 2 horas" actionText="Ver Datos" />
           </div>
@@ -1358,8 +1358,8 @@
               title="Catálogo Oficial de Sitios y Pasivos Ambientales"
               description="Inventario oficial de pasivos ambientales en hidrocarburos y minería para priorización de remediación estatal."
               [chips]="[
-                { variant: 'siged', label: 'EXP-00492' },
-                { variant: 'area', label: 'DSIS' }
+                { variant: 'rounded', color: 'neutral', label: 'EXP-00492' },
+                { variant: 'rounded', color: 'info', label: 'DSIS' }
               ]" [tags]="['Remediación', 'Fondo']" activityType="pulse" activityLabel="En línea"
               updatedAt="Hace 10 min" actionText="Gestionar" />
           </div>

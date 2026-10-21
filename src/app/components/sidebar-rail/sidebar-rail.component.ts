@@ -2,11 +2,12 @@ import { Component, inject, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { NavigationService, NavItem } from '../../services/navigation.service';
+import { OefaIconComponent } from '../../shared/components/icon/icon.component';
 
 @Component({
   selector: 'app-sidebar-rail',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, OefaIconComponent],
   templateUrl: './sidebar-rail.component.html',
   styleUrl: './sidebar-rail.component.css'
 })

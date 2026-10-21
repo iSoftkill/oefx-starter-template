@@ -59,15 +59,15 @@ export class NavigationService {
 
     {
       id: 'prueba',
-      label: 'Prueba',
-      icon: 'grid',
+      label: 'Inicio',
+      icon: 'home',
       route: '/prueba'
     },
 
     {
       id: 'sistema_diseno',
       label: 'Sistema Diseño',
-      icon: 'palette',
+      icon: 'smartphone',
       route: '/design-system/fundaciones',
       children: [
         {

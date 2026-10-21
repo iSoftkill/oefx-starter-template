@@ -36,7 +36,7 @@
         <span class="bkc-sector">{{ sector }}</span>
       }
       @if (chip) {
-        <oefa-chip [variant]="chip.variant" [label]="chip.label" />
+        <oefa-chip [variant]="chip.variant" [color]="chip.color || 'default'" [label]="chip.label" />
       }
     </div>
     <h4 class="bkc-title">{{ title }}</h4>

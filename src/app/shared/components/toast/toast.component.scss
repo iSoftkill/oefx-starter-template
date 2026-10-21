@@ -1,6 +1,7 @@
-.oefa-toast-container {
+.oefa-toast-container,
+.oefa-toast-region {
   position: fixed;
-  bottom: 24px;
+  top: 24px;
   right: 24px;
   display: flex;
   flex-direction: column;
@@ -27,7 +28,7 @@
 @keyframes oefa-toast-in {
   from {
     opacity: 0;
-    transform: translateY(14px) scale(0.96);
+    transform: translateY(-14px) scale(0.96);
   }
   to {
     opacity: 1;
@@ -93,10 +94,12 @@
 }
 
 @media (max-width: 640px) {
-  .oefa-toast-container {
+  .oefa-toast-container,
+  .oefa-toast-region {
     left: 16px;
     right: 16px;
-    bottom: 16px;
+    top: 16px;
+    bottom: auto;
     max-width: none;
   }
 }
